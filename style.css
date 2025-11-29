@@ -67,6 +67,12 @@ body {
   transform: translateY(30px);
 }
 
+.subtitle {
+  margin-top: 1rem;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
 /* Sections */
 section {
   padding: 5rem 2rem;
