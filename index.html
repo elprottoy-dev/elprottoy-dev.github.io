@@ -1,104 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khaled Md. Mehzabin Alam Prottoy</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prottoy | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- Custom Cursor -->
-<div class="cursor"></div>
-
-<!-- Theme Toggle -->
-<button class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
-
-<!-- Hero Section -->
-<section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="container hero-container">
-    <h1 class="hero-title">Khaled Md. Mehzabin Alam Prottoy</h1>
-    <p class="subtitle">Researcher + Developer</p>
-    <a href="#projects" class="btn">See My Work</a>
-  </div>
-</section>
-
-<!-- CV Section -->
-<section id="cv">
-  <div class="container cv-container">
-    <div class="cv-gif">
-      <img src="your-gif.gif" alt="CV GIF">
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-text">
+        <span>P</span><span>r</span><span>o</span><span>t</span><span>t</span><span>o</span><span>y</span>
+      </h1>
+      <p>Frontend & Full Stack Developer | Open Source Enthusiast</p>
     </div>
-    <div class="cv-content">
-      <h2>Curriculum Vitae</h2>
-      <p>Download or view my CV to explore my professional journey, research projects, and development work.</p>
-      <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">View / Download CV</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- About Section -->
-<section id="about">
-  <div class="container">
-    <h2>About Me</h2>
-    <p>I am a passionate researcher and developer building digital solutions in environmental research, mobile apps, and data-driven projects.</p>
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills">
-  <div class="container">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Android App Development</li>
-      <li>Firebase & Cloud Databases</li>
-      <li>GIS & Google Earth Engine</li>
-      <li>Web Development (HTML, CSS, JS)</li>
-      <li>Data Analysis & Visualization</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <div class="container">
+  <!-- Projects Section -->
+  <section id="projects">
     <h2>Projects</h2>
-    <div class="projects-grid">
+    <div class="project-grid">
       <div class="project-card">
-        <h3>CPE Health Management System</h3>
-        <p>Android app for individual health monitoring with Firebase backend.</p>
+        <div class="card-inner">
+          <img src="project1.png" alt="Project 1">
+          <div class="card-content">
+            <h3>Project One</h3>
+            <p>Short description of Project One. Tech used: HTML, CSS, JS.</p>
+          </div>
+        </div>
       </div>
       <div class="project-card">
-        <h3>Deshojobazar Platform</h3>
-        <p>Producer-consumer market intervention website and app.</p>
+        <div class="card-inner">
+          <img src="project2.png" alt="Project 2">
+          <div class="card-content">
+            <h3>Project Two</h3>
+            <p>Short description of Project Two. Tech used: React, Firebase.</p>
+          </div>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>Environmental Research Projects</h3>
-        <p>GIS and climate data-driven analysis for multiple NGOs in Bangladesh.</p>
-      </div>
+      <!-- Add more project cards here -->
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section id="contact">
-  <div class="container">
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am Prottoy, a passionate developer and designer. I specialize in creating modern, responsive, and interactive web experiences. I love coding, open-source contribution, and learning new technologies.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:prottoy@example.com">prottoy@example.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/elprottoy" target="_blank">elprottoy</a></p>
-    <p>GitHub: <a href="https://github.com/elprottoy-dev" target="_blank">elprottoy-dev</a></p>
-  </div>
-</section>
+    <p>LinkedIn: <a href="#">linkedin.com/in/prottoy</a></p>
+    <p>GitHub: <a href="#">github.com/prottoy</a></p>
+  </section>
 
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Khaled Md. Mehzabin Alam Prottoy. All Rights Reserved.</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
