@@ -1,98 +1,73 @@
-// script.js — theme toggle, cursor, smooth reveals, small micro interactions
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
 
-// Theme toggle
-const themeToggle = document.getElementById('theme-toggle');
-const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const body = document.body;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// read saved theme
-const saved = localStorage.getItem('site-theme');
-if (saved) {
-  body.classList.toggle('theme-dark', saved === 'dark');
-  body.classList.toggle('theme-light', saved === 'light');
-} else {
-  // default to system preference
-  body.classList.toggle('theme-dark', prefersDark);
-  body.classList.toggle('theme-light', !prefersDark);
-}
+const particlesArray = [];
+const maxParticles = 100;
 
-themeToggle.addEventListener('click', () => {
-  const isDark = body.classList.contains('theme-dark');
-  if (isDark) {
-    body.classList.remove('theme-dark');
-    body.classList.add('theme-light');
-    localStorage.setItem('site-theme', 'light');
-  } else {
-    body.classList.remove('theme-light');
-    body.classList.add('theme-dark');
-    localStorage.setItem('site-theme', 'dark');
+class Particle {
+  constructor(){
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 1 - 0.5;
+    this.speedY = Math.random() * 1 - 0.5;
   }
-});
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
 
-// set year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
-  });
-});
-
-// Cursor follow
-const cursorDot = document.getElementById('cursor-dot');
-const cursorOutline = document.getElementById('cursor-outline');
-let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-});
-
-// animate outline with slight lag
-function rafLoop() {
-  outlineX += (mouseX - outlineX) * 0.12;
-  outlineY += (mouseY - outlineY) * 0.12;
-  cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
-  requestAnimationFrame(rafLoop);
+    if(this.x > canvas.width || this.x < 0) this.speedX *= -1;
+    if(this.y > canvas.height || this.y < 0) this.speedY *= -1;
+  }
+  draw(){
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.fill();
+  }
 }
-requestAnimationFrame(rafLoop);
 
-// hover interactions to enlarge cursor
-const hoverTargets = document.querySelectorAll('a, .btn-primary, .card, .icon-btn');
-hoverTargets.forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursorDot.style.transform += ' scale(1.2)';
-    cursorOutline.style.transform += ' scale(1.1)';
-    cursorDot.style.background = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+function init(){
+  for(let i=0; i<maxParticles; i++){
+    particlesArray.push(new Particle());
+  }
+}
+
+function connect(){
+  for(let a=0; a<particlesArray.length; a++){
+    for(let b=a; b<particlesArray.length; b++){
+      let dx = particlesArray[a].x - particlesArray[b].x;
+      let dy = particlesArray[a].y - particlesArray[b].y;
+      let distance = Math.sqrt(dx*dx + dy*dy);
+      if(distance < 120){
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p => {
+    p.update();
+    p.draw();
   });
-  el.addEventListener('mouseleave', () => {
-    // reset by reassigning base position (mouse move will update)
-  });
+  connect();
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
 
-// small entrance animations (on-load)
-window.addEventListener('load', () => {
-  document.querySelectorAll('.hero-title, .hero-lead, .kicker').forEach((el, i) => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(8px)';
-    setTimeout(()=> {
-      el.style.transition = 'all 420ms cubic-bezier(.2,.9,.3,1)';
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-    }, 120 * i);
-  });
-
-  document.querySelectorAll('.card').forEach((c, i) => {
-    c.style.opacity = 0;
-    c.style.transform = 'translateY(10px)';
-    setTimeout(()=> {
-      c.style.transition = 'all 420ms cubic-bezier(.2,.9,.3,1)';
-      c.style.opacity = 1;
-      c.style.transform = 'translateY(0)';
-    }, 160 * i + 300);
-  });
-});
+init();
+animate();
