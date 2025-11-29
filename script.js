@@ -55,7 +55,14 @@ function connect(){
 }
 
 function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // Gradient background
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  gradient.addColorStop(0, '#ff0080');
+  gradient.addColorStop(0.5, '#7928ca');
+  gradient.addColorStop(1, '#ff0080');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
   particlesArray.forEach(p => {
     p.update();
     p.draw();
