@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prottoy | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHALED MD MEHZABIN ALAM PROTTOY | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="dark">
 
 <header>
   <nav class="navbar">
-    <div class="nav-left">
-      <h1 class="name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
-    </div>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -21,6 +18,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="Prottoy_CV.pdf" download>Resume</a></li>
     </ul>
     <button id="theme-toggle">🌙</button>
   </nav>
@@ -30,9 +28,10 @@
   <canvas id="particle-canvas"></canvas>
   <div class="hero-overlay"></div>
   <div class="hero-left">
-    <h1 class="hero-text">
+    <h1 class="name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+    <h2 class="hero-text">
       <span>P</span><span>r</span><span>o</span><span>t</span><span>t</span><span>o</span><span>y</span>
-    </h1>
+    </h2>
     <p class="subtitle">Frontend & Full Stack Developer | Open Source Enthusiast</p>
     <a href="Prottoy_CV.pdf" download class="btn">Download CV</a>
   </div>
@@ -41,7 +40,41 @@
   </div>
 </section>
 
-<section id="projects" class="reveal"><h2>Projects</h2></section>
+<section id="projects" class="reveal">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="card-inner">
+          <img src="project1.png" alt="Project 1">
+          <div class="card-content">
+            <h3>Project One</h3>
+            <p>HTML, CSS, JS.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-inner">
+          <img src="project2.png" alt="Project 2">
+          <div class="card-content">
+            <h3>Project Two</h3>
+            <p>React, Firebase.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-inner">
+          <img src="project3.png" alt="Project 3">
+          <div class="card-content">
+            <h3>Project Three</h3>
+            <p>Node.js, MongoDB.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="gallery" class="reveal"><h2>Gallery</h2></section>
 <section id="about" class="reveal"><h2>About</h2></section>
 <section id="experience" class="reveal"><h2>Experience</h2></section>
