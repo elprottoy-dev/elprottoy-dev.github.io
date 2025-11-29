@@ -1,101 +1,175 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khaled Md Prottoy • Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KHALED MD MEHZABIN ALAM PROTTOY — Researcher + Developer</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Meta theme-color for mobile -->
+  <meta name="theme-color" content="#071022" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicons (optional) -->
+  <link rel="icon" href="favicon.ico" />
 </head>
+<body class="theme-dark">
+  <!-- custom cursor elements -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-outline"></div>
 
-<body>
-
-    <!-- NAVBAR -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">Prottoy</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Hello, I’m <span class="highlight">Khaled Md Prottoy</span></h1>
-            <h2>Research Associate • GIS Analyst • Android Developer</h2>
-            <p>I build data-driven solutions, health monitoring apps, and climate–environment systems.</p>
-            <a href="#projects" class="btn">View My Work</a>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="brand-mark">KP</div>
+        <div class="brand-text">
+          <div class="brand-name">KHALED MD</div>
+          <div class="brand-sub">MEHZABIN ALAM PROTTOY</div>
         </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="kicker">Researcher · Developer · GIS</div>
+        <h1 class="hero-title">
+          I craft data-driven tools & research systems for climate, health, and GIS.
+        </h1>
+        <p class="hero-lead">
+          I build Android apps, Google Earth Engine workflows, and dashboards that turn complex field data into actionable insights.
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#work">View Work</a>
+          <a class="btn-ghost" href="mailto:yourmail@example.com">Hire / Contact</a>
+        </div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="profile-card">
+          <div class="avatar">
+            <!-- Replace avatar.jpg with your image -->
+            <img src="avatar.jpg" alt="Khaled Prottoy">
+          </div>
+          <div class="profile-meta">
+            <div class="pm-name">KHALED MD MEHZABIN ALAM PROTTOY</div>
+            <div class="pm-role">Researcher + Developer — Dhaka</div>
+            <div class="pm-links">
+              <a href="https://github.com/elprottoy-dev" target="_blank" rel="noopener">GitHub</a>
+              <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-stats">
+          <div class="stat">
+            <div class="stat-val">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">40</div>
+            <div class="stat-label">Project Ideas</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- WORK / PROJECTS -->
+    <section id="work" class="section">
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-sub">A few highlights — click to view repositories or demos.</p>
+
+      <div class="grid work-grid">
+        <article class="card">
+          <div class="card-media"></div>
+          <h3>Health Monitoring App</h3>
+          <p class="muted">Android + Firebase app for reproductive, physical, and mental health monitoring.</p>
+          <a class="card-link" href="https://github.com/elprottoy-dev/healthmonitoringapp">View repo</a>
+        </article>
+
+        <article class="card">
+          <div class="card-media"></div>
+          <h3>GEE Flood Mapping</h3>
+          <p class="muted">Google Earth Engine scripts for flood hotspot detection and time-series analysis.</p>
+          <a class="card-link" href="#">View repo</a>
+        </article>
+
+        <article class="card">
+          <div class="card-media"></div>
+          <h3>Deshojobazar Platform</h3>
+          <p class="muted">Producer-consumer market intervention web app (prototype).</p>
+          <a class="card-link" href="#">View repo</a>
+        </article>
+
+        <article class="card">
+          <div class="card-media"></div>
+          <h3>Data Dashboard</h3>
+          <p class="muted">Interactive dashboards for climate & health visualization (React/Streamlit).</p>
+          <a class="card-link" href="#">View repo</a>
+        </article>
+      </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
-        <h1>About Me</h1>
-        <p>
-            I am a Research Associate skilled in climate change, GIS, data systems, and Android app development. 
-            I design research tools, build health and environmental monitoring platforms, and translate 
-            complex data into meaningful insights.
-        </p>
-    </section>
+    <section id="about" class="section">
+      <h2 class="section-title">About</h2>
+      <p class="lead">
+        I am a research-focused developer blending environmental research, GIS, and mobile development. I lead projects from data collection (Kobo), processing, to building production-ready apps and dashboards used by field teams and decision-makers.
+      </p>
 
-    <!-- SKILLS -->
-    <section id="skills">
-        <h1>Skills</h1>
-        <div class="skill-container">
-            <div class="skill-card">Android (Java/Kotlin)</div>
-            <div class="skill-card">Firebase (Auth, DB)</div>
-            <div class="skill-card">GIS • Google Earth Engine</div>
-            <div class="skill-card">Python</div>
-            <div class="skill-card">React</div>
-            <div class="skill-card">Data Visualization</div>
-            <div class="skill-card">Research & Analysis</div>
-            <div class="skill-card">Web Development</div>
+      <div class="two-col">
+        <div>
+          <h4>Skills</h4>
+          <ul class="skill-list">
+            <li>Android (Java / Kotlin)</li>
+            <li>Firebase (Auth, Realtime Database)</li>
+            <li>Google Earth Engine & GIS</li>
+            <li>Python • Data Analysis • Visualization</li>
+            <li>Research Methods • Survey Design • M&E</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <h1>Projects</h1>
-        <div class="project-grid">
-
-            <div class="project-card">
-                <h2>Health Monitoring Android App</h2>
-                <p>Firebase-based app for physical, mental, and reproductive health monitoring.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-
-            <div class="project-card">
-                <h2>Climate Risk GIS Dashboard</h2>
-                <p>Mapping extreme weather, flood hotspots, and environmental risks.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-
-            <div class="project-card">
-                <h2>Deshojobazar Platform</h2>
-                <p>A producer–consumer digital market intervention system.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-
+        <div>
+          <h4>Selected Services</h4>
+          <ul class="skill-list">
+            <li>Project Design & Research</li>
+            <li>Mobile App Development (Android)</li>
+            <li>GEE Remote Sensing Analysis</li>
+            <li>Dashboard & Data Automation</li>
+          </ul>
         </div>
+      </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
-        <h1>Contact</h1>
-        <p>Email: <strong>yourmail@example.com</strong></p>
-        <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
-        <p>LinkedIn: <a href="#">Your LinkedIn Profile</a></p>
+    <section id="contact" class="section">
+      <h2 class="section-title">Contact</h2>
+      <p class="lead">Interested in collaborating or hiring? Reach out — I respond quickly.</p>
+      <p><strong>Email:</strong> <a href="mailto:yourmail@example.com">yourmail@example.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/elprottoy-dev" target="_blank" rel="noopener">github.com/elprottoy-dev</a></p>
     </section>
 
-    <footer>
-        <p>© 2025 Khaled Md Prottoy</p>
+    <footer class="footer">
+      <div>© <span id="year"></span> KHALED MD MEHZABIN ALAM PROTTOY — Built with care</div>
     </footer>
+  </main>
 
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
 </body>
 </html>
