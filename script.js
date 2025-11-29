@@ -18,11 +18,4 @@ let gradientOffset=0;
 function animateParticles(){const gradient=ctx.createLinearGradient(0,0,canvas.width,canvas.height); gradient.addColorStop(0,`hsl(${gradientOffset%360},70%,10%)`); gradient.addColorStop(0.5,`hsl(${(gradientOffset+60)%360},70%,15%)`); gradient.addColorStop(1,`hsl(${(gradientOffset+120)%360},70%,10%)`); ctx.fillStyle=gradient; ctx.fillRect(0,0,canvas.width,canvas.height); particlesArray.forEach(p=>{p.update();p.draw();}); connectParticles(); gradientOffset+=0.2; requestAnimationFrame(animateParticles);}
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight; initParticles();}); initParticles(); animateParticles();
 
-// GSAP Hero Text
-gsap.from(".hero-text span",{duration:1.2,opacity:0,y:50,stagger:0.1,ease:"power3.out"});
-
-// Scroll Reveal
-gsap.utils.toArray('.reveal').forEach(elem=>{gsap.fromTo(elem,{opacity:0,y:50},{opacity:1,y:0,scrollTrigger:{trigger:elem,start:"top 80%",toggleActions:"play none none reverse"},duration:1,ease:"power2.out"});});
-
-// Vanilla Tilt for cards
-VanillaTilt.init(document.querySelectorAll(".card-inner"),{max:15,speed:400,glare:true,"max-glare":0.2});
+// GSAP Hero
