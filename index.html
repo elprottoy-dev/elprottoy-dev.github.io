@@ -5,121 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prottoy | Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark">
 
-<!-- Top Header: Name + GIF + Menu -->
 <header>
-  <div class="top-bar">
-    <div class="name-left">KHALED MD MEHZABIN ALAM PROTTOY</div>
-    <div class="gif-right">
-      <img src="hero.gif" alt="Hero GIF">
-    </div>
-  </div>
-
   <nav class="navbar">
+    <div class="nav-left">
+      <h1 class="name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+    </div>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button id="theme-toggle">🌙</button>
   </nav>
 </header>
 
-<!-- Hero Section -->
 <section id="hero">
   <canvas id="particle-canvas"></canvas>
-  <div class="hero-content">
+  <div class="hero-overlay"></div>
+  <div class="hero-left">
     <h1 class="hero-text">
       <span>P</span><span>r</span><span>o</span><span>t</span><span>t</span><span>o</span><span>y</span>
     </h1>
     <p class="subtitle">Frontend & Full Stack Developer | Open Source Enthusiast</p>
-    <div class="hero-buttons">
-      <a href="#projects" class="btn">View Projects</a>
-      <a href="Prottoy_CV.pdf" download class="btn">Download CV</a>
-    </div>
+    <a href="Prottoy_CV.pdf" download class="btn">Download CV</a>
+  </div>
+  <div class="hero-right">
+    <img src="hero.gif" alt="Hero GIF">
   </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="reveal">
-  <div class="container">
-    <h2>About Me</h2>
-    <p>
-      I am Prottoy, a passionate developer and designer. I specialize in creating modern, responsive, and interactive web experiences. I love coding, open-source contribution, and exploring new technologies.
-    </p>
-  </div>
-</section>
+<section id="projects" class="reveal"><h2>Projects</h2></section>
+<section id="gallery" class="reveal"><h2>Gallery</h2></section>
+<section id="about" class="reveal"><h2>About</h2></section>
+<section id="experience" class="reveal"><h2>Experience</h2></section>
+<section id="contact" class="reveal"><h2>Contact</h2></section>
 
-<!-- Skills Section -->
-<section id="skills" class="reveal">
-  <div class="container">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill">HTML & CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">React</div>
-      <div class="skill">Node.js</div>
-      <div class="skill">Firebase</div>
-      <div class="skill">UI/UX Design</div>
-    </div>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="reveal">
-  <div class="container">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <div class="card-inner">
-          <img src="project1.png" alt="Project 1">
-          <div class="card-content">
-            <h3>Project One</h3>
-            <p>Short description of Project One. Tech used: HTML, CSS, JS.</p>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-inner">
-          <img src="project2.png" alt="Project 2">
-          <div class="card-content">
-            <h3>Project Two</h3>
-            <p>Short description of Project Two. Tech used: React, Firebase.</p>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-inner">
-          <img src="project3.png" alt="Project 3">
-          <div class="card-content">
-            <h3>Project Three</h3>
-            <p>Short description of Project Three. Tech used: Node.js, MongoDB.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="reveal">
-  <div class="container">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:prottoy@example.com">prottoy@example.com</a></p>
-    <p>LinkedIn: <a href="#">linkedin.com/in/prottoy</a></p>
-    <p>GitHub: <a href="#">github.com/prottoy</a></p>
-  </div>
-</section>
-
-<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
