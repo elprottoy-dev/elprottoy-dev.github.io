@@ -100,9 +100,10 @@ gsap.utils.toArray('.hero-name span').forEach((letter, i) => {
 });
 
 // --------------------
-// Scroll Reveal
+// Scroll Reveal for Sections
 // --------------------
 gsap.registerPlugin(ScrollTrigger);
+
 gsap.utils.toArray('.reveal').forEach((elem) => {
   gsap.fromTo(elem,
     { opacity: 0, y: 50 },
@@ -134,12 +135,15 @@ VanillaTilt.init(document.querySelectorAll(".card-inner"), {
 // Dark / Light Theme Toggle
 // --------------------
 const themeToggle = document.querySelector('.theme-toggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+});
+
+// Optional: store preference in localStorage
 if(localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light-theme');
 }
-
 themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
   if(document.body.classList.contains('light-theme')){
     localStorage.setItem('theme', 'light');
   } else {
