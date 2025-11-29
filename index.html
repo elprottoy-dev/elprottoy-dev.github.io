@@ -1,221 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdelmajid NIDNASSER | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHALED MD MEHZABIN ALAM PROTTOY | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
-
-<header>
-  <nav class="navbar">
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
     <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
+      <li><a href="#home">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="NIDNASSER_CV.pdf" download>Resume</a></li>
+      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
     </ul>
-    <button id="theme-toggle">🌙</button>
+    <div class="theme-toggle" id="theme-toggle">🌙</div>
   </nav>
-</header>
 
-<!-- Hero Section -->
-<section id="hero">
-  <canvas id="particle-canvas"></canvas>
-  <div class="hero-overlay"></div>
-  <div class="hero-left">
-    <h1 class="name">Abdelmajid NIDNASSER</h1>
-    <h2 class="hero-text">
-      <span>P</span><span>h</span><span>D</span> <span>C</span><span>a</span><span>n</span><span>d</span><span>i</span><span>d</span><span>a</span><span>t</span><span>e</span> & <span>D</span><span>a</span><span>t</span><span>a</span> <span>E</span><span>n</span><span>g</span><span>i</span><span>n</span><span>e</span><span>e</span><span>r</span>
-    </h2>
-    <p class="subtitle">Open to collaborative research and development</p>
-    <a href="NIDNASSER_CV.pdf" download class="btn">View Resume</a>
-  </div>
-  <div class="hero-right">
-    <img src="hero.gif" alt="Hero GIF">
-  </div>
-</section>
-
-<!-- Core Technologies -->
-<section id="technologies" class="reveal">
-  <div class="container">
-    <h2>CORE TECHNOLOGIES</h2>
-    <div class="skills-grid">
-      <div class="skill">Python</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">SQL</div>
-      <div class="skill">PostgreSQL</div>
-      <div class="skill">Selenium</div>
-    </div>
-  </div>
-</section>
-
-<!-- Why Hire Me -->
-<section id="why-hire" class="reveal">
-  <div class="container">
-    <h2>Why Hire Me?</h2>
-    <p>A Foundation of Trust and Excellence</p>
-    <div class="stats-grid">
-      <div class="stat">
-        <h3>5-Star Rated Freelancer</h3>
-        <p>Achieved a perfect 5.0-star rating across 46 reviews.</p>
+  <!-- Hero Section -->
+  <section id="home">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-container">
+      <div class="hero-left">
+        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+        <p class="hero-subtitle">Open to collaborative research and development</p>
+        <h2 class="hero-intro">Hi, I'm Khaled MD Mehzabin Alam Prottoy.<br>Researching in Web & Full Stack Development</h2>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn">Get in Touch</a>
+          <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
+        </div>
       </div>
-      <div class="stat">
-        <h3>45+ Successful Projects</h3>
-        <p>Architected backend systems and REST APIs for 45+ projects.</p>
-      </div>
-      <div class="stat">
-        <h3>Cloud & DevOps Expertise</h3>
-        <p>Deployed scalable apps on AWS using Docker & CI/CD.</p>
-      </div>
-      <div class="stat">
-        <h3>LLM & RAG Specialist</h3>
-        <p>Developing advanced AI systems with LLMs & Retrieval-Augmented Generation.</p>
-      </div>
-      <div class="stat">
-        <h3>Trusted by Global Clients</h3>
-        <p>Proven track record of delivering solutions worldwide.</p>
-      </div>
-      <div class="stat">
-        <h3>INPT Engineering Student</h3>
-        <p>Final-year Data & Software Engineering student at INPT.</p>
+      <div class="hero-right">
+        <div class="gif-wrapper">
+          <img src="hero.gif" alt="Hero GIF">
+          <div class="gradient-overlay"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Featured Projects -->
-<section id="projects" class="reveal">
-  <div class="container">
-    <h2>My Featured Projects</h2>
-    <div class="project-grid">
-      <!-- Project 1 -->
-      <div class="project-card">
-        <div class="card-inner">
-          <img src="project1.png" alt="AI-Powered Career Toolkit">
-          <div class="card-content">
-            <h3>AI-Powered Career Toolkit <span class="status">In Development</span></h3>
-            <p>A full-stack career platform using Django & React to generate AI-powered resumes & interview prep.</p>
-            <div class="tech-tags">React, Django, OpenAI API, JWT, Docker, AWS</div>
-            <div class="links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
+  <!-- Core Technologies -->
+  <section id="technologies" class="reveal">
+    <div class="container">
+      <h2>CORE TECHNOLOGIES</h2>
+      <div class="tech-grid">
+        <div class="tech-card">Python</div>
+        <div class="tech-card">JavaScript</div>
+        <div class="tech-card">SQL</div>
+        <div class="tech-card">PostgreSQL</div>
+        <div class="tech-card">Selenium</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Hire Me? -->
+  <section id="hireme" class="reveal">
+    <div class="container">
+      <h2>Why Hire Me?</h2>
+      <div class="hire-grid">
+        <div class="hire-card">
+          <h3>A Foundation of Trust and Excellence</h3>
+          <p>I am committed to delivering not just code, but value. My work is built on reliability, quality, and solving complex problems with data-driven results.</p>
+        </div>
+        <div class="hire-card">
+          <h3>5-Star Rated Freelancer</h3>
+          <p>Achieved a perfect 5.0-star rating across 46 reviews by delivering high-quality code and clear communication.</p>
+        </div>
+        <div class="hire-card">
+          <h3>45+ Successful Projects</h3>
+          <p>Architected and delivered backend systems and REST APIs for over 45 freelance projects globally.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Cloud & DevOps Expertise</h3>
+          <p>Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability and reduce deployment times.</p>
+        </div>
+        <div class="hire-card">
+          <h3>LLM & RAG Specialist</h3>
+          <p>Developing AI systems using Large Language Models (LLMs) and Retrieval-Augmented Generation for context-aware solutions.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Trusted by Global Clients</h3>
+          <p>Proven track record of delivering solutions for clients worldwide via Freelancer.com.</p>
+        </div>
+        <div class="hire-card">
+          <h3>INPT Engineering Student</h3>
+          <p>Final-year student pursuing Engineering in Data and Software at the National Institute of Posts and Telecommunications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="projects" class="reveal">
+    <div class="container">
+      <h2>My Featured Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="card-inner">
+            <img src="project1.png" alt="AI-Powered Career Toolkit">
+            <div class="card-content">
+              <h3>AI-Powered Career Toolkit <span class="badge">In Development</span></h3>
+              <p>Full-stack career platform using Django & React to generate AI-powered resumes and interview prep.</p>
+              <div class="tech-stack">React | Django | OpenAI API | JWT | Docker | AWS</div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-inner">
+            <img src="project2.png" alt="ENSA Khouribga University Website">
+            <div class="card-content">
+              <h3>ENSA Khouribga University Website <span class="badge">Live</span></h3>
+              <p>Responsive website showcasing academic programs and faculty excellence.</p>
+              <div class="tech-stack">Next.js | React | Tailwind CSS | CMS</div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-inner">
+            <img src="project3.png" alt="Distributed Real-Time Voting System">
+            <div class="card-content">
+              <h3>Distributed Real-Time Voting System <span class="badge">Conceptual Project</span></h3>
+              <p>Fault-tolerant backend processing thousands of votes/sec using Kafka for real-time streaming.</p>
+              <div class="tech-stack">Java | Kafka | React | Docker</div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Project 2 -->
-      <div class="project-card">
-        <div class="card-inner">
-          <img src="project2.png" alt="ENSA Khouribga University Website">
-          <div class="card-content">
-            <h3>ENSA Khouribga University Website <span class="status">Live</span></h3>
-            <p>Modern, responsive website showcasing academic programs and faculty excellence.</p>
-            <div class="tech-tags">Next.js, React, Tailwind CSS, CMS</div>
-            <div class="links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
-            </div>
-          </div>
+      <div class="view-all">
+        <a href="#">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Expertise -->
+  <section id="research" class="reveal">
+    <div class="container">
+      <h2>My Research Expertise</h2>
+      <div class="research-grid">
+        <div class="research-card">
+          <h3>AI & Generative Models</h3>
+          <ul>
+            <li>LLM Fine-Tuning & Evaluation</li>
+            <li>Privacy-Preserving Machine Learning</li>
+            <li>Natural Language Processing (NLP)</li>
+            <li>Generative AI Research & Applications</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>Web Privacy & Data Protection</h3>
+          <ul>
+            <li>Ad & Tracker Detection</li>
+            <li>Network-Level & DOM Analysis</li>
+            <li>Privacy-Focused Data Pipelines</li>
+            <li>Data Protection & Compliance</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>Data Engineering & Research Infrastructure</h3>
+          <ul>
+            <li>ETL & Data Pipeline Design</li>
+            <li>Batch & Real-Time Workflows</li>
+            <li>Data Cleaning & Quality Assurance</li>
+            <li>Research-Ready Data Warehouses</li>
+          </ul>
         </div>
       </div>
-      <!-- Project 3 -->
-      <div class="project-card">
-        <div class="card-inner">
-          <img src="project3.png" alt="Distributed Real-Time Voting System">
-          <div class="card-content">
-            <h3>Distributed Real-Time Voting System <span class="status">Conceptual Project</span></h3>
-            <p>Fault-tolerant, distributed backend capable of processing thousands of votes/sec with Kafka.</p>
-            <div class="tech-tags">Java, Kafka, React, Docker</div>
-            <div class="links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
-            </div>
-          </div>
+    </div>
+  </section>
+
+  <!-- Client Success Stories -->
+  <section id="clients" class="reveal">
+    <div class="container">
+      <h2>Client Success Stories</h2>
+      <div class="client-grid">
+        <div class="client-card">
+          <p class="client-name">Dillon M.</p>
+          <p class="client-location">🇺🇸 Twain Harte, United States</p>
+          <p>"This is exactly what I was looking for and delivered on time and on budget."</p>
+          <p class="project-name">Firebase & Vercel Dashboard</p>
+        </div>
+        <div class="client-card">
+          <p class="client-name">Mathew C.</p>
+          <p class="client-location">🇦🇺 Hobart, Australia</p>
+          <p>"NIDNASSER is very talented and a great communicator. I would recommend him to anyone who wants to get the job done!"</p>
+          <p class="project-name">Firebase User Data Form</p>
+        </div>
+        <div class="client-card">
+          <p class="client-name">Louie B.</p>
+          <p class="client-location">🇬🇧 South Benfleet, United Kingdom</p>
+          <p>"Unbelievable knowledge and work rate. NIDNASSER has excelled in everything I have asked him to do!"</p>
+          <p class="project-name">PDF Data Extraction & Integrations</p>
         </div>
       </div>
-    </div>
-    <a href="#projects" class="btn view-all">View All Projects</a>
-  </div>
-</section>
-
-<!-- Research Expertise -->
-<section id="research" class="reveal">
-  <div class="container">
-    <h2>My Research Expertise</h2>
-    <div class="expertise-grid">
-      <div class="expertise-card">
-        <h3>AI & Generative Models</h3>
-        <ul>
-          <li>LLM Fine-Tuning & Evaluation</li>
-          <li>Privacy-Preserving Machine Learning</li>
-          <li>Natural Language Processing (NLP)</li>
-          <li>Generative AI Research & Applications</li>
-        </ul>
-      </div>
-      <div class="expertise-card">
-        <h3>Web Privacy & Data Protection</h3>
-        <ul>
-          <li>Ad & Tracker Detection</li>
-          <li>Network-Level & DOM Analysis</li>
-          <li>Privacy-Focused Data Pipelines</li>
-          <li>Data Protection & Compliance</li>
-        </ul>
-      </div>
-      <div class="expertise-card">
-        <h3>Data Engineering & Research Infrastructure</h3>
-        <ul>
-          <li>ETL & Data Pipeline Design</li>
-          <li>Batch & Real-Time Workflows</li>
-          <li>Data Cleaning & QA</li>
-          <li>Research-Ready Data Warehouses</li>
-        </ul>
+      <div class="stats">
+        <div class="stat"><h3>5.0</h3><p>Average Rating</p></div>
+        <div class="stat"><h3>46+</h3><p>Client Reviews</p></div>
+        <div class="stat"><h3>45+</h3><p>Projects Done</p></div>
+        <div class="stat"><h3>100%</h3><p>On-Time Delivery</p></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Client Success Stories -->
-<section id="clients" class="reveal">
-  <div class="container">
-    <h2>Client Success Stories</h2>
-    <div class="clients-grid">
-      <div class="client-card">
-        <h3>Dillon M.</h3>
-        <p>"This is exactly what I was looking for and delivered on time and on budget."</p>
-        <span>🇺🇸 Twain Harte, United States</span>
+  <!-- Ready to Build -->
+  <section id="build" class="reveal">
+    <div class="container">
+      <h2>Ready to Build Something Amazing?</h2>
+      <p>Let's collaborate to bring your vision to life. From concept to deployment, I deliver high-quality software solutions.</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer / Quick Links -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-left">
+        <h3>AN<br>KHALED MD MEHZABIN ALAM PROTTOY</h3>
+        <p>Full Stack Developer building reliable, AI-powered products worldwide.</p>
       </div>
-      <div class="client-card">
-        <h3>Mathew C.</h3>
-        <p>"NIDNASSER is very talented and a great communicator. I would recommend him to anyone who wants to get the job done!"</p>
-        <span>🇦🇺 Hobart, Australia</span>
-      </div>
-      <div class="client-card">
-        <h3>Louie B.</h3>
-        <p>"Unbelievable knowledge and work rate. NIDNASSER has excelled in everything I have asked him to do!"</p>
-        <span>🇬🇧 South Benfleet, United Kingdom</span>
+      <div class="footer-right">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- Contact & CTA -->
-<section id="contact" class="reveal">
-  <div class="container">
-    <h2>Ready to Build Something Amazing?</h2>
-    <p>Let's collaborate to bring your vision to life. From concept to deployment, I deliver high-quality software solutions that exceed expectations and drive real business results.</p>
-    <a href="#contact" class="btn">Get in Touch</a>
-  </div>
-</section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
-<script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
