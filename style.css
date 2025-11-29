@@ -1,6 +1,4 @@
-/* ============================
-   Reset & Base Styles
-============================ */
+/* ---------------- Reset ---------------- */
 * {
   margin: 0;
   padding: 0;
@@ -8,16 +6,11 @@
 }
 
 body {
-  font-family: 'Roboto Mono', monospace;
-  background: #0d0d0d;
-  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f0f0f;
+  color: #ffffff;
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
-}
-
-body.light {
-  background: #fff;
-  color: #0d0d0d;
 }
 
 a {
@@ -25,74 +18,69 @@ a {
   color: inherit;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 2rem;
+ul {
+  list-style: none;
 }
 
-/* ============================
-   Navbar
-============================ */
-header {
+/* ---------------- Navbar ---------------- */
+#navbar {
   position: fixed;
-  width: 100%;
-  z-index: 1000;
   top: 0;
-  left: 0;
-  backdrop-filter: blur(10px);
-}
-
-.navbar {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 1rem 2rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(15, 15, 15, 0.7);
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
+.nav-links li {
+  display: inline-block;
+  margin-left: 2rem;
 }
 
 .nav-links li a {
-  font-weight: 700;
-  color: #fff;
+  font-weight: 500;
   transition: 0.3s;
-}
-
-body.light .nav-links li a {
-  color: #0d0d0d;
 }
 
 .nav-links li a:hover {
   color: #1db954;
 }
 
-#theme-toggle {
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  border: 2px solid #1db954;
+  color: #1db954;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1db954;
+  color: #0f0f0f;
+}
+
+.theme-toggle {
   margin-left: 2rem;
   cursor: pointer;
   font-size: 1.2rem;
-  background: none;
-  border: none;
-  color: inherit;
 }
 
-/* ============================
-   Hero Section
-============================ */
-#hero {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ---------------- Hero Section ---------------- */
+#home {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
-  padding: 0 5%;
 }
 
-#hero canvas {
+#particle-canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -101,123 +89,141 @@ body.light .nav-links li a {
   z-index: 0;
 }
 
-.hero-overlay {
+.hero-container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1;
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-name {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+.hero-intro {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.hero-buttons a {
+  margin-right: 1rem;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.gif-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.gif-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, rgba(0,0,0,0.2), rgba(29,185,84,0.2));
-  z-index: 1;
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.3), rgba(255, 255, 255, 0.1));
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
 
-.hero-left {
-  z-index: 2;
-  max-width: 600px;
-}
-
-.name {
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
-}
-
-.hero-text {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin-bottom: 1rem;
-}
-
-.hero-text span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateZ(50px) rotateX(10deg);
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #aaa;
-}
-
-.hero-right img {
-  max-width: 600px;
-  width: 100%;
-  border-radius: 20px;
-}
-
-/* ============================
-   Buttons
-============================ */
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  border: 2px solid #1db954;
-  border-radius: 30px;
-  color: #1db954;
-  font-weight: 700;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #1db954;
-  color: #0d0d0d;
-}
-
-/* ============================
-   Sections
-============================ */
+/* ---------------- Sections ---------------- */
 section {
-  padding: 6rem 0;
-  position: relative;
+  padding: 5rem 2rem;
 }
 
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Reveal Animation */
 .reveal {
   opacity: 0;
   transform: translateY(50px);
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-  font-weight: 900;
-}
-
-/* ============================
-   Skills / Technologies
-============================ */
-.skills-grid {
+/* ---------------- Core Technologies ---------------- */
+.tech-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  margin-top: 2rem;
 }
 
-.skill {
+.tech-card {
   background: #1a1a1a;
-  color: #fff;
   padding: 1rem 2rem;
-  border-radius: 10px;
-  font-weight: 700;
+  border-radius: 12px;
+  font-weight: 600;
   transition: 0.3s;
 }
 
-.skill:hover {
+.tech-card:hover {
   background: #1db954;
-  color: #0d0d0d;
+  color: #0f0f0f;
 }
 
-/* ============================
-   Project Cards
-============================ */
+/* ---------------- Hire Me ---------------- */
+.hire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.hire-card {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+
+.hire-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ---------------- Projects ---------------- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .project-card {
@@ -226,11 +232,10 @@ h2 {
 
 .card-inner {
   background: #1a1a1a;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
   transform-style: preserve-3d;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
-  position: relative;
 }
 
 .card-inner img {
@@ -242,116 +247,142 @@ h2 {
   padding: 1rem;
 }
 
-.card-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+.card-content .badge {
+  background: #1db954;
+  color: #0f0f0f;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  margin-left: 0.5rem;
 }
 
-.card-content .status {
-  font-size: 0.8rem;
-  color: #1db954;
+.card-content .tech-stack {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #aaaaaa;
 }
 
-.card-content p {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  color: #aaa;
-}
-
-.card-content .tech-tags {
-  font-size: 0.8rem;
-  color: #1db954;
-  margin-bottom: 0.5rem;
-}
-
-.card-content .links a {
+.project-links a {
   margin-right: 1rem;
+  font-weight: 500;
   color: #1db954;
-  font-weight: 700;
 }
 
-.card-content .links a:hover {
+.project-links a:hover {
   text-decoration: underline;
 }
 
-/* ============================
-   Expertise Cards
-============================ */
-.expertise-grid {
-  display: flex;
-  flex-wrap: wrap;
+/* ---------------- Research ---------------- */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  justify-content: center;
+  margin-top: 2rem;
 }
 
-.expertise-card {
+.research-card {
   background: #1a1a1a;
   padding: 1.5rem;
-  border-radius: 15px;
-  width: 300px;
+  border-radius: 12px;
 }
 
-.expertise-card h3 {
+.research-card h3 {
   margin-bottom: 1rem;
-  font-weight: 700;
 }
 
-.expertise-card ul {
+.research-card ul {
   list-style: disc;
-  padding-left: 1rem;
-  color: #aaa;
+  padding-left: 1.2rem;
+  color: #aaaaaa;
 }
 
-/* ============================
-   Client Cards
-============================ */
-.clients-grid {
-  display: flex;
-  flex-wrap: wrap;
+/* ---------------- Clients ---------------- */
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  justify-content: center;
+  margin-top: 2rem;
 }
 
 .client-card {
   background: #1a1a1a;
   padding: 1.5rem;
-  border-radius: 15px;
-  width: 300px;
-  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
 
-.client-card h3 {
-  margin-bottom: 0.5rem;
+.client-card .client-name {
+  font-weight: 600;
+}
+
+.client-card .client-location {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.stat h3 {
+  font-size: 2rem;
   font-weight: 700;
-}
-
-.client-card span {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.9rem;
   color: #1db954;
 }
 
-/* ============================
-   Responsive
-============================ */
-@media(max-width: 1024px){
-  #hero {
-    flex-direction: column-reverse;
-    justify-content: center;
-    text-align: center;
-    gap: 2rem;
-  }
-  .hero-right img {
-    max-width: 90%;
-  }
+.stat p {
+  font-size: 0.9rem;
+  color: #aaaaaa;
 }
 
-@media(max-width:768px){
-  .hero-text {
+/* ---------------- Footer ---------------- */
+footer {
+  background: #0f0f0f;
+  padding: 3rem 2rem;
+  color: #aaa;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-left h3 {
+  font-weight: 700;
+}
+
+.footer-right ul {
+  list-style: none;
+}
+
+.footer-right ul li a {
+  color: #aaa;
+  transition: 0.3s;
+}
+
+.footer-right ul li a:hover {
+  color: #1db954;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .hero-right {
+    margin-bottom: 2rem;
+  }
+  .hero-name {
+    font-size: 2.2rem;
+  }
+  .hero-intro {
     font-size: 1.2rem;
   }
-  .name {
-    font-size: 2rem;
+  .nav-links li {
+    margin-left: 1rem;
   }
 }
