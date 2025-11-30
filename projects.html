@@ -24,25 +24,31 @@
     <div class="menu-toggle" id="menu-toggle">☰</div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="projects-hero">
-    <div class="hero-container">
-      <div class="hero-left">
-        <h1 class="hero-name">My Projects</h1>
-        <p class="hero-subtitle">A showcase of AI, web, and software engineering projects.</p>
-        <div class="hero-buttons">
-          <a href="Khaled_Prottoy_CV.pdf" class="btn">Download Resume</a>
-          <a href="#contact" class="btn">Get in Touch</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="gif-wrapper">
-          <img src="project-hero.gif" alt="Projects GIF">
-          <div class="gradient-overlay"></div>
-        </div>
+ <!-- Hero Section -->
+<section id="projects-hero">
+  <div class="hero-container" style="max-width: 1100px; margin: 120px auto 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 0 2rem;">
+    
+    <!-- Left Side -->
+    <div class="hero-left" style="flex: 1; min-width: 300px; margin-bottom: 1.5rem;">
+      <h1 style="font-size: 2.8rem; color: var(--accent); margin-bottom: 0.5rem;">My Projects</h1>
+      <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem;">A showcase of AI, web, and software engineering projects.</p>
+      <div class="hero-buttons">
+        <a href="Khaled_Prottoy_CV.pdf" class="btn">Download Resume</a>
+        <a href="#contact" class="btn">Get in Touch</a>
       </div>
     </div>
-  </section>
+
+    <!-- Right Side -->
+    <div class="hero-right" style="flex: 1; display: flex; justify-content: center; min-width: 300px; margin-bottom: 1.5rem;">
+      <div class="gif-wrapper" style="position: relative; width: 100%; max-width: 400px; height: 300px; overflow: hidden; border-radius: 20px;">
+        <img src="project-hero.gif" alt="Projects GIF" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="gradient-overlay" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- Projects Grid -->
   <section class="container">
