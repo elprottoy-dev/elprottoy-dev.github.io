@@ -1,92 +1,188 @@
-/* Main site styles (desktop-first responsive) */
-/* Reset & base */
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0f0f0f;
-  --surface:#1a1a1a;
-  --accent:#1db954;
-  --text:#fff;
-  --muted:#aaaaaa;
-  --radius:12px;
-  --container:1100px;
-}
-html,body{height:100%}
-body{
-  font-family:'Poppins',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  transition:background .25s,color .25s;
-}
-a{color:inherit;text-decoration:none}
-.container{max-width:var(--container);margin:0 auto;padding:0 1.25rem}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Contact</title>
+  <meta name="description" content="Get in touch — contact form, social links, map, and message submission." />
 
-/* Skip link */
-.skip-link{
-  position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
-}
-.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:var(--accent);color:#000;padding:.5rem 1rem;border-radius:6px;z-index:9999}
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact — Your Name" />
+  <meta property="og:description" content="Reach out via the modern contact form or connect on social media." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-/* NAV */
-#navbar{
-  position:fixed;inset:0 0 auto 0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;background:rgba(10,10,10,0.65);backdrop-filter:blur(6px);z-index:1200;
-}
-.logo{font-weight:700;color:var(--accent);font-size:1.2rem}
-.nav-links{display:flex;align-items:center;gap:1rem;list-style:none}
-.nav-links li a{font-weight:500;padding:.35rem .5rem;border-radius:6px}
-.nav-links li a:hover{color:var(--accent)}
-.menu-toggle{display:none;border:0;background:none;color:var(--accent);font-size:1.4rem;cursor:pointer}
-.theme-toggle{border:0;background:none;color:var(--accent);font-size:1.25rem;cursor:pointer}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-/* HERO */
-.hero-section{height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px}
-#particle-canvas{position:fixed;inset:0;z-index:-2;pointer-events:none}
-.hero-container{display:flex;align-items:center;gap:2rem;padding:2rem}
-.hero-left{flex:1}
-.hero-right{flex:1;display:flex;justify-content:flex-end}
-.hero-name{font-size:2.6rem;font-weight:800;line-height:1.05}
-.gradient-text{
-  background:linear-gradient(90deg,var(--accent),#7fdbb7,#7fffd4);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.hero-subtitle{color:var(--muted);margin:.6rem 0}
-.hero-intro{font-size:1.1rem;color:var(--muted);margin-bottom:1rem}
-.btn{display:inline-block;padding:.5rem 1rem;border-radius:28px;border:2px solid var(--accent);color:var(--accent);font-weight:600}
-.btn:hover{background:var(--accent);color:#07140b}
+  <!-- Particle background -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-/* GRID CARDS */
-.tech-grid, .project-grid, .research-grid, .client-grid{display:flex;flex-wrap:wrap;gap:1rem;align-items:stretch}
-.tech-card, .hire-card, .project-card, .research-card, .client-card{background:var(--surface);padding:1rem;border-radius:var(--radius);color:var(--text);transition:transform .25s,box-shadow .25s}
-.tech-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.6)}
-.project-card{display:flex;flex-direction:column;cursor:pointer;min-width:260px}
-.project-card img{width:100%;height:160px;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
-.card-content{padding:1rem;display:flex;flex-direction:column;gap:.6rem}
-.badge{background:var(--accent);color:#07140b;padding:.15rem .45rem;border-radius:8px;font-size:.76rem}
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">YourName</a>
+      <nav id="navbar" aria-label="Main Navigation">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <ul class="nav-links" id="primary-menu" role="menubar">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./experience.html">Experience</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-/* EXPERIENCE */
-.experience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+  <!-- Main -->
+  <main id="main" class="container contact-page">
 
-/* FOOTER */
-footer{background:var(--bg);padding:2.25rem 1.25rem;color:var(--muted);margin-top:3rem}
-.footer-container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+    <!-- Contact Header -->
+    <section class="contact-header card fade-in">
+      <h1>Contact Me</h1>
+      <p class="muted">Have a question, proposal, or want to discuss a project? Let’s talk.</p>
+    </section>
 
-/* UI PANEL */
-#ui-toggle{position:fixed;right:18px;bottom:18px;z-index:1600;width:48px;height:48px;border-radius:50%;background:var(--accent);color:#07140b;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
-#ui-panel{position:fixed;right:18px;bottom:78px;z-index:1600;background:rgba(8,8,8,0.7);backdrop-filter:blur(8px);border-radius:12px;padding:.6rem;min-width:240px;color:var(--text);display:none}
-#ui-panel h4{font-size:.9rem;margin:.25rem .5rem}
-#ui-panel .panel-row{display:flex;align-items:center;justify-content:space-between;padding:.35rem .5rem}
+    <section class="contact-grid">
 
-/* RESPONSIVE */
-@media(max-width:1024px){.hero-container{flex-direction:column;text-align:center}.hero-right{justify-content:center}}
-@media(max-width:768px){
-  .nav-links{position:fixed;top:68px;right:-100%;flex-direction:column;padding:1.5rem;background:rgba(10,10,10,0.95);height:calc(100% - 68px);width:240px;transition:right .25s}
-  .nav-links.active{right:0}
-  .menu-toggle{display:block}
-  .hero-name{font-size:2rem}
-  #ui-panel{left:6px;right:6px;bottom:72px}
-}
+      <!-- Contact Form -->
+      <div class="contact-form card fade-up">
+        <h3>Send a Message</h3>
 
-/* LIGHT THEME (when body.light-theme applied) */
-body.light-theme{--bg:#f5f5f5;--surface:#f0f0f0;--text:#111;--muted:#555}
-body.reduce-motion *{transition:none!important;animation:none!important}
+        <form id="contactForm" novalidate>
+
+          <div class="form-group">
+            <input type="text" id="name" required />
+            <label for="name">Your Name</label>
+          </div>
+
+          <div class="form-group">
+            <input type="email" id="email" required />
+            <label for="email">Email Address</label>
+          </div>
+
+          <div class="form-group">
+            <textarea id="message" required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Send Message</button>
+
+        </form>
+      </div>
+
+      <!-- Contact Sidebar -->
+      <div class="contact-info card slide-left">
+
+        <h3>Connect</h3>
+
+        <p class="muted">Reach me through email, socials, or the form.</p>
+
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Email">📧</a>
+          <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">💼</a>
+          <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+        </div>
+
+        <!-- Map / placeholder -->
+        <div class="map-wrapper">
+          <iframe
+            title="Location map"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=90.356%2C23.780%2C90.402%2C23.747&layer=mapnik"
+            loading="lazy"
+            style="border:0; width:100%; height:230px; border-radius:var(--radius);"
+          ></iframe>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Your Name</div>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
+  <!-- Core scripts -->
+  <script type="module" src="./particles.js" defer></script>
+  <script type="module" src="./theme.js" defer></script>
+  <script type="module" src="./hero.js" defer></script>
+
+  <!-- Page-specific JS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // Floating label effect
+      document.querySelectorAll(".form-group input, .form-group textarea")
+        .forEach(el => {
+          el.addEventListener("focus", () => el.parentElement.classList.add("focused"));
+          el.addEventListener("blur", () => {
+            if (!el.value.trim()) el.parentElement.classList.remove("focused");
+          });
+        });
+
+      // GSAP Animations
+      gsap.utils.toArray(".fade-in").forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 20,
+          duration: 0.7,
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
+      });
+
+      gsap.utils.toArray(".fade-up").forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
+      });
+
+      gsap.utils.toArray(".slide-left").forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          x: 30,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 80%" }
+        });
+      });
+
+      // Basic client-side validation (optional)
+      document.getElementById("contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
+
+        if (!name.value || !email.value || !message.value) {
+          alert("Please fill out all fields.");
+          return;
+        }
+
+        alert("Message sent! (Demo — connect to backend to activate)");
+        e.target.reset();
+        document.querySelectorAll(".form-group").forEach(g => g.classList.remove("focused"));
+      });
+
+    });
+  </script>
+</body>
+</html>
