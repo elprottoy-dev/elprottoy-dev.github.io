@@ -8,6 +8,145 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------------- Hero Section Fix ---------------- */
+    #about-hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      gap: 2rem;
+    }
+
+    .hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 2rem;
+    }
+
+    .hero-left h1, .hero-left p, .hero-left h2 {
+      text-align: left;
+    }
+
+    .hero-buttons a {
+      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-right img.profile-img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      display: block;
+    }
+
+    /* ---------------- Sections Alignment ---------------- */
+    section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    section p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---------------- Cards Layout ---------------- */
+    .tech-grid, .drive-grid, .achievements-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card, .drive-card, .achievement-card {
+      background: #1a1a1a;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      color: #fff;
+      min-width: 220px;
+      max-width: 300px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .tech-card:hover, .drive-card:hover, .achievement-card:hover {
+      transform: translateY(-5px);
+      background: #1db954;
+      color: #0f0f0f;
+    }
+
+    /* ---------------- Footer ---------------- */
+    footer {
+      background: #0f0f0f;
+      padding: 3rem 2rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* ---------------- Responsive ---------------- */
+    @media (max-width: 1024px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-left {
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+      .hero-right img.profile-img {
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-name {
+        font-size: 2.2rem;
+      }
+      .hero-intro {
+        font-size: 1.2rem;
+      }
+      .hero-buttons a {
+        display: inline-block;
+        margin-bottom: 0.8rem;
+      }
+      .hero-right img.profile-img {
+        max-width: 250px;
+      }
+      .tech-grid, .drive-grid, .achievements-grid {
+        gap: 1rem;
+      }
+      .tech-card, .drive-card, .achievement-card {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -24,9 +163,8 @@
     <div class="theme-toggle" id="theme-toggle">🌙</div>
   </nav>
 
-  <!-- Hero Section / About Intro -->
-
-<section id="about-hero">
+  <!-- Hero Section -->
+  <section id="about-hero">
     <canvas id="particle-canvas"></canvas>
     <div class="hero-container">
       <div class="hero-left">
@@ -51,15 +189,9 @@
   <section id="journey">
     <div class="container">
       <h2>My Journey</h2>
-      <p>
-        I’m an innovative and results-driven IT professional and environmental research associate with over 3 years of cross-sectoral experience spanning software development, network engineering, geospatial analytics, public health research, and digital platform deployment.
-      </p>
-      <p>
-        I specialize in bridging technology with social and environmental impact, delivering full-stack digital solutions, AI-powered platforms, and research-driven applications. My work includes developing mobile apps, cloud-deployed systems, data pipelines, and climate resilience tools, as well as designing user-centric digital platforms for communities and organizations.
-      </p>
-      <p>
-        As a published researcher and multi-award-winning technologist, I bring a unique combination of creativity, leadership, and technical expertise.
-      </p>
+      <p>I’m an innovative and results-driven IT professional and environmental research associate with over 3 years of cross-sectoral experience spanning software development, network engineering, geospatial analytics, public health research, and digital platform deployment.</p>
+      <p>I specialize in bridging technology with social and environmental impact, delivering full-stack digital solutions, AI-powered platforms, and research-driven applications. My work includes developing mobile apps, cloud-deployed systems, data pipelines, and climate resilience tools, as well as designing user-centric digital platforms for communities and organizations.</p>
+      <p>As a published researcher and multi-award-winning technologist, I bring a unique combination of creativity, leadership, and technical expertise.</p>
     </div>
   </section>
 
