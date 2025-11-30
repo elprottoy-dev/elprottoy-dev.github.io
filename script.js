@@ -1,155 +1,159 @@
-// Unified script.js
-// Handles: mobile menu, theme (persisted), particle background, GSAP hero reveal, scroll reveal, vanilla-tilt init
+// --------------------
+// Particle Background
+// --------------------
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// ---------- Utils ----------
-const $ = (sel, ctx=document) => ctx.querySelector(sel);
-const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+let particlesArray = [];
+const maxParticles = 120;
 
-// ---------- Menu toggle ----------
-const menuToggle = $('#menu-toggle');
-const navLinks = $('#nav-links');
-function ensureMenuToggleVisible(){
-  if (!menuToggle) return;
-  if (window.matchMedia('(max-width:768px)').matches) menuToggle.style.display = 'block';
-  else menuToggle.style.display = 'none';
-}
-ensureMenuToggleVisible();
-window.addEventListener('resize', ensureMenuToggleVisible);
-
-if (menuToggle && navLinks){
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-  menuToggle.addEventListener('keydown', (e) => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); navLinks.classList.toggle('active'); }});
-  // close on link click
-  $$('#nav-links a').forEach(a => a.addEventListener('click', () => {
-    if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
-  }));
-  // close on outside click when mobile
-  document.addEventListener('click', (e) => {
-    if (window.innerWidth > 768) return;
-    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) navLinks.classList.remove('active');
-  });
-}
-
-// ---------- Theme toggle (persisted across pages) ----------
-const themeToggle = $('#theme-toggle');
-const THEME_KEY = 'site-theme';
-function applySavedTheme(){
-  const t = localStorage.getItem(THEME_KEY);
-  if (t === 'light') {
-    document.documentElement.classList.add('light-theme');
-    document.body.classList.add('light-theme');
-    if (themeToggle) { themeToggle.textContent = '☀️'; themeToggle.setAttribute('aria-pressed','true'); }
-  } else {
-    document.documentElement.classList.remove('light-theme');
-    document.body.classList.remove('light-theme');
-    if (themeToggle) { themeToggle.textContent = '🌙'; themeToggle.setAttribute('aria-pressed','false'); }
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 1 - 0.5;
+    this.speedY = Math.random() * 1 - 0.5;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+  draw() {
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
   }
 }
-applySavedTheme();
 
-if (themeToggle){
-  themeToggle.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('light-theme');
-    if (isLight){
-      document.documentElement.classList.add('light-theme');
-      localStorage.setItem(THEME_KEY, 'light');
-      themeToggle.textContent = '☀️';
-      themeToggle.setAttribute('aria-pressed','true');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-      localStorage.setItem(THEME_KEY, 'dark');
-      themeToggle.textContent = '🌙';
-      themeToggle.setAttribute('aria-pressed','false');
-    }
-  });
+function initParticles() {
+  particlesArray = [];
+  for (let i = 0; i < maxParticles; i++) {
+    particlesArray.push(new Particle());
+  }
 }
 
-// ---------- Particle canvas ----------
-(function particleCanvas(){
-  const canvas = document.getElementById('particle-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w = canvas.width = innerWidth;
-  let h = canvas.height = innerHeight;
-  window.addEventListener('resize', () => { w = canvas.width = innerWidth; h = canvas.height = innerHeight; initParticles(); });
-
-  let particles = [];
-  function rand(min,max){ return Math.random()*(max-min)+min; }
-  function initParticles(){
-    particles = [];
-    const area = w*h;
-    const count = Math.max(20, Math.floor(area / 120000)); // adjust density
-    for (let i=0;i<count;i++){
-      particles.push({
-        x: rand(0,w),
-        y: rand(0,h),
-        r: rand(0.6, 2.2),
-        vx: rand(-0.25,0.25),
-        vy: rand(-0.15,0.15),
-        a: rand(0.05,0.22)
-      });
+function connectParticles() {
+  for (let a = 0; a < particlesArray.length; a++) {
+    for (let b = a; b < particlesArray.length; b++) {
+      let dx = particlesArray[a].x - particlesArray[b].x;
+      let dy = particlesArray[a].y - particlesArray[b].y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 120) {
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
     }
   }
+}
+
+let gradientOffset = 0;
+function animateParticles() {
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  gradient.addColorStop(0, `hsl(${gradientOffset % 360}, 70%, 10%)`);
+  gradient.addColorStop(0.5, `hsl(${(gradientOffset + 60) % 360}, 70%, 15%)`);
+  gradient.addColorStop(1, `hsl(${(gradientOffset + 120) % 360}, 70%, 10%)`);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  gradientOffset += 0.2;
+
+  particlesArray.forEach((p) => {
+    p.update();
+    p.draw();
+  });
+  connectParticles();
+  requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   initParticles();
+});
 
-  function frame(){
-    ctx.clearRect(0,0,w,h);
-    for (const p of particles){
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < -10) p.x = w+10;
-      if (p.x > w+10) p.x = -10;
-      if (p.y < -10) p.y = h+10;
-      if (p.y > h+10) p.y = -10;
-      ctx.beginPath();
-      ctx.fillStyle = '#9be6bc';
-      ctx.globalAlpha = p.a;
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(frame);
-  }
-  frame();
-})();
+initParticles();
+animateParticles();
 
-// ---------- GSAP hero animation + scroll reveals ----------
-(function gsapInit(){
-  if (typeof gsap === 'undefined') return;
-  // hero name letter animation
-  const heroEl = document.getElementById('heroName');
-  if (heroEl){
-    const txt = heroEl.textContent.trim();
-    heroEl.textContent = '';
-    for (const ch of txt){
-      const s = document.createElement('span');
-      s.className = 'char';
-      s.textContent = ch;
-      heroEl.appendChild(s);
-    }
-    const chars = heroEl.querySelectorAll('.char');
-    gsap.to(chars, {opacity:1, y:0, stagger:0.03, duration:0.6, ease:'power3.out', delay:0.2, onStart(){ chars.forEach(sp=> { if (sp.textContent === ' ') sp.style.opacity = '1'; }); }});
-  }
+// --------------------
+// GSAP Hero 3D Floating Letters
+// --------------------
+gsap.utils.toArray('.hero-name span').forEach((letter, i) => {
+  gsap.to(letter, {
+    y: () => Math.random() * 20 - 10,
+    x: () => Math.random() * 20 - 10,
+    rotationY: () => Math.random() * 20 - 10,
+    rotationX: () => Math.random() * 20 - 10,
+    duration: 3,
+    ease: 'power1.inOut',
+    repeat: -1,
+    yoyo: true,
+    delay: i * 0.05
+  });
+});
 
-  // idle floating for hero-right images
-  const heroImg = document.querySelector('.hero-right img');
-  if (heroImg){
-    gsap.to(heroImg, {y:-6, repeat:-1, yoyo:true, duration:3, ease:'sine.inOut', delay:0.6});
-  }
+// --------------------
+// Scroll Reveal for Sections
+// --------------------
+gsap.registerPlugin(ScrollTrigger);
 
-  // scroll reveal
-  try {
-    gsap.utils.toArray('.reveal').forEach(el=>{
-      gsap.from(el, {y:24, opacity:0, duration:0.7, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 85%'}});
+gsap.utils.toArray('.reveal').forEach((elem) => {
+  gsap.fromTo(elem,
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: elem,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
     });
-  } catch(e){}
-})();
+});
 
-// ---------- Vanilla-tilt init for cards ----------
-(function tiltInit(){
-  try {
-    if (typeof VanillaTilt !== 'undefined') {
-      const cards = document.querySelectorAll('.project-card, .experience-card, .card-inner');
-      VanillaTilt.init(cards, { max: 8, speed: 300, scale: 1.02, glare: false });
-    }
-  } catch(e){}
-})();
+// --------------------
+// Vanilla Tilt for Project Cards
+// --------------------
+VanillaTilt.init(document.querySelectorAll(".card-inner"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2,
+  scale: 1.05
+});
+
+// --------------------
+// Dark / Light Theme Toggle (Fixed)
+// --------------------
+const themeToggle = document.querySelector('.theme-toggle');
+const body = document.body;
+
+// Load theme from localStorage
+if(localStorage.getItem('theme') === 'light') {
+  body.classList.add('light-theme');
+  themeToggle.textContent = '☀️';
+} else {
+  themeToggle.textContent = '🌙';
+}
+
+// Single click listener
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('light-theme');
+
+  if(body.classList.contains('light-theme')){
+    localStorage.setItem('theme', 'light');
+    themeToggle.textContent = '☀️';
+  } else {
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = '🌙';
+  }
+});
