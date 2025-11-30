@@ -1,142 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Projects | Khaled Prottoy</title>
-  <meta name="description" content="Projects by Khaled Prottoy" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="theme-vars.css">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Projects</title>
+  <meta name="description" content="Explore my featured projects — UI design, animations, interactive visualizations, and performance-driven work." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Projects — Your Name" />
+  <meta property="og:description" content="Interactive and animated project gallery with filters and categories." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="nav-left">
-      <a class="logo" href="index.html" aria-label="Home">Prottoy</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Particles -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">YourName</a>
+      <nav id="navbar" role="navigation" aria-label="Main Navigation">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <ul class="nav-links" id="primary-menu" role="menubar">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./experience.html">Experience</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">☰</button>
+  <!-- Main -->
+  <main id="main" class="container projects-page">
 
-    <ul id="primary-menu" class="nav-links" role="menubar">
-      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
-      <li role="none"><a role="menuitem" href="about.html">About</a></li>
-      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
-      <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-      <li role="none"><a role="menuitem btn" href="Khaled_Prottoy_CV.pdf" target="_blank" rel="noopener">Resume</a></li>
-    </ul>
+    <!-- Page Header -->
+    <section class="projects-header card fade-in">
+      <h1>Projects</h1>
+      <p class="muted">Filter by category or search with keywords. All projects include animations and modern UI patterns.</p>
 
-    <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">🌙</button>
-  </nav>
+      <div class="project-controls">
+        <!-- Categories -->
+        <div class="filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="ui">UI</button>
+          <button class="chip" data-filter="viz">Visualization</button>
+          <button class="chip" data-filter="animation">Animation</button>
+        </div>
 
-  <button id="ui-toggle" aria-label="Open appearance settings">⚙️</button>
-  <aside id="ui-panel" role="dialog" aria-label="Appearance settings" aria-hidden="true" style="display:none">
-    <h4>Appearance</h4>
-    <div class="panel-row">
-      <label for="theme-select">Theme</label>
-      <select id="theme-select" aria-label="Choose theme">
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-        <option value="green">Green</option>
-        <option value="midnight">Midnight</option>
-      </select>
-    </div>
-
-    <div class="panel-row">
-      <label for="accent-picker">Accent</label>
-      <input id="accent-picker" type="color" value="#1db954" aria-label="Accent color picker">
-      <span id="accent-hex" class="small">#1db954</span>
-    </div>
-
-    <div class="panel-row">
-      <label for="animations-toggle">Animations</label>
-      <input id="animations-toggle" type="checkbox" aria-label="Toggle animations" checked>
-    </div>
-
-    <div class="panel-row">
-      <label for="particles-toggle">Particles</label>
-      <input id="particles-toggle" type="checkbox" aria-label="Toggle particles" checked>
-    </div>
-
-    <div class="panel-row">
-      <label for="particle-density">Density</label>
-      <input id="particle-density" type="range" min="20" max="220" step="10" value="120" aria-label="Particle density">
-      <span id="density-value" class="small">120</span>
-    </div>
-
-    <div class="panel-row" style="justify-content:center;">
-      <button id="reset-prefs" class="btn">Reset</button>
-    </div>
-  </aside>
-
-  <main id="main-content" tabindex="-1">
-    <section class="container reveal">
-      <h2 class="section-title">My Projects</h2>
-
-      <div class="project-grid">
-        <article class="project-card" tabindex="0" data-link="#">
-          <img src="project1.png" alt="Cloud Microservice" loading="lazy">
-          <div class="card-content">
-            <h3>Cloud-Deployed Microservice Architecture <span class="badge">In Development</span></h3>
-            <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines.</p>
-            <div class="tech-stack">React | Django | Docker | AWS</div>
-            <div class="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card" tabindex="0" data-link="#">
-          <img src="project2.png" alt="Realtime Dashboard" loading="lazy">
-          <div class="card-content">
-            <h3>Realtime Analytics Dashboard <span class="badge">Live</span></h3>
-            <p>Full-stack dashboard with live metrics and visualisations.</p>
-            <div class="tech-stack">Next.js | React</div>
-            <div class="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card" tabindex="0" data-link="#">
-          <img src="project3.png" alt="E-Commerce Automation" loading="lazy">
-          <div class="card-content">
-            <h3>E-Commerce Automation System <span class="badge">Conceptual</span></h3>
-            <p>Automated product syncing, inventory management, and notifications using serverless functions.</p>
-            <div class="tech-stack">Java | Kafka | React</div>
-            <div class="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
-            </div>
-          </div>
-        </article>
+        <!-- Search -->
+        <input
+          id="project-search"
+          class="search-input"
+          type="text"
+          placeholder="Search projects…"
+          aria-label="Search projects by name or tag"
+        />
       </div>
     </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid" aria-live="polite">
+      <div class="grid" id="projects-list">
+
+        <!-- Project 1 -->
+        <article class="project card fade-up" data-tags="ui animation">
+          <img src="./assets/project1.webp" alt="Interactive Dashboard" loading="lazy">
+          <div class="project-body">
+            <h4>Interactive Dashboard</h4>
+            <p class="muted">A high-end dashboard with micro-interactions, chart animations and theme switching.</p>
+            <div class="tag-row">
+              <span class="tag">UI</span>
+              <span class="tag">Animation</span>
+            </div>
+            <a class="btn" href="#">View Project</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project card fade-up" data-tags="viz">
+          <img src="./assets/project2.webp" alt="Environmental Visualization" loading="lazy">
+          <div class="project-body">
+            <h4>Environmental Visualization</h4>
+            <p class="muted">Data-driven visualization pipeline with animated maps and charts.</p>
+            <div class="tag-row">
+              <span class="tag">Viz</span>
+            </div>
+            <a class="btn" href="#">View Project</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project card fade-up" data-tags="ui">
+          <img src="./assets/project3.webp" alt="Modern Portfolio UI" loading="lazy">
+          <div class="project-body">
+            <h4>Modern Portfolio UI</h4>
+            <p class="muted">Premium UI layout with glassmorphism cards, smooth transitions and parallax.</p>
+            <div class="tag-row">
+              <span class="tag">UI</span>
+            </div>
+            <a class="btn" href="#">View Project</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project card fade-up" data-tags="animation">
+          <img src="./assets/project4.webp" alt="GSAP Motion Experience" loading="lazy">
+          <div class="project-body">
+            <h4>GSAP Motion Experience</h4>
+            <p class="muted">3D-like micro-interactions, motion staging and scroll-driven scenes.</p>
+            <div class="tag-row">
+              <span class="tag">Animation</span>
+            </div>
+            <a class="btn" href="#">View Project</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="container footer-container">
-      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
-    </div>
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Your Name</div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js" defer></script>
+  <!-- Libraries -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 
-  <script src="script.js" defer></script>
-  <script src="enhanced-ui.js" defer></script>
+  <!-- App Scripts -->
+  <script type="module" src="./particles.js" defer></script>
+  <script type="module" src="./theme.js" defer></script>
+  <script type="module" src="./hero.js" defer></script>
 
+  <!-- Page logic -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const chips = document.querySelectorAll(".chip");
+      const cards = document.querySelectorAll(".project");
+      const search = document.getElementById("project-search");
+
+      let activeFilter = "all";
+
+      // Filtering by tag
+      chips.forEach(chip =>
+        chip.addEventListener("click", () => {
+          chips.forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+
+          activeFilter = chip.dataset.filter;
+          filterProjects();
+        })
+      );
+
+      // Search filter
+      search.addEventListener("input", filterProjects);
+
+      function filterProjects() {
+        const q = search.value.toLowerCase();
+
+        cards.forEach(card => {
+          const tags = card.dataset.tags.split(" ");
+          const title = card.querySelector("h4").textContent.toLowerCase();
+          const matchesSearch = title.includes(q);
+
+          const matchesFilter =
+            activeFilter === "all" || tags.includes(activeFilter);
+
+          card.style.display = matchesFilter && matchesSearch ? "" : "none";
+        });
+      }
+
+      // GSAP animations
+      gsap.utils.toArray(".fade-up").forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
       });
-    }
+    });
   </script>
+
 </body>
 </html>
