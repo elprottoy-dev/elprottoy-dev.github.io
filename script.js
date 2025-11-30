@@ -1,288 +1,155 @@
-// Unified site script
-// - Makes particle background optional (only runs when canvas exists)
-// - Unified theme toggle (uses "light-theme")
-// - Mobile menu toggle
-// - Safe guards for GSAP / VanillaTilt usage
-// - Makes project cards clickable (opens first project link in new tab if available)
+// Unified script.js
+// Handles: mobile menu, theme (persisted), particle background, GSAP hero reveal, scroll reveal, vanilla-tilt init
 
-(function () {
-  // ---------- Helpers ----------
-  const qs = (s, ctx = document) => ctx.querySelector(s);
-  const qsa = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+// ---------- Utils ----------
+const $ = (sel, ctx=document) => ctx.querySelector(sel);
+const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
-  // ---------- Theme Toggle ----------
-  const themeToggle = qs('#theme-toggle') || qs('.theme-toggle');
-  const body = document.body;
+// ---------- Menu toggle ----------
+const menuToggle = $('#menu-toggle');
+const navLinks = $('#nav-links');
+function ensureMenuToggleVisible(){
+  if (!menuToggle) return;
+  if (window.matchMedia('(max-width:768px)').matches) menuToggle.style.display = 'block';
+  else menuToggle.style.display = 'none';
+}
+ensureMenuToggleVisible();
+window.addEventListener('resize', ensureMenuToggleVisible);
 
-  function applySavedTheme() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-      body.classList.add('light-theme');
-      if (themeToggle) themeToggle.textContent = '☀️';
-      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
+if (menuToggle && navLinks){
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+  menuToggle.addEventListener('keydown', (e) => { if (e.key==='Enter' || e.key===' ') { e.preventDefault(); navLinks.classList.toggle('active'); }});
+  // close on link click
+  $$('#nav-links a').forEach(a => a.addEventListener('click', () => {
+    if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
+  }));
+  // close on outside click when mobile
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth > 768) return;
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) navLinks.classList.remove('active');
+  });
+}
+
+// ---------- Theme toggle (persisted across pages) ----------
+const themeToggle = $('#theme-toggle');
+const THEME_KEY = 'site-theme';
+function applySavedTheme(){
+  const t = localStorage.getItem(THEME_KEY);
+  if (t === 'light') {
+    document.documentElement.classList.add('light-theme');
+    document.body.classList.add('light-theme');
+    if (themeToggle) { themeToggle.textContent = '☀️'; themeToggle.setAttribute('aria-pressed','true'); }
+  } else {
+    document.documentElement.classList.remove('light-theme');
+    document.body.classList.remove('light-theme');
+    if (themeToggle) { themeToggle.textContent = '🌙'; themeToggle.setAttribute('aria-pressed','false'); }
+  }
+}
+applySavedTheme();
+
+if (themeToggle){
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-theme');
+    if (isLight){
+      document.documentElement.classList.add('light-theme');
+      localStorage.setItem(THEME_KEY, 'light');
+      themeToggle.textContent = '☀️';
+      themeToggle.setAttribute('aria-pressed','true');
     } else {
-      body.classList.remove('light-theme');
-      if (themeToggle) themeToggle.textContent = '🌙';
-      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'false');
-    }
-  }
-
-  if (themeToggle) {
-    themeToggle.tabIndex = 0;
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      const isLight = body.classList.contains('light-theme');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      themeToggle.textContent = isLight ? '☀️' : '🌙';
-      themeToggle.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-    });
-    // Keyboard accessible toggle (Enter / Space)
-    themeToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        themeToggle.click();
-      }
-    });
-  }
-  applySavedTheme();
-
-  // ---------- Mobile Menu Toggle ----------
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
-
-// Close menu when clicking a link (mobile)
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    if (navLinks.classList.contains("active")) {
-      navLinks.classList.remove("active");
+      document.documentElement.classList.remove('light-theme');
+      localStorage.setItem(THEME_KEY, 'dark');
+      themeToggle.textContent = '🌙';
+      themeToggle.setAttribute('aria-pressed','false');
     }
   });
-});
-// ===== Theme Toggle =====
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
+}
 
-themeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark-theme");
-  const pressed = themeToggle.getAttribute("aria-pressed") === "true";
-  themeToggle.setAttribute("aria-pressed", !pressed);
-});
+// ---------- Particle canvas ----------
+(function particleCanvas(){
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = innerWidth;
+  let h = canvas.height = innerHeight;
+  window.addEventListener('resize', () => { w = canvas.width = innerWidth; h = canvas.height = innerHeight; initParticles(); });
 
-// ===== Optional: Close mobile menu on outside click =====
-document.addEventListener("click", (e) => {
-  if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-    navLinks.classList.remove("active");
-  }
-});
-  // ---------- Particle Background (optional) ----------
-  const canvas = qs('#particle-canvas');
-  if (canvas && canvas.getContext) {
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    let particlesArray = [];
-    const maxParticles = 120;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = '#fff';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particlesArray = [];
-      for (let i = 0; i < maxParticles; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function connectParticles() {
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-          let dx = particlesArray[a].x - particlesArray[b].x;
-          let dy = particlesArray[a].y - particlesArray[b].y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 120) {
-            ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-            ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    let gradientOffset = 0;
-    function animateParticles() {
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, `hsl(${gradientOffset % 360}, 70%, 10%)`);
-      gradient.addColorStop(0.5, `hsl(${(gradientOffset + 60) % 360}, 70%, 15%)`);
-      gradient.addColorStop(1, `hsl(${(gradientOffset + 120) % 360}, 70%, 10%)`);
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      gradientOffset += 0.2;
-
-      particlesArray.forEach((p) => {
-        p.update();
-        p.draw();
-      });
-      connectParticles();
-      requestAnimationFrame(animateParticles);
-    }
-
-    initParticles();
-    animateParticles();
-  }
-
-  // ---------- GSAP / ScrollReveal (safe) ----------
-  if (window.gsap && window.ScrollTrigger) {
-    try {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Floating letters if hero-name wraps spans
-      const letters = qsa('.hero-name span');
-      if (letters.length) {
-        gsap.utils.toArray('.hero-name span').forEach((letter, i) => {
-          gsap.to(letter, {
-            y: () => Math.random() * 20 - 10,
-            x: () => Math.random() * 20 - 10,
-            rotationY: () => Math.random() * 20 - 10,
-            rotationX: () => Math.random() * 20 - 10,
-            duration: 3,
-            ease: 'power1.inOut',
-            repeat: -1,
-            yoyo: true,
-            delay: i * 0.05
-          });
-        });
-      }
-
-      // Scroll reveal for elements with .reveal
-      const reveals = qsa('.reveal');
-      if (reveals.length) {
-        gsap.utils.toArray('.reveal').forEach((elem) => {
-          gsap.fromTo(elem,
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: elem,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-              }
-            });
-        });
-      }
-
-      // Project card entrance animation (if project cards exist)
-      const projectCards = qsa('.project-card');
-      if (projectCards.length) {
-        gsap.utils.toArray('.project-card').forEach(card => {
-          gsap.from(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              toggleActions: "play none none none"
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            ease: "power2.out"
-          });
-        });
-      }
-    } catch (e) {
-      // silently fail on animation errors
-      console.warn('GSAP/ScrollTrigger error', e);
-    }
-  }
-
-  // ---------- VanillaTilt (safe) ----------
-  if (window.VanillaTilt) {
-    const tiltElems = qsa('.card-inner');
-    if (tiltElems.length) {
-      VanillaTilt.init(tiltElems, {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2,
-        scale: 1.03
-      });
-    }
-
-    // Also init project card-specific tilt for outer cards if desired
-    const cardElems = qsa('.project-card');
-    if (cardElems.length) {
-      VanillaTilt.init(cardElems, {
-        max: 8,
-        speed: 400,
-        glare: false,
-        scale: 1.01
+  let particles = [];
+  function rand(min,max){ return Math.random()*(max-min)+min; }
+  function initParticles(){
+    particles = [];
+    const area = w*h;
+    const count = Math.max(20, Math.floor(area / 120000)); // adjust density
+    for (let i=0;i<count;i++){
+      particles.push({
+        x: rand(0,w),
+        y: rand(0,h),
+        r: rand(0.6, 2.2),
+        vx: rand(-0.25,0.25),
+        vy: rand(-0.15,0.15),
+        a: rand(0.05,0.22)
       });
     }
   }
+  initParticles();
 
-  // ---------- Make project cards clickable ----------
-  const projectCardsClickable = qsa('.project-card');
-  if (projectCardsClickable.length) {
-    projectCardsClickable.forEach(card => {
-      // click opens first meaningful link in project-links
-      card.addEventListener('click', (e) => {
-        // Avoid clicks on actual links triggering twice
-        if (e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return;
-        const firstLink = card.querySelector('.project-links a');
-        const dataLink = card.getAttribute('data-link');
-        const href = (firstLink && firstLink.getAttribute('href')) || dataLink;
-        if (href && href !== '#') {
-          // open in new tab
-          window.open(href, '_blank');
-        } else if (href === '#') {
-          // If only placeholder is available, follow it in the same tab (no-op '#' becomes top of page)
-          window.location.hash = '';
-        }
-      });
+  function frame(){
+    ctx.clearRect(0,0,w,h);
+    for (const p of particles){
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = w+10;
+      if (p.x > w+10) p.x = -10;
+      if (p.y < -10) p.y = h+10;
+      if (p.y > h+10) p.y = -10;
+      ctx.beginPath();
+      ctx.fillStyle = '#9be6bc';
+      ctx.globalAlpha = p.a;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
 
-      // keyboard accessibility
-      card.tabIndex = 0;
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          card.click();
-        }
-      });
+// ---------- GSAP hero animation + scroll reveals ----------
+(function gsapInit(){
+  if (typeof gsap === 'undefined') return;
+  // hero name letter animation
+  const heroEl = document.getElementById('heroName');
+  if (heroEl){
+    const txt = heroEl.textContent.trim();
+    heroEl.textContent = '';
+    for (const ch of txt){
+      const s = document.createElement('span');
+      s.className = 'char';
+      s.textContent = ch;
+      heroEl.appendChild(s);
+    }
+    const chars = heroEl.querySelectorAll('.char');
+    gsap.to(chars, {opacity:1, y:0, stagger:0.03, duration:0.6, ease:'power3.out', delay:0.2, onStart(){ chars.forEach(sp=> { if (sp.textContent === ' ') sp.style.opacity = '1'; }); }});
+  }
+
+  // idle floating for hero-right images
+  const heroImg = document.querySelector('.hero-right img');
+  if (heroImg){
+    gsap.to(heroImg, {y:-6, repeat:-1, yoyo:true, duration:3, ease:'sine.inOut', delay:0.6});
+  }
+
+  // scroll reveal
+  try {
+    gsap.utils.toArray('.reveal').forEach(el=>{
+      gsap.from(el, {y:24, opacity:0, duration:0.7, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 85%'}});
     });
-  }
+  } catch(e){}
+})();
 
-  // ---------- Ensure all anchor buttons with class 'btn' are keyboard accessible ----------
-  qsa('a.btn').forEach(a => a.tabIndex = 0);
-
+// ---------- Vanilla-tilt init for cards ----------
+(function tiltInit(){
+  try {
+    if (typeof VanillaTilt !== 'undefined') {
+      const cards = document.querySelectorAll('.project-card, .experience-card, .card-inner');
+      VanillaTilt.init(cards, { max: 8, speed: 300, scale: 1.02, glare: false });
+    }
+  } catch(e){}
 })();
