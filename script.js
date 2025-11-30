@@ -1,159 +1,180 @@
-// --------------------
-// Particle Background
-// --------------------
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// Core JS: particles, theme/menu toggles, GSAP reveals, accessible interactions
+(function () {
+  const qs = s => document.querySelector(s);
+  const qsa = s => Array.from(document.querySelectorAll(s));
 
-let particlesArray = [];
-const maxParticles = 120;
+  // ---------- Theme toggle (persist) ----------
+  const themeToggle = qs('#theme-toggle');
+  const body = document.body;
+  function applySavedTheme() {
+    const saved = localStorage.getItem('theme_pref_v1');
+    if (!saved) return;
+    try {
+      const prefs = JSON.parse(saved);
+      if (prefs.theme === 'light') body.classList.add('light-theme'); else body.classList.remove('light-theme');
+      if (prefs.accent) document.documentElement.style.setProperty('--accent', prefs.accent);
+      if (prefs.animations === false) body.classList.add('reduce-motion'); else body.classList.remove('reduce-motion');
+    } catch(e){}
+  }
+  applySavedTheme();
 
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 3 + 1;
-    this.speedX = Math.random() * 1 - 0.5;
-    this.speedY = Math.random() * 1 - 0.5;
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isLight = body.classList.toggle('light-theme');
+      themeToggle.textContent = isLight ? '☀️' : '🌙';
+      // persist
+      const raw = localStorage.getItem('theme_pref_v1');
+      const prefs = raw ? JSON.parse(raw) : {};
+      prefs.theme = isLight ? 'light' : 'dark';
+      localStorage.setItem('theme_pref_v1', JSON.stringify(prefs));
+    });
   }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-  }
-  draw() {
-    ctx.fillStyle = '#fff';
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
 
-function initParticles() {
-  particlesArray = [];
-  for (let i = 0; i < maxParticles; i++) {
-    particlesArray.push(new Particle());
+  // ---------- Mobile menu ----------
+  const menuToggle = qs('#menu-toggle');
+  const navLinks = qs('.nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('active');
+    });
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); menuToggle.click(); }
+    });
   }
-}
 
-function connectParticles() {
-  for (let a = 0; a < particlesArray.length; a++) {
-    for (let b = a; b < particlesArray.length; b++) {
-      let dx = particlesArray[a].x - particlesArray[b].x;
-      let dy = particlesArray[a].y - particlesArray[b].y;
-      let distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < 120) {
-        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-        ctx.beginPath();
-        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-        ctx.stroke();
-      }
+  // ---------- Particle engine (global overlay canvas) ----------
+  // Lightweight multi-layer particle engine (global overlay)
+  class Particle {
+    constructor(w,h){
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+      this.r = Math.random()*2 + 0.4;
+      this.vx = (Math.random()*1 - 0.5) * 0.6;
+      this.vy = (Math.random()*1 - 0.5) * 0.6;
+      this.alpha = Math.random()*0.6 + 0.2;
+    }
+    update(w,h){
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < -10) this.x = w + 10;
+      if (this.x > w + 10) this.x = -10;
+      if (this.y < -10) this.y = h + 10;
+      if (this.y > h + 10) this.y = -10;
     }
   }
-}
 
-let gradientOffset = 0;
-function animateParticles() {
-  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, `hsl(${gradientOffset % 360}, 70%, 10%)`);
-  gradient.addColorStop(0.5, `hsl(${(gradientOffset + 60) % 360}, 70%, 15%)`);
-  gradient.addColorStop(1, `hsl(${(gradientOffset + 120) % 360}, 70%, 10%)`);
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  gradientOffset += 0.2;
+  const globalCanvas = qs('#particle-canvas');
+  let ctx=null, particles=[], maxParticles=120, animId=null;
+  let mouse = {x:-9999,y:-9999,down:false};
+  function resizeCanvas(){
+    if (!globalCanvas) return;
+    globalCanvas.width = window.innerWidth;
+    globalCanvas.height = window.innerHeight;
+    ctx = globalCanvas.getContext('2d');
+  }
+  function initParticles(count){
+    if (!globalCanvas) return;
+    particles = [];
+    for (let i=0;i<count;i++) particles.push(new Particle(globalCanvas.width, globalCanvas.height));
+  }
+  function drawParticles(){
+    if (!ctx) return;
+    // background subtle gradient
+    const g = ctx.createLinearGradient(0,0,globalCanvas.width,globalCanvas.height);
+    g.addColorStop(0, `rgba(6,6,6,0.85)`);
+    g.addColorStop(1, `rgba(12,12,12,0.85)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,globalCanvas.width,globalCanvas.height);
 
-  particlesArray.forEach((p) => {
-    p.update();
-    p.draw();
-  });
-  connectParticles();
-  requestAnimationFrame(animateParticles);
-}
+    // draw particles
+    ctx.globalCompositeOperation = 'lighter';
+    particles.forEach((p,i) => {
+      p.update(globalCanvas.width, globalCanvas.height);
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${p.alpha})`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fill();
 
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  initParticles();
-});
-
-initParticles();
-animateParticles();
-
-// --------------------
-// GSAP Hero 3D Floating Letters
-// --------------------
-gsap.utils.toArray('.hero-name span').forEach((letter, i) => {
-  gsap.to(letter, {
-    y: () => Math.random() * 20 - 10,
-    x: () => Math.random() * 20 - 10,
-    rotationY: () => Math.random() * 20 - 10,
-    rotationX: () => Math.random() * 20 - 10,
-    duration: 3,
-    ease: 'power1.inOut',
-    repeat: -1,
-    yoyo: true,
-    delay: i * 0.05
-  });
-});
-
-// --------------------
-// Scroll Reveal for Sections
-// --------------------
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray('.reveal').forEach((elem) => {
-  gsap.fromTo(elem,
-    { opacity: 0, y: 50 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: elem,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
+      // connection lines
+      for (let j=i+1;j<particles.length;j++){
+        const q = particles[j];
+        const dx = p.x - q.x; const dy = p.y - q.y; const d = Math.sqrt(dx*dx+dy*dy);
+        if (d < 110){
+          ctx.strokeStyle = `rgba(255,255,255,${0.06*(1 - d/110)})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(q.x,q.y);
+          ctx.stroke();
+        }
       }
     });
-});
-
-// --------------------
-// Vanilla Tilt for Project Cards
-// --------------------
-VanillaTilt.init(document.querySelectorAll(".card-inner"), {
-  max: 15,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.2,
-  scale: 1.05
-});
-
-// --------------------
-// Dark / Light Theme Toggle (Fixed)
-// --------------------
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
-
-// Load theme from localStorage
-if(localStorage.getItem('theme') === 'light') {
-  body.classList.add('light-theme');
-  themeToggle.textContent = '☀️';
-} else {
-  themeToggle.textContent = '🌙';
-}
-
-// Single click listener
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle('light-theme');
-
-  if(body.classList.contains('light-theme')){
-    localStorage.setItem('theme', 'light');
-    themeToggle.textContent = '☀️';
-  } else {
-    localStorage.setItem('theme', 'dark');
-    themeToggle.textContent = '🌙';
+    ctx.globalCompositeOperation = 'source-over';
   }
-});
+  function animate(){
+    drawParticles();
+    animId = requestAnimationFrame(animate);
+  }
+
+  // init canvas particles safely
+  if (globalCanvas && globalCanvas.getContext) {
+    resizeCanvas();
+    initParticles(maxParticles);
+    animate();
+
+    // mouse interactions
+    window.addEventListener('mousemove', e => {
+      mouse.x = e.clientX; mouse.y = e.clientY;
+    });
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      initParticles(maxParticles);
+    });
+    // respect reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cancelAnimationFrame(animId);
+    }
+  }
+
+  // ---------- GSAP reveal for .reveal elements ----------
+  try {
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.reveal').forEach(elem=> {
+        gsap.fromTo(elem,{opacity:0,y:30},{opacity:1,y:0,duration:0.8,ease:'power2.out',scrollTrigger:{trigger:elem,start:'top 85%'}});
+      });
+    }
+  } catch (e) { console.warn('GSAP error', e); }
+
+  // ---------- Project cards clickable & keyboard accessible ----------
+  qsa('.project-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return;
+      const link = card.getAttribute('data-link') || '#';
+      if (link && link !== '#') window.open(link,'_blank');
+    });
+    card.tabIndex = 0;
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+
+  // ---------- VanillaTilt for .card-inner elements (if present) ----------
+  if (window.VanillaTilt) {
+    try {
+      VanillaTilt.init(document.querySelectorAll('.card-inner'), {
+        max: 12, speed: 350, glare: true, "max-glare": 0.12
+      });
+    } catch(e){}
+  }
+
+  // expose some helpers for enhanced-ui
+  window.__prottoy_core = {
+    setAccent: (hex) => document.documentElement.style.setProperty('--accent', hex),
+    setParticlesDensity: (n) => { if (!globalCanvas) return; maxParticles = Math.max(20, Math.min(500, n)); initParticles(maxParticles); },
+    enableParticles: (flag) => { if (!globalCanvas) return; if (flag) { animate(); } else { cancelAnimationFrame(animId); ctx && ctx.clearRect(0,0,globalCanvas.width,globalCanvas.height); } },
+    setAnimationsEnabled: (flag) => { if (flag) body.classList.remove('reduce-motion'); else body.classList.add('reduce-motion'); }
+  };
+
+})();
