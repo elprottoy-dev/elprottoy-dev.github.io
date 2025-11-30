@@ -3,262 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Khaled Prottoy</title>
+  <title>About | Khaled MD Mehzabin Alam Prottoy</title>
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ---------------- Hero Section Fix ---------------- */
-    #about-hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      gap: 2rem;
-    }
-
-    .hero-left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-right: 2rem;
-    }
-
-    .hero-left h1, .hero-left p, .hero-left h2 {
-      text-align: left;
-    }
-
-    .hero-buttons a {
-      margin-right: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-right img.profile-img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-      display: block;
-    }
-
-    /* ---------------- Sections Alignment ---------------- */
-    section {
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-
-    section p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ---------------- Cards Layout ---------------- */
-    .tech-grid, .drive-grid, .achievements-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .tech-card, .drive-card, .achievement-card {
-      background: #1a1a1a;
-      padding: 1.2rem 1.5rem;
-      border-radius: 12px;
-      color: #fff;
-      min-width: 220px;
-      max-width: 300px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .tech-card:hover, .drive-card:hover, .achievement-card:hover {
-      transform: translateY(-5px);
-      background: #1db954;
-      color: #0f0f0f;
-    }
-
-    /* ---------------- Footer ---------------- */
-    footer {
-      background: #0f0f0f;
-      padding: 3rem 2rem;
-      color: #aaa;
-      text-align: center;
-    }
-
-    /* ---------------- Responsive ---------------- */
-    @media (max-width: 1024px) {
-      .hero-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-left {
-        padding-right: 0;
-        margin-bottom: 2rem;
-      }
-      .hero-right img.profile-img {
-        max-width: 300px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-name {
-        font-size: 2.2rem;
-      }
-      .hero-intro {
-        font-size: 1.2rem;
-      }
-      .hero-buttons a {
-        display: inline-block;
-        margin-bottom: 0.8rem;
-      }
-      .hero-right img.profile-img {
-        max-width: 250px;
-      }
-      .tech-grid, .drive-grid, .achievements-grid {
-        gap: 1rem;
-      }
-      .tech-card, .drive-card, .achievement-card {
-        min-width: 100%;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <!-- Navbar (Unified across pages) -->
+
+  <!-- Navbar -->
   <nav id="navbar">
-    <div class="logo"><a href="index.html" aria-label="Home">Prottoy</a></div>
-    <ul class="nav-links" role="menu">
-      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
-      <li role="none"><a role="menuitem" href="#gallery">Gallery</a></li>
-      <li role="none"><a role="menuitem" href="about.html">About</a></li>
-      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
-      <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
-      <li role="none"><a role="menuitem" href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    <div class="logo"><a href="index.html">Prottoy</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a class="active" href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
     </ul>
-    <div id="theme-toggle" class="theme-toggle" tabindex="0" role="button" aria-pressed="false">🌙</div>
-    <div id="menu-toggle" class="menu-toggle" tabindex="0" role="button" aria-label="Toggle menu">☰</div>
+    <div id="theme-toggle" class="theme-toggle">🌙</div>
+    <div id="menu-toggle" class="menu-toggle">☰</div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="about-hero">
-    <canvas id="particle-canvas" aria-hidden="true"></canvas>
-    <div class="hero-container">
-      <div class="hero-left">
-        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
-        <p class="hero-subtitle">Open to collaborative research and development</p>
-        <h2 class="hero-intro">
-          Creating impactful solutions at the intersection of Programming, Engineering and Research
-        </h2>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn">Get in Touch</a>
-          <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">View Resume</a>
-        </div>
+  <!-- About Section -->
+  <section id="about" class="about-page reveal">
+    <div class="container about-container">
+      <div class="about-left">
+        <img src="about.jpg" alt="Prottoy" class="about-photo">
       </div>
-      <div class="hero-right">
-        <img src="profile.jpeg" alt="Khaled Prottoy" class="profile-img">
-      </div>
-    </div>
-  </section>
+      <div class="about-right">
+        <h1>About Me</h1>
+        <p>
+          I am <strong>Khaled MD Mehzabin Alam Prottoy</strong>, a Research Associate and Full-Stack Developer passionate about 
+          building data-driven, scalable, and impactful digital solutions.
+        </p>
 
-  <!-- My Journey -->
-  <section id="journey">
-    <div class="container">
-      <h2>My Journey</h2>
-      <p>I’m an innovative and results-driven IT professional and environmental research associate with over 3 years of cross-sectoral experience spanning software development, network engineering, and research-driven solutions.</p>
-      <p>I specialize in bridging technology with social and environmental impact, delivering full-stack digital solutions, AI-powered platforms, and research-driven applications. My work includes developing scalable systems and deploying research infrastructure.</p>
-      <p>As a published researcher and multi-award-winning technologist, I bring a unique combination of creativity, leadership, and technical expertise.</p>
-    </div>
-  </section>
+        <p>
+          With experience across <strong>Environmental Science</strong>, <strong>AI/ML</strong>, 
+          <strong>Data Engineering</strong>, and <strong>Full-Stack Development</strong>, 
+          I work at the intersection of research and technology to solve real-world challenges.
+        </p>
 
-  <!-- Technical Expertise -->
-  <section id="expertise">
-    <div class="container">
-      <h2>Technical Expertise</h2>
-      <div class="tech-grid">
-        <div class="tech-card">Python</div>
-        <div class="tech-card">JavaScript</div>
-        <div class="tech-card">Node.js</div>
-        <div class="tech-card">SQL</div>
-        <div class="tech-card">R</div>
-        <div class="tech-card">AWS / GCP</div>
-        <div class="tech-card">DevOps</div>
-        <div class="tech-card">AI & ML Frameworks</div>
-        <div class="tech-card">Data Analytics</div>
-        <div class="tech-card">Geospatial Analysis</div>
-        <div class="tech-card">Mobile App Development</div>
-        <div class="tech-card">Cybersecurity</div>
-      </div>
-    </div>
-  </section>
+        <p>
+          I build dashboards, analytics systems, mobile apps, and cloud-based platforms used by 
+          organizations, researchers, and field teams across Bangladesh and beyond.
+        </p>
 
-  <!-- What Drives Me -->
-  <section id="drives">
-    <div class="container">
-      <h2>What Drives Me</h2>
-      <div class="drive-grid">
-        <div class="drive-card">
-          <h3>Innovation First</h3>
-          <p>Always seeking creative solutions to complex problems and pushing the boundaries of technology.</p>
-        </div>
-        <div class="drive-card">
-          <h3>Quality & Craftsmanship</h3>
-          <p>Writing code and building systems with high standards and best practices in mind.</p>
-        </div>
-        <div class="drive-card">
-          <h3>Continuous Learning</h3>
-          <p>Staying at the forefront of technology through research, experimentation, and education.</p>
-        </div>
-        <div class="drive-card">
-          <h3>Collaboration</h3>
-          <p>Valuing open communication, knowledge sharing, and collective problem-solving.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <h2>What I Do</h2>
+        <ul class="about-list">
+          <li>Data engineering, pipelines, and automation workflows</li>
+          <li>AI models, NLP systems, and machine learning solutions</li>
+          <li>Full-stack development (React, Django, FastAPI, Node.js)</li>
+          <li>Cloud, DevOps, containers, CI/CD, Nginx, Docker</li>
+          <li>Research communication + field-based scientific work</li>
+        </ul>
 
-  <!-- Key Achievements -->
-  <section id="achievements">
-    <div class="container">
-      <h2>Key Achievements</h2>
-      <div class="achievements-grid">
-        <div class="achievement-card">
-          <h3>Organizational Leadership</h3>
-          <p>2024 - Led General Affairs of Student Council of INPT</p>
-        </div>
-        <div class="achievement-card">
-          <h3>Technical Excellence</h3>
-          <p>2023 - Delivered 45+ backend projects with Python</p>
-        </div>
-        <div class="achievement-card">
-          <h3>Data Science Impact</h3>
-          <p>2023 - Achieved 98% accuracy in automated data extraction using CNN</p>
-        </div>
+        <a href="contact.html" class="btn">Work With Me</a>
       </div>
     </div>
   </section>
@@ -266,16 +68,29 @@
   <!-- Footer -->
   <footer>
     <div class="container footer-container">
-      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
+      <div class="footer-left">
+        <h3>Powered By<br>KHALED MD MEHZABIN ALAM PROTTOY</h3>
+        <p>Crafting reliable, Sustainable solutions that make a positive impact worldwide.</p>
+      </div>
+
+      <div class="footer-right">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
-  <!-- Libraries (GSAP + ScrollTrigger + VanillaTilt) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
-
-  <!-- Unified site script -->
   <script src="script.js"></script>
 </body>
 </html>
