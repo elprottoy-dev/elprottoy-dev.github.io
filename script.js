@@ -1,4 +1,4 @@
-// script.js — upgraded (preserves original behaviors, uses modules for extras)
+// script.js — full, upgraded, self-contained
 
 // --------------------
 // Helper selectors
@@ -6,28 +6,36 @@ const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 
 // --------------------
-// GSAP Scroll Reveal (original logic preserved)
+// GSAP Scroll Reveal
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.reveal').forEach((elem) => {
-    gsap.fromTo(elem,
+    gsap.fromTo(
+      elem,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
         y: 0,
         duration: 1,
         ease: 'power2.out',
-        scrollTrigger: { trigger: elem, start: 'top 80%', toggleActions: 'play none none reverse' }
+        scrollTrigger: {
+          trigger: elem,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
       }
     );
   });
 } else {
-  // fallback: immediately show
-  $$('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+  // fallback: immediately show elements
+  $$('.reveal').forEach(el => {
+    el.style.opacity = 1;
+    el.style.transform = 'none';
+  });
 }
 
 // --------------------
-// Vanilla Tilt (preserve original settings)
+// Vanilla Tilt for card hover effect
 if (window.VanillaTilt) {
   try {
     VanillaTilt.init(document.querySelectorAll(".card-inner"), {
@@ -43,24 +51,27 @@ if (window.VanillaTilt) {
 }
 
 // --------------------
-// HERO: ensure letters wrapped if hero.js hasn't run yet
-document.addEventListener('DOMContentLoaded', ()=>{
+// HERO: Wrap letters in span for animation
+document.addEventListener('DOMContentLoaded', () => {
   const heroName = document.querySelector('.hero-name');
   if (heroName && !heroName.querySelector('span')) {
-    heroName.innerHTML = heroName.textContent.split('').map(ch => ch === ' ' ? '<span class="ch space"> </span>' : `<span class="ch">${ch}</span>`).join('');
+    heroName.innerHTML = heroName.textContent
+      .split('')
+      .map(ch => ch === ' ' ? '<span class="ch space"> </span>' : `<span class="ch">${ch}</span>`)
+      .join('');
   }
 });
 
 // --------------------
-// Theme toggle fallback (if theme.js not present)
+// Theme toggle fallback
 (function(){
   const btn = document.querySelector('.theme-toggle');
   const body = document.body;
   if (!btn) return;
 
-  // If theme.js active, it sets window.__theme_module_present = true
+  // Only if theme.js is NOT loaded
   if (!window.__theme_module_present) {
-    // load saved theme
+    // Load saved theme
     if (localStorage.getItem('theme') === 'light') {
       body.classList.add('light-theme');
       btn.textContent = '☀️';
@@ -86,8 +97,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 })();
 
 // --------------------
-// Smooth anchor scrolling (keeps your original behavior)
-document.addEventListener('click', (e)=>{
+// Smooth anchor scrolling
+document.addEventListener('click', (e) => {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
   const id = a.getAttribute('href');
@@ -97,89 +108,3 @@ document.addEventListener('click', (e)=>{
   e.preventDefault();
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
-/* ==========================
-   LIGHT MODE FIX - HERO & TEXT
-   ========================== */
-
-/* Body & general text */
-body {
-  background-color: #ffffff; /* light background */
-  color: #111111;            /* dark, readable text */
-}
-
-/* Navbar links */
-#navbar {
-  background-color: #ffffff; /* light navbar */
-}
-.nav-links a {
-  color: #111111; /* dark text for readability */
-}
-.nav-links a.btn {
-  color: #ffffff;  /* buttons text if bg is colored */
-  background-color: #1db954; /* accent button color */
-}
-
-/* Theme toggle */
-.theme-toggle {
-  color: #111111; /* ensure toggle icon is visible */
-}
-
-/* Hero Section */
-.hero-container {
-  color: #111111; /* all hero text dark */
-}
-.hero-name {
-  color: #111111;
-}
-.hero-subtitle {
-  color: #111111;
-}
-.hero-intro {
-  color: #111111;
-}
-
-/* Hero buttons */
-.hero-buttons a.btn {
-  background-color: #1db954; /* green button bg */
-  color: #ffffff;             /* readable text */
-  border: none;
-}
-.hero-buttons a.btn:hover {
-  background-color: #14833b; /* darker hover effect */
-}
-
-/* Hero right overlay / GIF */
-.gradient-overlay {
-  background: rgba(255,255,255,0.1); /* subtle overlay for light theme */
-}
-
-/* Card elements (technologies, hire, projects, research) */
-.tech-card,
-.hire-card,
-.project-card,
-.research-card,
-.client-card {
-  background-color: #fafafa;
-  color: #111111;
-  border: 1px solid #e0e0e0;
-}
-
-/* Footer */
-footer {
-  background-color: #f8f8f8;
-  color: #111111;
-}
-footer a {
-  color: #111111;
-}
-
-/* Links hover effect */
-a:hover {
-  color: #1db954;
-}
-
-/* Optional: canvas / particle visibility for light mode */
-#particle-canvas {
-  mix-blend-mode: multiply; /* ensures particles are visible on light background */
-}
-
