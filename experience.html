@@ -6,6 +6,120 @@
 <title>Experience | Khaled Prottoy</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+:root {
+  --accent: #1db954;
+  --dark-bg: #0f0f0f;
+  --light-bg: #f7f7f7;
+  --card-bg: #1a1a1a;
+  --card-bg-light: #fff;
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #aaaaaa;
+  --transition: 0.3s ease;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s;
+}
+body.light-theme {
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
+
+/* Hero Section */
+#experience-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 120px auto 50px;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+.hero-left { flex: 1; min-width: 300px; }
+.hero-left h1 { font-size: 2.8rem; color: var(--accent); margin-bottom: 0.5rem; }
+.hero-left p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
+.hero-buttons a { display: inline-block; margin-right: 1rem; margin-top: 0.5rem; }
+.hero-right { flex: 1; display: flex; justify-content: center; min-width: 300px; }
+.gif-wrapper { position: relative; width: 100%; max-width: 400px; height: 300px; overflow: hidden; border-radius: 20px; }
+.gif-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Experience Cards */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.experience-card { perspective: 1000px; }
+.card-inner {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transform-style: preserve-3d;
+  transition: transform var(--transition), box-shadow var(--transition), background 0.3s;
+  cursor: pointer;
+}
+.card-inner h3 { color: var(--accent); margin-bottom: 0.5rem; }
+.card-inner p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.card-inner ul { padding-left: 1.2rem; color: var(--text-muted); }
+.card-inner .badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark-bg);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+.card-inner:hover {
+  transform: rotateY(10deg) scale(1.03);
+  box-shadow: 0 20px 40px rgba(29,185,84,0.4);
+}
+
+/* Education / Certifications / Skills */
+.education-grid, .certs-grid, .skills-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.education-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.certs-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.education-grid div, .certs-grid div, .skills-grid div {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: var(--transition);
+}
+.education-grid div:hover, .certs-grid div:hover, .skills-grid div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(29,185,84,0.4);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--dark-bg);
+  color: var(--text-muted);
+  margin-top: 4rem;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  #experience-hero { flex-direction: column; text-align: center; }
+  .hero-left, .hero-right { margin-bottom: 1.5rem; }
+}
+</style>
 </head>
 <body>
 
@@ -48,7 +162,7 @@
       <div class="card-inner">
         <h3>Gen AI Engineer</h3>
         <p>Freelancer.com | Remote</p>
-        <p class="text-muted">Nov 2022 - Present</p>
+        <p style="font-size:0.85rem; color: var(--text-muted)">Nov 2022 - Present</p>
         <h4>Key Achievements:</h4>
         <ul>
           <li>Delivered 45+ AI projects aligning with client goals.</li>
@@ -74,7 +188,7 @@
       <div class="card-inner">
         <h3>Research Engineer</h3>
         <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
-        <p class="text-muted">Jan 2025 - Sept 2025</p>
+        <p style="font-size:0.85rem; color: var(--text-muted)">Jan 2025 - Sept 2025</p>
         <h4>Key Achievements:</h4>
         <ul>
           <li>Built scalable data pipelines for 100K+ websites.</li>
