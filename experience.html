@@ -1,157 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Experience | Khaled Prottoy</title>
-  <meta name="description" content="Professional Experience — Khaled Prottoy" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="theme-vars.css">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Experience</title>
+  <meta name="description" content="Professional experience timeline, roles, achievements, and contributions." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Experience — Your Name" />
+  <meta property="og:description" content="A modern animated experience timeline with achievements and roles." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="nav-left">
-      <a class="logo" href="index.html" aria-label="Home">Prottoy</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Particle background -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">YourName</a>
+      <nav id="navbar" aria-label="Main Navigation">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <ul class="nav-links" id="primary-menu" role="menubar">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./experience.html">Experience</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">☰</button>
+  <!-- Main -->
+  <main id="main" class="container experience-page">
 
-    <ul id="primary-menu" class="nav-links" role="menubar">
-      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
-      <li role="none"><a role="menuitem" href="about.html">About</a></li>
-      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
-      <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-      <li role="none"><a role="menuitem btn" href="Khaled_Prottoy_CV.pdf" target="_blank" rel="noopener">Resume</a></li>
-    </ul>
-
-    <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">🌙</button>
-  </nav>
-
-  <button id="ui-toggle" aria-label="Open appearance settings">⚙️</button>
-  <aside id="ui-panel" role="dialog" aria-label="Appearance settings" aria-hidden="true" style="display:none">
-    <h4>Appearance</h4>
-    <div class="panel-row">
-      <label for="theme-select">Theme</label>
-      <select id="theme-select" aria-label="Choose theme">
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-        <option value="green">Green</option>
-        <option value="midnight">Midnight</option>
-      </select>
-    </div>
-
-    <div class="panel-row">
-      <label for="accent-picker">Accent</label>
-      <input id="accent-picker" type="color" value="#1db954" aria-label="Accent color picker">
-      <span id="accent-hex" class="small">#1db954</span>
-    </div>
-
-    <div class="panel-row">
-      <label for="animations-toggle">Animations</label>
-      <input id="animations-toggle" type="checkbox" aria-label="Toggle animations" checked>
-    </div>
-
-    <div class="panel-row">
-      <label for="particles-toggle">Particles</label>
-      <input id="particles-toggle" type="checkbox" aria-label="Toggle particles" checked>
-    </div>
-
-    <div class="panel-row">
-      <label for="particle-density">Density</label>
-      <input id="particle-density" type="range" min="20" max="220" step="10" value="120" aria-label="Particle density">
-      <span id="density-value" class="small">120</span>
-    </div>
-
-    <div class="panel-row" style="justify-content:center;">
-      <button id="reset-prefs" class="btn">Reset</button>
-    </div>
-  </aside>
-
-  <main id="main-content" tabindex="-1">
-    <section id="experience-hero" class="reveal container">
-      <h1 class="hero-name">Professional Experience</h1>
-      <p class="hero-subtitle">AI, software engineering, and innovation at a glance.</p>
-      <div class="hero-buttons">
-        <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">Download Resume</a>
-        <a href="contact.html" class="btn">Get in Touch</a>
-      </div>
+    <!-- Page Title -->
+    <section class="experience-header card fade-in">
+      <h1>Experience</h1>
+      <p class="muted">A timeline of my professional work — with achievements, roles and impact.</p>
     </section>
 
-    <section id="work-experience" class="container reveal">
-      <h2>Work Experience</h2>
-      <div class="experience-grid">
-        <div class="experience-card">
-          <div class="card-inner">
-            <h3>Gen AI Engineer</h3>
-            <p>Freelancer.com | Remote</p>
-            <p style="font-size:0.85rem; color: var(--muted);">Nov 2022 - Present</p>
-            <h4>Key Achievements:</h4>
-            <ul>
-              <li>Delivered 45+ AI projects aligning with client goals.</li>
-              <li>Developed AI apps with privacy-focused solutions.</li>
-            </ul>
-            <h4>Technologies:</h4>
-            <p>Python, PyTorch, TensorFlow, LangChain, Docker, FastAPI, Git</p>
-          </div>
-        </div>
+    <!-- EXPERIENCE TIMELINE -->
+    <section class="experience-timeline">
 
-        <div class="experience-card">
-          <div class="card-inner">
-            <h3>Research Engineer</h3>
-            <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
-            <p style="font-size:0.85rem; color: var(--muted);">Jan 2025 - Sept 2025</p>
-            <h4>Key Achievements:</h4>
-            <ul>
-              <li>Built scalable data pipelines for 100K+ websites.</li>
-              <li>Integrated ML workflows and OCR analysis.</li>
-            </ul>
-            <h4>Technologies:</h4>
-            <p>Python, Apache Spark, ETL, OCR, Web Scraping</p>
+      <!-- Item 1 -->
+      <div class="timeline-item card fade-up" data-tilt>
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Senior Frontend Engineer</h3>
+          <p class="company muted">ExampleCo • 2021 — Present</p>
+          <ul class="achievements">
+            <li>Led development of advanced animation pipelines using GSAP and WebGL.</li>
+            <li>Designed a reusable component system used across 4 teams.</li>
+            <li>Improved site performance by 46% through optimization and lazy loading.</li>
+          </ul>
+
+          <!-- badges -->
+          <div class="badges">
+            <span class="badge">GSAP Expert</span>
+            <span class="badge">UI Architect</span>
+            <span class="badge">Performance Lead</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="education" class="container reveal">
-      <h2>Education</h2>
-      <div class="education-grid">
-        <div>
-          <h3>BSc in Computer Science</h3>
-          <p>University of Example | 2018 - 2022</p>
-        </div>
-        <div>
-          <h3>MSc in Artificial Intelligence</h3>
-          <p>University of Example | 2023 - 2025</p>
+      <!-- Item 2 -->
+      <div class="timeline-item card fade-up" data-tilt>
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>UI Developer</h3>
+          <p class="company muted">DesignHub • 2019 — 2021</p>
+          <ul class="achievements">
+            <li>Created high-end animated landing pages with micro-interactions.</li>
+            <li>Established brand motion guidelines for consistency.</li>
+            <li>Worked closely with designers on rapid prototyping.</li>
+          </ul>
+
+          <div class="badges">
+            <span class="badge">Motion Design</span>
+            <span class="badge">UI/UX</span>
+          </div>
         </div>
       </div>
+
+      <!-- Item 3 -->
+      <div class="timeline-item card fade-up" data-tilt>
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Junior Frontend Developer</h3>
+          <p class="company muted">CreativeSoft • 2017 — 2019</p>
+          <ul class="achievements">
+            <li>Developed responsive UI components for client websites.</li>
+            <li>Collaborated on improving accessibility and semantic structure.</li>
+            <li>Optimized asset loading and scripts for performance.</li>
+          </ul>
+
+          <div class="badges">
+            <span class="badge">Accessibility</span>
+            <span class="badge">HTML/CSS</span>
+          </div>
+        </div>
+      </div>
+
     </section>
+
   </main>
 
-  <footer>
-    <div class="container footer-container">
-      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
-    </div>
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Your Name</div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js" defer></script>
+  <!-- Libraries -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 
-  <script src="script.js" defer></script>
-  <script src="enhanced-ui.js" defer></script>
+  <!-- Core scripts -->
+  <script type="module" src="./particles.js" defer></script>
+  <script type="module" src="./theme.js" defer></script>
+  <script type="module" src="./hero.js" defer></script>
 
+  <!-- Page-specific JS -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // Fade animations
+      gsap.utils.toArray(".fade-in").forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 20,
+          duration: 0.7,
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
       });
-    }
+
+      gsap.utils.toArray(".fade-up").forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
+      });
+
+      // Add tilt effect (very lightweight)
+      document.querySelectorAll("[data-tilt]").forEach(card => {
+        card.addEventListener("mousemove", e => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+          card.style.transform = `rotateX(${y * 6}deg) rotateY(${x * 6}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "rotateX(0deg) rotateY(0deg)";
+        });
+      });
+
+    });
   </script>
+
 </body>
 </html>
