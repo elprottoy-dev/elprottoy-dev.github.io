@@ -1,378 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experience | Khaled Prottoy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #00ff9f;
-      --bg-color: #121212;
-      --card-bg: #1e1e1e;
-      --text-color: #f0f0f0;
-      --subtext-color: #aaa;
-      --transition: 0.3s ease-in-out;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience | Khaled Prottoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #1db954;
+  --dark-bg: #0f0f0f;
+  --light-bg: #f7f7f7;
+  --card-bg: #1a1a1a;
+  --card-bg-light: #fff;
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #aaaaaa;
+  --transition: 0.3s ease;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-    }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s;
+}
+body.light-theme {
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
 
-    a {
-      text-decoration: none;
-      color: var(--primary-color);
-      transition: var(--transition);
-    }
+/* Navbar */
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(15,15,15,0.8);
+  transition: background 0.3s;
+}
+#navbar .logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links li a {
+  color: var(--text-light);
+  font-weight: 500;
+  transition: var(--transition);
+}
+.nav-links li a:hover {
+  color: var(--accent);
+}
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 500;
+  transition: var(--transition);
+}
+.btn:hover {
+  background: var(--accent);
+  color: var(--dark-bg);
+}
+.theme-toggle {
+  margin-left: 2rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
 
-    a:hover {
-      opacity: 0.8;
-    }
+/* Hero Section */
+#experience-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 120px auto 50px;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+.hero-left h1 {
+  font-size: 2.8rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.hero-left p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.hero-buttons a {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+}
+.gif-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.gif-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    h1, h2, h3, h4 {
-      margin: 0.5rem 0;
-    }
+/* Experience Cards */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.experience-card {
+  perspective: 1000px;
+}
+.card-inner {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transform-style: preserve-3d;
+  transition: transform var(--transition), box-shadow var(--transition), background 0.3s;
+  cursor: pointer;
+}
+.card-inner h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.card-inner p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+.card-inner ul {
+  padding-left: 1.2rem;
+  color: var(--text-muted);
+}
+.card-inner .badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark-bg);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+.card-inner:hover {
+  transform: rotateY(10deg) scale(1.03);
+  box-shadow: 0 20px 40px rgba(29,185,84,0.4);
+}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+/* Education / Certifications / Skills */
+.education-grid, .certs-grid, .skills-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.education-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.certs-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.education-grid div, .certs-grid div, .skills-grid div {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: var(--transition);
+}
+.education-grid div:hover, .certs-grid div:hover, .skills-grid div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(29,185,84,0.4);
+}
 
-    /* Navbar */
-    #navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 1rem 2rem;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background-color: rgba(15, 15, 15, 0.7);
-      transition: background 0.3s;
-    }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--dark-bg);
+  color: var(--text-muted);
+  margin-top: 4rem;
+}
 
-    .nav-links li {
-      display: inline-block;
-      margin-left: 2rem;
-    }
-
-    .nav-links li a {
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .nav-links li a:hover {
-      color: #1db954;
-    }
-
-    .btn {
-      padding: 0.6rem 1.4rem;
-      border-radius: 30px;
-      border: 2px solid #1db954;
-      color: #1db954;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #1db954;
-      color: #0f0f0f;
-    }
-
-    .theme-toggle {
-      margin-left: 2rem;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
-
-    /* Hero Section */
-    #experience-hero {
-      text-align: center;
-      padding: 6rem 2rem 3rem 2rem;
-    }
-
-    #experience-hero .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(90deg, #00ff9f, #00ffa0);
-      color: #000;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-
-    #experience-hero .btn:hover {
-      transform: translateY(-3px);
-      opacity: 0.9;
-    }
-
-    /* Experience Cards */
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .experience-card {
-      perspective: 1000px;
-    }
-
-    .card-inner {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition);
-      transform-style: preserve-3d;
-    }
-
-    .experience-card:hover .card-inner {
-      transform: rotateY(10deg) scale(1.03);
-      box-shadow: 0 15px 30px rgba(0,255,159,0.3);
-    }
-
-    .experience-card h3 {
-      color: var(--primary-color);
-    }
-
-    .experience-card ul {
-      padding-left: 1.2rem;
-      color: #ccc;
-    }
-
-    /* Education Section */
-    .education-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .education-grid div {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      transition: var(--transition);
-    }
-
-    .education-grid div:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,255,159,0.3);
-    }
-
-    /* Certifications */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .certs-grid div {
-      background: var(--card-bg);
-      padding: 1rem;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .certs-grid div:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,255,159,0.3);
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .skills-grid div {
-      background: var(--card-bg);
-      padding: 0.8rem;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .skills-grid div:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0,255,159,0.3);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 3rem 2rem;
-      background: #111;
-      color: #aaa;
-      margin-top: 4rem;
-    }
-
-    @media(max-width: 768px){
-      #experience-hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hero-buttons .btn {
-        margin-bottom: 0.5rem;
-      }
-    }
-  </style>
+/* Responsive */
+@media(max-width: 768px){
+  #experience-hero { flex-direction: column; text-align: center; }
+  .hero-left, .hero-right { margin-bottom: 1.5rem; }
+}
+</style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav id="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
-    </ul>
-    <div class="theme-toggle" id="theme-toggle">🌙</div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="experience-hero">
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="logo">Prottoy</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+  </ul>
+  <div class="theme-toggle" id="theme-toggle">🌙</div>
+</nav>
+
+<!-- Hero Section -->
+<section id="experience-hero">
+  <div class="hero-left">
     <h1>Professional Experience</h1>
     <p>AI, software engineering, and innovation at a glance.</p>
     <div class="hero-buttons">
       <a href="Khaled_Prottoy_CV.pdf" class="btn">Download Resume</a>
       <a href="contact.html" class="btn">Get in Touch</a>
     </div>
-  </section>
+  </div>
+  <div class="hero-right">
+    <div class="gif-wrapper">
+      <img src="experience-hero.gif" alt="Experience GIF">
+    </div>
+  </div>
+</section>
 
-  <!-- Work Experience -->
-  <section id="work-experience" class="container">
-    <h2>Work Experience</h2>
-    <div class="experience-grid">
-      <div class="experience-card">
-        <div class="card-inner">
-          <h3>Gen AI Engineer</h3>
-          <p>Freelancer.com | Remote</p>
-          <p style="font-size:0.85rem; color: #aaa;">Nov 2022 - Present</p>
-          <h4>Key Achievements:</h4>
-          <ul>
-            <li>Delivered 45+ AI projects aligning with client goals.</li>
-            <li>Developed AI apps with privacy-focused solutions.</li>
-            <li>Earned 5-star rating across 48 client reviews.</li>
-            <li>100% on-time & on-budget project delivery.</li>
-          </ul>
-          <h4>Technologies:</h4>
-          <p>Python, PyTorch, TensorFlow, LangChain, OpenAI GPT APIs, Docker, FastAPI, Git</p>
-        </div>
-      </div>
-
-      <div class="experience-card">
-        <div class="card-inner">
-          <h3>Research Engineer</h3>
-          <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
-          <p style="font-size:0.85rem; color: #aaa;">Jan 2025 - Sept 2025</p>
-          <h4>Key Achievements:</h4>
-          <ul>
-            <li>Built scalable data pipelines for 100K+ websites.</li>
-            <li>Integrated ML workflows, OCR & real-time analysis.</li>
-            <li>Developed Chrome extension prototype for ad blocking.</li>
-          </ul>
-          <h4>Technologies:</h4>
-          <p>Python, Apache Spark, ETL, OCR, Web Scraping, Chrome Extensions, ML, Data Cleaning</p>
-        </div>
+<!-- Work Experience -->
+<section class="container">
+  <h2>Work Experience</h2>
+  <div class="experience-grid">
+    <div class="experience-card">
+      <div class="card-inner">
+        <h3>Gen AI Engineer</h3>
+        <p>Freelancer.com | Remote</p>
+        <p style="font-size:0.85rem; color: var(--text-muted)">Nov 2022 - Present</p>
+        <h4>Key Achievements:</h4>
+        <ul>
+          <li>Delivered 45+ AI projects aligning with client goals.</li>
+          <li>Developed AI apps with privacy-focused solutions.</li>
+          <li>Earned 5-star rating across 48 client reviews.</li>
+          <li>100% on-time & on-budget project delivery.</li>
+        </ul>
+        <h4>Technologies:</h4>
+        <p><span class="badge">Python</span><span class="badge">PyTorch</span><span class="badge">TensorFlow</span><span class="badge">LangChain</span><span class="badge">OpenAI GPT APIs</span><span class="badge">Docker</span><span class="badge">FastAPI</span><span class="badge">Git</span></p>
       </div>
     </div>
-  </section>
 
-  <!-- Education -->
-  <section id="education" class="container">
-    <h2>Education</h2>
-    <div class="education-grid">
-      <div>
-        <h3>BSc in Computer Science</h3>
-        <p>University of Example | 2018 - 2022</p>
+    <div class="experience-card">
+      <div class="card-inner">
+        <h3>Research Engineer</h3>
+        <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
+        <p style="font-size:0.85rem; color: var(--text-muted)">Jan 2025 - Sept 2025</p>
+        <h4>Key Achievements:</h4>
+        <ul>
+          <li>Built scalable data pipelines for 100K+ websites.</li>
+          <li>Integrated ML workflows, OCR & real-time analysis.</li>
+          <li>Developed Chrome extension prototype for ad blocking.</li>
+        </ul>
+        <h4>Technologies:</h4>
+        <p><span class="badge">Python</span><span class="badge">Spark</span><span class="badge">ETL</span><span class="badge">OCR</span><span class="badge">Web Scraping</span><span class="badge">ML</span><span class="badge">Chrome Extensions</span></p>
       </div>
-      <div>
-        <h3>MSc in Artificial Intelligence</h3>
-        <p>University of Example | 2023 - 2025</p>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Certifications -->
-  <section id="certifications" class="container">
-    <h2>Certifications</h2>
-    <div class="certs-grid">
-      <div>AI & ML Fundamentals</div>
-      <div>Python Advanced</div>
-      <div>Cloud Computing (AWS)</div>
-      <div>Data Analytics Certification</div>
+<!-- Education -->
+<section class="container">
+  <h2>Education</h2>
+  <div class="education-grid">
+    <div>
+      <h3>BSc in Computer Science</h3>
+      <p>University of Example | 2018 - 2022</p>
     </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="container">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div>Python</div>
-      <div>JavaScript</div>
-      <div>Node.js</div>
-      <div>SQL</div>
-      <div>ML/AI</div>
-      <div>Cloud (AWS/GCP)</div>
-      <div>DevOps</div>
-      <div>Geospatial Analysis</div>
+    <div>
+      <h3>MSc in Artificial Intelligence</h3>
+      <p>University of Example | 2023 - 2025</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
-    </div>
-  </footer>
+<!-- Certifications -->
+<section class="container">
+  <h2>Certifications</h2>
+  <div class="certs-grid">
+    <div>AI & ML Fundamentals</div>
+    <div>Python Advanced</div>
+    <div>Cloud Computing (AWS)</div>
+    <div>Data Analytics Certification</div>
+  </div>
+</section>
 
-  <script>
-    const toggle = document.getElementById('theme-toggle');
-    const body = document.body;
+<!-- Skills -->
+<section class="container">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div>Python</div>
+    <div>JavaScript</div>
+    <div>Node.js</div>
+    <div>SQL</div>
+    <div>ML/AI</div>
+    <div>Cloud (AWS/GCP)</div>
+    <div>DevOps</div>
+    <div>Geospatial Analysis</div>
+  </div>
+</section>
 
-    // Load saved theme from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      body.classList.toggle('light-theme', savedTheme === 'light');
-      toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-    }
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
+</footer>
 
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      const isLight = body.classList.contains('light-theme');
-      toggle.textContent = isLight ? '🌙' : '☀️';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
-  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+<script>
+const toggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  body.classList.toggle('light-theme', savedTheme === 'light');
+  toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+}
+
+toggle.addEventListener('click', () => {
+  body.classList.toggle('light-theme');
+  const isLight = body.classList.contains('light-theme');
+  toggle.textContent = isLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// VanillaTilt for experience cards
+VanillaTilt.init(document.querySelectorAll(".experience-card"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2,
+});
+</script>
 </body>
 </html>
