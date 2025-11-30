@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------------- Hero Section Fix ---------------- */
+    /* ---------------- Hero Section ---------------- */
     #about-hero {
       height: 100vh;
       display: flex;
@@ -20,6 +20,8 @@
       padding: 0 2rem;
       position: relative;
       overflow: hidden;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      transition: background 0.3s;
     }
 
     .hero-container {
@@ -45,11 +47,25 @@
     .hero-left p,
     .hero-left h2 {
       text-align: left;
+      color: #fff;
+      transition: color 0.3s;
     }
 
     .hero-buttons a {
       margin-right: 1rem;
       margin-bottom: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      background: #1db954;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .hero-buttons a:hover {
+      background: #14a348;
+      color: #fff;
     }
 
     .hero-right {
@@ -67,12 +83,14 @@
       object-fit: cover;
       box-shadow: 0 15px 40px rgba(0,0,0,0.5);
       display: block;
+      transition: box-shadow 0.3s;
     }
 
     /* ---------------- Sections ---------------- */
     section {
       padding: 5rem 2rem;
       text-align: center;
+      transition: color 0.3s, background 0.3s;
     }
 
     section p {
@@ -80,6 +98,7 @@
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
     }
+
 
     /* ---------------- Card Layout ---------------- */
     .tech-grid,
