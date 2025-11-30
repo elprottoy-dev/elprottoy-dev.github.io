@@ -1,339 +1,477 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Khaled Prottoy</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --accent: #1db954;
-  --dark-bg: #0f0f0f;
-  --light-bg: #f7f7f7;
-  --card-bg: #1a1a1a;
-  --card-bg-light: #fff;
-  --text-light: #ffffff;
-  --text-dark: #1a1a1a;
-  --text-muted: #aaaaaa;
-  --transition: 0.3s ease;
+/* ---------------- Reset ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Body & Theme */
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: var(--dark-bg);
-  color: var(--text-light);
+  background-color: #0f0f0f;
+  color: #ffffff;
+  overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
 }
-body.light {
-  background: var(--light-bg);
-  color: var(--text-dark);
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Navbar */
+ul {
+  list-style: none;
+}
+
+/* ---------------- Navbar ---------------- */
 #navbar {
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 1rem 2rem;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  background-color: rgba(15, 15, 15, 0.9);
-  transition: background 0.3s, color 0.3s;
-}
-body.light #navbar {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(15, 15, 15, 0.7);
+  transition: background 0.3s;
 }
 
-#navbar .logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--accent);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
 .nav-links li {
+  display: inline-block;
   margin-left: 2rem;
 }
+
 .nav-links li a {
   font-weight: 500;
-  color: var(--text-light);
   transition: 0.3s;
 }
-body.light .nav-links li a {
-  color: var(--text-dark);
-}
+
 .nav-links li a:hover {
-  color: var(--accent);
+  color: #1db954;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--accent);
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  border: 2px solid #1db954;
+  color: #1db954;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1db954;
+  color: #0f0f0f;
 }
 
 .theme-toggle {
-  margin-left: 1rem;
+  margin-left: 2rem;
   cursor: pointer;
   font-size: 1.2rem;
+  transition: color 0.3s;
 }
 
-/* Responsive Navbar */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    background-color: rgba(15, 15, 15, 0.95);
-    position: fixed;
-    top: 60px;
-    right: -100%;
-    width: 200px;
-    transition: right 0.3s ease;
-    padding: 1rem;
-    border-radius: 0 0 0 12px;
-  }
-  body.light .nav-links {
-    background-color: rgba(255, 255, 255, 0.95);
-  }
-  .nav-links.active { right: 0; }
-  .nav-links li { margin: 1rem 0; }
-  .menu-toggle { display: block; }
+/* ---------------- Hero Section ---------------- */
+#home {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Container */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1;
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-name {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+.hero-intro {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.hero-buttons a {
+  margin-right: 1rem;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.gif-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.gif-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.3), rgba(255, 255, 255, 0.1));
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* ---------------- Sections ---------------- */
+section {
+  padding: 5rem 2rem;
+}
+
 .container {
   max-width: 1100px;
-  margin: 100px auto 50px;
-  padding: 0 2rem;
+  margin: auto;
 }
 
-h2.section-title {
-  font-size: 2.8rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: var(--accent);
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
 }
 
-/* Projects Grid */
+/* ---------------- Core Technologies ---------------- */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.tech-card {
+  background: #1a1a1a;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.tech-card:hover {
+  background: #1db954;
+  color: #0f0f0f;
+}
+
+/* ---------------- Hire Me ---------------- */
+.hire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.hire-card {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+/* Gradient hover effect for Hire Me */
+.hire-card:hover {
+  background: linear-gradient(135deg, #00ff9f, #1db954, #00ff9f);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 255, 159, 0.4);
+  color: #000;
+}
+
+.hire-card h3,
+.hire-card p {
+  transition: color 0.3s ease;
+}
+
+/* ---------------- Projects ---------------- */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .project-card {
-  background: var(--card-bg);
+  perspective: 1000px;
+}
+
+.card-inner {
+  background: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transition: transform var(--transition), box-shadow var(--transition), background 0.3s, color 0.3s;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
-body.light .project-card { background: var(--card-bg-light); }
 
-.project-card img {
+.card-inner img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  display: block;
 }
 
 .card-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  padding: 1rem;
 }
 
-.card-content h3 {
-  margin: 0 0 0.5rem;
-  color: var(--accent);
-  font-size: 1.2rem;
-}
 .card-content .badge {
-  font-size: 0.75rem;
-  background: var(--accent);
-  color: var(--dark-bg);
-  padding: 2px 6px;
-  border-radius: 6px;
+  background: #1db954;
+  color: #0f0f0f;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
   margin-left: 0.5rem;
 }
-.card-content p {
-  flex: 1;
-  color: var(--text-muted);
-  margin-bottom: 0.8rem;
-}
-body.light .card-content p { color: #555; }
 
-.tech-stack {
+.card-content .tech-stack {
+  margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: var(--accent);
-  margin-bottom: 0.8rem;
+  color: #aaaaaa;
 }
 
 .project-links a {
-  display: inline-block;
   margin-right: 1rem;
-  padding: 0.4rem 0.8rem;
-  border: 2px solid var(--accent);
-  border-radius: 8px;
-  color: var(--accent);
   font-weight: 500;
-  transition: var(--transition);
-  text-decoration: none;
-  margin-top: 0.3rem;
+  color: #1db954;
 }
+
 .project-links a:hover {
-  background: var(--accent);
-  color: var(--dark-bg);
+  text-decoration: underline;
 }
 
-.project-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(29,185,84,0.4);
-}
-
-/* View All */
-.view-all {
-  text-align: center;
+/* ---------------- Research ---------------- */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
 }
-.view-all a {
-  color: var(--accent);
-  text-decoration: none;
+
+.research-card {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+}
+
+/* Gradient hover effect for Research Expertise */
+.research-card:hover {
+  background: linear-gradient(135deg, #00ff9f, #1db954, #00ff9f);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 255, 159, 0.4);
+  color: #000;
+}
+
+.research-card h3,
+.research-card ul li {
+  transition: color 0.3s ease;
+}
+
+/* ---------------- Clients ---------------- */
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.client-card {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.client-card .client-name {
   font-weight: 600;
-  border: 2px solid var(--accent);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+}
+
+.client-card .client-location {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1db954;
+}
+
+.stat p {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  background: #0f0f0f;
+  padding: 3rem 2rem;
+  color: #aaa;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-left h3 {
+  font-weight: 700;
+}
+
+.footer-right ul {
+  list-style: none;
+}
+
+.footer-right ul li a {
+  color: #aaa;
   transition: 0.3s;
 }
-.view-all a:hover {
-  background: var(--accent);
-  color: var(--dark-bg);
+
+.footer-right ul li a:hover {
+  color: #1db954;
 }
 
-</style>
-</head>
-<body>
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-left {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  .hero-right img.profile-img {
+    max-width: 300px;
+  }
+}
 
-<!-- Navbar -->
-<nav id="navbar">
-  <div class="logo">K. Prottoy</div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
-  </ul>
-  <div class="menu-toggle" id="menu-toggle">☰</div>
-  <div class="theme-toggle" id="theme-toggle">🌙</div>
-</nav>
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 2.2rem;
+  }
+  .hero-intro {
+    font-size: 1.2rem;
+  }
+  .hero-buttons a {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+  .tech-grid {
+    gap: 1rem;
+  }
+  .tech-card {
+    min-width: 100%;
+  }
+}
 
-<!-- Projects Section -->
-<div class="container" id="projects">
-  <h2 class="section-title">My Projects</h2>
-  <div class="project-grid">
-    <!-- Project 1 -->
-    <div class="project-card">
-      <img src="project1.png" alt="Cloud Microservice">
-      <div class="card-content">
-        <h3>Cloud-Deployed Microservice Architecture <span class="badge">In Development</span></h3>
-        <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines to improve reliability and scalability.</p>
-        <div class="tech-stack">React | Django | OpenAI API | JWT | Docker | AWS</div>
-        <div class="project-links">
-          <a href="#">Live Demo</a>
-          <a href="#">GitHub</a>
-        </div>
-      </div>
-    </div>
+/* ---------------- Light Theme ---------------- */
+body.light-theme {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
 
-    <!-- Project 2 -->
-    <div class="project-card">
-      <img src="project2.png" alt="Realtime Dashboard">
-      <div class="card-content">
-        <h3>Realtime Analytics Dashboard <span class="badge">Live</span></h3>
-        <p>Full-stack dashboard with live metrics, background processing, and data visualisations for business decision-making.</p>
-        <div class="tech-stack">Next.js | React | Tailwind CSS | CMS</div>
-        <div class="project-links">
-          <a href="#">Live Demo</a>
-          <a href="#">GitHub</a>
-        </div>
-      </div>
-    </div>
+body.light-theme #navbar {
+  background-color: rgba(245, 245, 245, 0.9);
+}
 
-    <!-- Project 3 -->
-    <div class="project-card">
-      <img src="project3.png" alt="E-Commerce Automation">
-      <div class="card-content">
-        <h3>E-Commerce Automation System <span class="badge">Conceptual</span></h3>
-        <p>Automated product syncing, inventory management, and notifications using APIs and serverless functions.</p>
-        <div class="tech-stack">Java | Kafka | React | Docker</div>
-        <div class="project-links">
-          <a href="#">Live Demo</a>
-          <a href="#">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="view-all">
-    <a href="#">View All Projects</a>
-  </div>
-</div>
+body.light-theme .hero-subtitle,
+body.light-theme .card-content .tech-stack,
+body.light-theme .research-card ul,
+body.light-theme .client-card .client-location,
+body.light-theme .stat p,
+body.light-theme footer {
+  color: #555;
+}
 
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
-<script>
-// Navbar toggle
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+body.light-theme .tech-card {
+  background: #e0e0e0;
+  color: #1a1a1a;
+}
 
-// Theme toggle
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-  themeToggle.textContent = document.body.classList.contains('light') ? '🌞' : '🌙';
-});
+body.light-theme .tech-card:hover {
+  background: #1db954;
+  color: #fff;
+}
 
-// VanillaTilt for project cards
-VanillaTilt.init(document.querySelectorAll(".project-card"), {
-  max: 15,
-  speed: 400,
-  glare: true,
-  "max-glare": 0.2,
-});
+body.light-theme .hire-card,
+body.light-theme .card-inner,
+body.light-theme .research-card,
+body.light-theme .client-card {
+  background: #f0f0f0;
+  color: #1a1a1a;
+}
 
-// GSAP ScrollTrigger animation
-gsap.utils.toArray('.project-card').forEach(card => {
-  gsap.from(card, {
-    scrollTrigger: {
-      trigger: card,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    opacity: 0,
-    y: 50,
-    duration: 0.8,
-    ease: "power2.out"
-  });
-});
-</script>
+body.light-theme .hire-card:hover,
+body.light-theme .research-card:hover {
+  background: linear-gradient(135deg, #00ff9f, #1db954, #00ff9f);
+  color: #000;
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 255, 159, 0.4);
+}
 
-</body>
-</html>
+body.light-theme .btn {
+  border-color: #1db954;
+  color: #1db954;
+}
+
+body.light-theme .btn:hover {
+  background: #1db954;
+  color: #fff;
+}
+
+body.light-theme .theme-toggle {
+  color: #1a1a1a;
+}
