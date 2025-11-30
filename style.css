@@ -161,7 +161,15 @@ ul {
   pointer-events: none;
   mix-blend-mode: overlay;
 }
-
+.hero-right img.profile-img {
+  width: 100%;
+  max-width: 400px; /* limit the image size */
+  height: auto;     /* maintain aspect ratio */
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: block;
+}
 /* ---------------- Sections ---------------- */
 section {
   padding: 5rem 2rem;
