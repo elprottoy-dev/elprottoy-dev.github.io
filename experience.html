@@ -358,5 +358,24 @@
       <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
     </div>
   </footer>
+  <script>
+  const toggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // Load saved theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    body.classList.toggle('light-theme', savedTheme === 'light');
+    toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+  }
+
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('light-theme');
+    const isLight = body.classList.contains('light-theme');
+    toggle.textContent = isLight ? '🌙' : '☀️';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>
+
 </body>
 </html>
