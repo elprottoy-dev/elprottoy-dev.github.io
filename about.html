@@ -21,7 +21,7 @@
       position: relative;
       overflow: hidden;
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      transition: background 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
 
     .hero-container {
@@ -99,7 +99,6 @@
       margin-bottom: 1.5rem;
     }
 
-
     /* ---------------- Card Layout ---------------- */
     .tech-grid,
     .drive-grid,
@@ -170,6 +169,7 @@
       padding: 3rem 2rem;
       color: #aaa;
       text-align: center;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* ---------------- Responsive ---------------- */
@@ -221,6 +221,51 @@
       .project-card {
         min-width: 100%;
       }
+    }
+
+    /* ---------------- Light Theme ---------------- */
+    body.light-theme {
+      background-color: #fdfdfd;
+      color: #111;
+    }
+
+    body.light-theme #about-hero {
+      background: linear-gradient(135deg, #fff, #f0f0f0);
+    }
+
+    body.light-theme .hero-left h1,
+    body.light-theme .hero-left p,
+    body.light-theme .hero-left h2 {
+      color: #111;
+    }
+
+    body.light-theme .tech-card,
+    body.light-theme .drive-card,
+    body.light-theme .achievement-card,
+    body.light-theme .competency-card,
+    body.light-theme .timeline-item,
+    body.light-theme .publication-card,
+    body.light-theme .testimonial-card,
+    body.light-theme .project-card {
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    body.light-theme .tech-card:hover,
+    body.light-theme .drive-card:hover,
+    body.light-theme .achievement-card:hover,
+    body.light-theme .competency-card:hover,
+    body.light-theme .timeline-item:hover,
+    body.light-theme .publication-card:hover,
+    body.light-theme .testimonial-card:hover,
+    body.light-theme .project-card:hover {
+      background: #1db954;
+      color: #fff;
+    }
+
+    body.light-theme footer {
+      background: #f5f5f5;
+      color: #111;
     }
   </style>
 </head>
@@ -451,27 +496,4 @@
   <script src="script.js"></script>
   <script>
     // VanillaTilt on cards
-    VanillaTilt.init(document.querySelectorAll(".tech-card, .drive-card, .achievement-card, .competency-card, .timeline-item, .publication-card, .testimonial-card, .project-card"), {
-      max: 15,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2
-    });
-
-    // Theme toggle
-    const toggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme');
-    if(savedTheme){
-      body.classList.toggle('light-theme', savedTheme === 'light');
-      toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-    }
-    toggle.addEventListener('click', ()=>{
-      body.classList.toggle('light-theme');
-      const isLight = body.classList.contains('light-theme');
-      toggle.textContent = isLight ? '🌙' : '☀️';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
-  </script>
-</body>
-</html>
+    VanillaTilt.init(document.querySelectorAll(".tech-card, .drive-card, .
