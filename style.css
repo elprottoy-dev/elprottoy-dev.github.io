@@ -637,3 +637,82 @@ body.light-theme .hero-intro {
   color:#333 !important;
   text-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
 }
+/* ==========================
+   LIGHT MODE FIX - HERO & TEXT
+   ========================== */
+
+/* Body & general text */
+body {
+  background-color: #ffffff; /* light background */
+  color: #111111;            /* dark, readable text */
+}
+
+/* Navbar links */
+#navbar {
+  background-color: #ffffff; /* light navbar */
+}
+.nav-links a {
+  color: #111111; /* dark text */
+}
+.nav-links a.btn {
+  color: #ffffff;
+  background-color: #1db954;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  color: #111111;
+}
+
+/* Hero Section */
+.hero-container,
+.hero-name,
+.hero-subtitle,
+.hero-intro {
+  color: #111111;
+}
+
+/* Hero buttons */
+.hero-buttons a.btn {
+  background-color: #1db954;
+  color: #ffffff;
+  border: none;
+}
+.hero-buttons a.btn:hover {
+  background-color: #14833b;
+}
+
+/* Hero right overlay / GIF */
+.gradient-overlay {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Card elements */
+.tech-card,
+.hire-card,
+.project-card,
+.research-card,
+.client-card {
+  background-color: #fafafa;
+  color: #111111;
+  border: 1px solid #e0e0e0;
+}
+
+/* Footer */
+footer {
+  background-color: #f8f8f8;
+  color: #111111;
+}
+footer a {
+  color: #111111;
+}
+
+/* Links hover */
+a:hover {
+  color: #1db954;
+}
+
+/* Particle canvas visibility */
+#particle-canvas {
+  mix-blend-mode: multiply;
+}
