@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experience | Khaled Prottoy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience | Khaled Prottoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #1db954;
+  --dark-bg: #0f0f0f;
+  --light-bg: #f7f7f7;
+  --card-bg: #1a1a1a;
+  --card-bg-light: #fff;
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #aaaaaa;
+  --transition: 0.3s ease;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s;
+}
+body.light-theme {
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
 
-/* Navbar */
+/* Navbar (same style as Projects/About) */
 #navbar {
   position: fixed;
   top: 0;
@@ -20,7 +40,7 @@
   padding: 1rem 2rem;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  background-color: rgba(15,15,15,0.8);
+  background-color: rgba(15,15,15,0.9);
   transition: background 0.3s;
 }
 .nav-links {
@@ -32,6 +52,7 @@
   color: var(--text-light);
   font-weight: 500;
   transition: var(--transition);
+  text-decoration: none;
 }
 .nav-links li a:hover {
   color: var(--accent);
@@ -54,7 +75,6 @@
   cursor: pointer;
   font-size: 1.2rem;
 }
-/* Mobile Menu */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -68,12 +88,14 @@
     right: -100%;
     flex-direction: column;
     background-color: rgba(15,15,15,0.95);
-    width: 200px;
+    width: 220px;
     padding: 2rem;
     transition: right 0.3s ease;
     border-radius: 10px 0 0 10px;
   }
-  .nav-links.active { right: 0; }
+  .nav-links.active {
+    right: 0;
+  }
   .nav-links li { margin: 1rem 0; }
   .menu-toggle { display: block; }
 }
@@ -88,32 +110,13 @@
   padding: 0 2rem;
   flex-wrap: wrap;
 }
-.hero-left {
-  flex: 1;
-  min-width: 300px;
-}
+.hero-left { flex: 1; min-width: 300px; }
 .hero-left h1 { font-size: 2.8rem; color: var(--accent); margin-bottom: 0.5rem; }
 .hero-left p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
 .hero-buttons a { display: inline-block; margin-right: 1rem; margin-top: 0.5rem; }
-.hero-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  min-width: 300px;
-}
-.gif-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 20px;
-}
-.gif-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.hero-right { flex: 1; display: flex; justify-content: center; min-width: 300px; }
+.gif-wrapper { position: relative; width: 100%; max-width: 400px; height: 300px; overflow: hidden; border-radius: 20px; }
+.gif-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Experience Cards */
 .experience-grid {
@@ -136,7 +139,7 @@
 }
 .card-inner h3 { color: var(--accent); margin-bottom: 0.5rem; }
 .card-inner p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
-.card-inner ul { padding-left: 1.2rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.card-inner ul { padding-left: 1.2rem; color: var(--text-muted); }
 .card-inner .badge {
   display: inline-block;
   background: var(--accent);
@@ -195,7 +198,6 @@ footer {
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="projects.html">Projects</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="experience.html">Experience</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -230,7 +232,7 @@ footer {
       <div class="card-inner">
         <h3>Gen AI Engineer</h3>
         <p>Freelancer.com | Remote</p>
-        <p>Nov 2022 - Present</p>
+        <p style="font-size:0.85rem; color: var(--text-muted)">Nov 2022 - Present</p>
         <h4>Key Achievements:</h4>
         <ul>
           <li>Delivered 45+ AI projects aligning with client goals.</li>
@@ -251,11 +253,12 @@ footer {
         </p>
       </div>
     </div>
+
     <div class="experience-card">
       <div class="card-inner">
         <h3>Research Engineer</h3>
         <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
-        <p>Jan 2025 - Sept 2025</p>
+        <p style="font-size:0.85rem; color: var(--text-muted)">Jan 2025 - Sept 2025</p>
         <h4>Key Achievements:</h4>
         <ul>
           <li>Built scalable data pipelines for 100K+ websites.</li>
@@ -345,8 +348,9 @@ const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-// VanillaTilt for cards
+// VanillaTilt for experience cards
 VanillaTilt.init(document.querySelectorAll(".experience-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
 </script>
+
 </body>
 </html>
