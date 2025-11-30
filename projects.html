@@ -17,7 +17,65 @@
   --text-muted: #aaaaaa;
   --transition: 0.3s ease;
 }
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Space between logo/brand and links */
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(15, 15, 15, 0.9); /* Slightly more opaque for visibility */
+  transition: background 0.3s, color 0.3s;
+}
 
+#navbar .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1db954;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-left: 2rem;
+}
+
+.nav-links li a {
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #1db954;
+}
+
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  border: 2px solid #1db954;
+  color: #1db954;
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1db954;
+  color: #0f0f0f;
+}
+
+.theme-toggle {
+  margin-left: 2rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
 /* Body & Theme */
 body {
   margin: 0;
