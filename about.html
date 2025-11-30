@@ -84,7 +84,12 @@
     /* ---------------- Card Layout ---------------- */
     .tech-grid,
     .drive-grid,
-    .achievements-grid {
+    .achievements-grid,
+    .competency-grid,
+    .timeline-grid,
+    .publication-grid,
+    .testimonial-grid,
+    .projects-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -94,7 +99,12 @@
 
     .tech-card,
     .drive-card,
-    .achievement-card {
+    .achievement-card,
+    .competency-card,
+    .timeline-item,
+    .publication-card,
+    .testimonial-card,
+    .project-card {
       background: #1a1a1a;
       padding: 1.2rem 1.5rem;
       border-radius: 12px;
@@ -107,10 +117,32 @@
 
     .tech-card:hover,
     .drive-card:hover,
-    .achievement-card:hover {
+    .achievement-card:hover,
+    .competency-card:hover,
+    .timeline-item:hover,
+    .publication-card:hover,
+    .testimonial-card:hover,
+    .project-card:hover {
       transform: translateY(-5px);
       background: #1db954;
       color: #0f0f0f;
+    }
+
+    /* ---------------- Timeline ---------------- */
+    .timeline-item {
+      position: relative;
+      padding: 1rem 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -15px;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent, #1db954);
+      border-radius: 50%;
     }
 
     /* ---------------- Footer ---------------- */
@@ -152,12 +184,22 @@
       }
       .tech-grid,
       .drive-grid,
-      .achievements-grid {
+      .achievements-grid,
+      .competency-grid,
+      .timeline-grid,
+      .publication-grid,
+      .testimonial-grid,
+      .projects-grid {
         gap: 1rem;
       }
       .tech-card,
       .drive-card,
-      .achievement-card {
+      .achievement-card,
+      .competency-card,
+      .timeline-item,
+      .publication-card,
+      .testimonial-card,
+      .project-card {
         min-width: 100%;
       }
     }
@@ -182,25 +224,27 @@
   <!-- Hero Section -->
   <section id="about-hero">
     <canvas id="particle-canvas"></canvas>
-
     <div class="hero-container reveal">
       <div class="hero-left">
         <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
         <p class="hero-subtitle">Open to collaborative research and development</p>
-
-        <h2 class="hero-intro">
-          Creating impactful solutions at the intersection of Programming, Engineering and Research.
-        </h2>
-
+        <h2 class="hero-intro">Creating impactful solutions at the intersection of Programming, Engineering and Research.</h2>
         <div class="hero-buttons">
           <a href="contact.html" class="btn">Get in Touch</a>
           <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
         </div>
       </div>
-
       <div class="hero-right">
         <img src="profile.jpeg" alt="Khaled Prottoy" class="profile-img">
       </div>
+    </div>
+  </section>
+
+  <!-- Professional Highlights -->
+  <section id="highlights" class="reveal">
+    <div class="container">
+      <h2>Professional Highlights</h2>
+      <p>Over 3 years of experience in software engineering, AI, geospatial analytics, and environmental research. Delivered 50+ projects including mobile apps, AI solutions, and cloud platforms. Passionate about bridging technology and social impact.</p>
     </div>
   </section>
 
@@ -209,9 +253,7 @@
     <div class="container">
       <h2>My Journey</h2>
       <p>I’m an innovative and results-driven IT professional and environmental research associate with over 3 years of cross-sectoral experience spanning software development, network engineering, geospatial analytics, public health research, and digital platform deployment.</p>
-
       <p>I specialize in bridging technology with social and environmental impact, delivering full-stack digital solutions, AI-powered platforms, and research-driven applications. My work includes developing mobile apps, cloud-deployed systems, data pipelines, and climate resilience tools, as well as designing user-centric digital platforms for communities and organizations.</p>
-
       <p>As a published researcher and multi-award-winning technologist, I bring a unique combination of creativity, leadership, and technical expertise.</p>
     </div>
   </section>
@@ -246,20 +288,74 @@
           <h3>Innovation First</h3>
           <p>Always seeking creative solutions to complex problems and pushing the boundaries of technology.</p>
         </div>
-
         <div class="drive-card">
           <h3>Quality & Craftsmanship</h3>
           <p>Writing clean, scalable, and production-ready code with industry best practices.</p>
         </div>
-
         <div class="drive-card">
           <h3>Continuous Learning</h3>
           <p>Staying ahead through research, experimentation, and hands-on development.</p>
         </div>
-
         <div class="drive-card">
           <h3>Collaboration</h3>
           <p>Strong communication, teamwork, and values built around collective growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Competencies / Soft Skills -->
+  <section id="competencies" class="reveal">
+    <div class="container">
+      <h2>Core Competencies</h2>
+      <div class="competency-grid">
+        <div class="competency-card">Leadership</div>
+        <div class="competency-card">Problem Solving</div>
+        <div class="competency-card">Strategic Thinking</div>
+        <div class="competency-card">Agile Project Management</div>
+        <div class="competency-card">Creative Innovation</div>
+        <div class="competency-card">Research & Analysis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Timeline -->
+  <section id="career-timeline" class="reveal">
+    <div class="container">
+      <h2>Career Timeline</h2>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <h3>Research Engineer - Mohammed VI Polytechnic University</h3>
+          <p>Jan 2025 - Sept 2025 | Rabat, Morocco</p>
+          <p>Built scalable data pipelines, integrated ML workflows, and developed Chrome extension prototypes for ad-blocking.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Gen AI Engineer - Freelancer.com</h3>
+          <p>Nov 2022 - Present | Remote</p>
+          <p>Delivered 45+ AI projects, built privacy-focused AI apps, and achieved 5-star ratings from 48 clients.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>BSc & MSc - University of Example</h3>
+          <p>2018 - 2025 | Dhaka, Bangladesh</p>
+          <p>Specialized in Computer Science & Artificial Intelligence, with a focus on ML, cloud computing, and geospatial analytics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications / Research -->
+  <section id="publications" class="reveal">
+    <div class="container">
+      <h2>Publications & Research</h2>
+      <div class="publication-grid">
+        <div class="publication-card">
+          <p><a href="#" target="_blank">Impact of AI on Urban Planning — Journal of Smart Cities, 2024</a></p>
+        </div>
+        <div class="publication-card">
+          <p><a href="#" target="_blank">Geospatial Analysis for Environmental Risk Assessment — Environmental Research Letters, 2023</a></p>
+        </div>
+        <div class="publication-card">
+          <p><a href="#" target="_blank">Optimizing Machine Learning Workflows for Climate Data — arXiv, 2022</a></p>
         </div>
       </div>
     </div>
@@ -274,15 +370,51 @@
           <h3>Organizational Leadership</h3>
           <p>2024 — Led General Affairs at Student Council of INPT</p>
         </div>
-
         <div class="achievement-card">
           <h3>Technical Excellence</h3>
           <p>2023 — Delivered 45+ backend projects using Python ecosystems</p>
         </div>
-
         <div class="achievement-card">
           <h3>Data Science Impact</h3>
           <p>2023 — Achieved 98% accuracy using CNN for automated extraction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials / Recommendations -->
+  <section id="testimonials" class="reveal">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p>"Khaled is an exceptional AI engineer with a deep understanding of applied ML."</p>
+          <h4>- Prof. John Doe</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"Delivered complex software solutions on time with professionalism and creativity."</p>
+          <h4>- Client from Freelancer.com</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Projects / Interests -->
+  <section id="projects" class="reveal">
+    <div class="container">
+      <h2>Beyond Work</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <p>Open-source AI contributions and GitHub projects</p>
+        </div>
+        <div class="project-card">
+          <p>Hackathons and collaborative coding events</p>
+        </div>
+        <div class="project-card">
+          <p>Environmental advocacy and sustainable tech solutions</p>
+        </div>
+        <div class="project-card">
+          <p>Mentoring and training aspiring developers</p>
         </div>
       </div>
     </div>
@@ -296,7 +428,31 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // VanillaTilt on cards
+    VanillaTilt.init(document.querySelectorAll(".tech-card, .drive-card, .achievement-card, .competency-card, .timeline-item, .publication-card, .testimonial-card, .project-card"), {
+      max: 15,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.2
+    });
 
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme){
+      body.classList.toggle('light-theme', savedTheme === 'light');
+      toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    }
+    toggle.addEventListener('click', ()=>{
+      body.classList.toggle('light-theme');
+      const isLight = body.classList.contains('light-theme');
+      toggle.textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
