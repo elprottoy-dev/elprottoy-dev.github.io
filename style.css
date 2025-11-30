@@ -604,318 +604,36 @@ body.light-theme .theme-toggle {
 /* reduce motion for prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce){
   .hero-name .ch, .card-inner, .hire-card, .project-card, .gif-wrapper { transition: none !important; animation: none !important; }
-  #particle-canvas { display: none; }
-}
-/* ------------------------------------
-   THEME VARIABLES
------------------------------------- */
-:root {
-  --accent: #1db954;
-
-  /* Backgrounds */
-  --dark-bg: #0f0f0f;
-  --light-bg: #f7f7f7;
-
-  /* Cards */
-  --card-bg-dark: #1a1a1a;
-  --card-bg-light: #ffffff;
-
-  /* Text Colors */
-  --text-light: #ffffff;
-  --text-dark: #111111;
-  --text-muted-dark: #bbbbbb;
-  --text-muted-light: #555555;
-
-  --transition: 0.3s ease;
-
-  /* Gradients */
-  --gradient-dark: linear-gradient(90deg, #1db954, #0aff9d, #00ffd2);
-  --gradient-light: linear-gradient(90deg, #111111, #1db954);
 }
 
-/* Light Theme Overrides */
-body.light-theme {
-  --card-bg-dark: var(--card-bg-light);
-  --text-light: var(--text-dark);
-  --text-muted-dark: var(--text-muted-light);
+/* ---------------- MOBILE HERO & LIGHT MODE FIXES ---------------- */
+@media (max-width:1024px){
+  .hero-container { flex-direction: column !important; text-align:center !important; }
+  .hero-left { padding-right:0 !important; margin-bottom:2rem !important; }
+  .hero-right { justify-content:center !important; margin-top:1.5rem !important; }
+  .gif-wrapper { max-width:300px !important; height:auto !important; }
 }
 
-/* ------------------------------------
-   GLOBAL
------------------------------------- */
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: var(--dark-bg);
-  color: var(--text-light);
-  transition: background var(--transition), color var(--transition);
-}
-
-body.light-theme {
-  background: var(--light-bg);
-}
-
-/* ------------------------------------
-   NAVBAR
------------------------------------- */
-#navbar {
-  width: 100%;
-  padding: 1.2rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color var(--transition);
-}
-
-body.light-theme .nav-links a {
-  color: var(--text-dark);
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-.menu-toggle,
-#theme-toggle {
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-/* ------------------------------------
-   HERO SECTION
------------------------------------- */
-#experience-hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: 120px auto 50px;
-  padding: 0 2rem;
-  flex-wrap: wrap;
-}
-
-.hero-left h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
-  color: var(--accent);
-}
-
-/* Fixed hero sub-text visibility */
-.hero-left p {
-  font-size: 1.15rem;
-  color: var(--text-muted-dark);
-}
-
-body.light-theme .hero-left p {
-  color: var(--text-muted-light);
-}
-
-/* Gradient Name Fix */
-.hero-name {
-  font-weight: 700;
-  font-size: 3.2rem;
-  background: var(--gradient-dark);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+@media (max-width:768px){
+  .hero-name{ font-size:2rem !important; letter-spacing:1px !important; line-height:1.2 !important; }
+  .hero-intro{ font-size:1.2rem !important; }
+  .hero-buttons a{ display:inline-block !important; margin-bottom:0.8rem !important; }
+  .tech-grid{ gap:1rem !important; }
+  .tech-card{ min-width:100% !important; }
+  .nav-links{ gap:1rem !important; }
+  .btn{ margin-bottom:0.8rem !important; }
 }
 
 body.light-theme .hero-name {
-  background: var(--gradient-light);
-  -webkit-background-clip: text;
-  color: transparent;
+  background: var(--gradient-light) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
 }
 
-.gif-wrapper {
-  width: 100%;
-  max-width: 420px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-/* ------------------------------------
-   EXPERIENCE CARDS
------------------------------------- */
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.experience-card {
-  perspective: 1000px;
-}
-
-.card-inner {
-  background: var(--card-bg-dark);
-  border-radius: 12px;
-  padding: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
-}
-
-body.light-theme .card-inner {
-  background: var(--card-bg-light);
-}
-
-.card-inner h3 {
-  color: var(--accent);
-}
-
-.card-inner p {
-  font-size: 0.85rem;
-  color: var(--text-muted-dark);
-}
-
-body.light-theme .card-inner p {
-  color: var(--text-muted-light);
-}
-
-.card-inner ul {
-  color: var(--text-muted-dark);
-}
-
-body.light-theme .card-inner ul {
-  color: var(--text-muted-light);
-}
-
-.card-inner .badge {
-  background: var(--accent);
-  color: #000;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.card-inner:hover {
-  transform: rotateY(10deg) scale(1.03);
-  box-shadow: 0 18px 35px rgba(29, 185, 84, 0.35);
-}
-
-/* ------------------------------------
-   EDUCATION / CERTIFICATIONS / SKILLS
------------------------------------- */
-.education-grid,
-.certs-grid,
-.skills-grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.education-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.certs-grid {
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-.skills-grid {
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-}
-
-.education-grid div,
-.certs-grid div,
-.skills-grid div {
-  background: var(--card-bg-dark);
-  color: var(--text-light);
-  padding: 1rem;
-  border-radius: 12px;
-  text-align: center;
-  transition: var(--transition);
-}
-
-body.light-theme .education-grid div,
-body.light-theme .certs-grid div,
-body.light-theme .skills-grid div {
-  background: var(--card-bg-light);
-  color: var(--text-dark);
-}
-
-.education-grid div:hover,
-.certs-grid div:hover,
-.skills-grid div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 25px rgba(29, 185, 84, 0.4);
-}
-
-/* ------------------------------------
-   FOOTER
------------------------------------- */
-footer {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: var(--dark-bg);
-  color: var(--text-muted-dark);
-}
-
-body.light-theme footer {
-  background: var(--light-bg);
-  color: var(--text-muted-light);
-}
-
-/* ------------------------------------
-   RESPONSIVE
------------------------------------- */
-@media (max-width: 768px) {
-  #experience-hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-right {
-    margin-top: 1.5rem;
-  }
-}
-
-/* HERO NAME FIX */
-.hero-name {
-  font-size: 3rem;           /* adjust size as needed */
-  letter-spacing: 2px;       /* adds horizontal spacing between letters */
-  line-height: 1.2;          /* improves readability if multiline */
-  font-weight: 700;           /* bold for emphasis */
-  color: #111111;             /* dark color for light mode */
-  word-break: normal;        /* prevents unwanted breaking */
-  margin-bottom: 0.5rem;     /* spacing below name */
-}
-
-/* Optional: make responsive for smaller screens */
-@media (max-width: 768px) {
-  .hero-name {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-}
-/* HERO NAME COLOR FIX FOR LIGHT MODE */
-body.light-mode .hero-name {
-  color: #111111;          /* dark text for light background */
-  text-shadow: 0 1px 3px rgba(0,0,0,0.1); /* subtle shadow for clarity */
-}
-
-/* Optional: Hero subtitle and intro text */
-body.light-mode .hero-subtitle,
-body.light-mode .hero-intro {
-  color: #333333;          /* readable dark gray */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+body.light-theme .hero-subtitle,
+body.light-theme .hero-intro {
+  color:#333 !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
 }
