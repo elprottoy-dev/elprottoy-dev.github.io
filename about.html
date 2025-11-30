@@ -1,182 +1,302 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — About</title>
-  <meta name="description" content="Learn more about me — background, skills, journey, and experience." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Khaled Prottoy</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="About — Your Name" />
-  <meta property="og:description" content="Professional background, interactive skills, experience timeline." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <style>
+    /* ---------------- Hero Section Fix ---------------- */
+    #about-hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      gap: 2rem;
+      z-index: 2;
+    }
+
+    .hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 2rem;
+    }
+
+    .hero-left h1,
+    .hero-left p,
+    .hero-left h2 {
+      text-align: left;
+    }
+
+    .hero-buttons a {
+      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-right img.profile-img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      display: block;
+    }
+
+    /* ---------------- Sections ---------------- */
+    section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    section p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---------------- Card Layout ---------------- */
+    .tech-grid,
+    .drive-grid,
+    .achievements-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card,
+    .drive-card,
+    .achievement-card {
+      background: #1a1a1a;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      color: #fff;
+      min-width: 220px;
+      max-width: 300px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .tech-card:hover,
+    .drive-card:hover,
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      background: #1db954;
+      color: #0f0f0f;
+    }
+
+    /* ---------------- Footer ---------------- */
+    footer {
+      background: #0f0f0f;
+      padding: 3rem 2rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* ---------------- Responsive ---------------- */
+    @media (max-width: 1024px) {
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-left {
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+      .hero-right img.profile-img {
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-name {
+        font-size: 2.2rem;
+      }
+      .hero-intro {
+        font-size: 1.2rem;
+      }
+      .hero-buttons a {
+        display: inline-block;
+        margin-bottom: 0.8rem;
+      }
+      .hero-right img.profile-img {
+        max-width: 250px;
+      }
+      .tech-grid,
+      .drive-grid,
+      .achievements-grid {
+        gap: 1rem;
+      }
+      .tech-card,
+      .drive-card,
+      .achievement-card {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Particles -->
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    </ul>
+    <div class="theme-toggle" id="theme-toggle">🌙</div>
+  </nav>
 
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="./index.html">YourName</a>
-      <nav id="navbar" role="navigation" aria-label="Main Navigation">
-        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <ul class="nav-links" id="primary-menu" role="menubar">
-          <li><a role="menuitem" href="./index.html">Home</a></li>
-          <li><a role="menuitem" href="./about.html">About</a></li>
-          <li><a role="menuitem" href="./projects.html">Projects</a></li>
-          <li><a role="menuitem" href="./experience.html">Experience</a></li>
-          <li><a role="menuitem" href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Hero Section -->
+  <section id="about-hero">
+    <canvas id="particle-canvas"></canvas>
 
-  <!-- Main -->
-  <main id="main" class="container about-page">
+    <div class="hero-container reveal">
+      <div class="hero-left">
+        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+        <p class="hero-subtitle">Open to collaborative research and development</p>
 
-    <!-- About Hero -->
-    <section class="about-hero">
-      <div class="about-grid">
+        <h2 class="hero-intro">
+          Creating impactful solutions at the intersection of Programming, Engineering and Research.
+        </h2>
 
-        <!-- Avatar Card -->
-        <div class="avatar-card card fade-in">
-          <img src="./assets/avatar.webp" alt="Your Name" class="avatar" loading="lazy">
-          <h2>Your Name</h2>
-          <p class="muted">Frontend Engineer • UI Animator • Research Developer</p>
-
-          <a class="btn btn-primary" href="./contact.html">Get in touch</a>
+        <div class="hero-buttons">
+          <a href="contact.html" class="btn">Get in Touch</a>
+          <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
         </div>
-
-        <!-- Bio -->
-        <div class="bio card slide-up">
-          <h3>About Me</h3>
-          <p>
-            I’m a developer who builds premium, interactive, animation-rich web experiences 
-            with strong focus on performance, accessibility and modern UI patterns.
-          </p>
-          <p>
-            My work blends <strong>visual storytelling</strong>, <strong>modern frontend engineering</strong>,
-            and <strong>immersive motion design</strong>.
-          </p>
-
-          <!-- Skills -->
-          <div class="skills">
-            <h4>Skills & Strengths</h4>
-
-            <div class="skill" data-skill="Frontend">
-              <span>Frontend Development</span>
-              <div class="skill-bar"><div data-width="92%"></div></div>
-            </div>
-
-            <div class="skill" data-skill="Animation">
-              <span>Animation / GSAP</span>
-              <div class="skill-bar"><div data-width="88%"></div></div>
-            </div>
-
-            <div class="skill" data-skill="UI Design">
-              <span>UI/UX Design</span>
-              <div class="skill-bar"><div data-width="80%"></div></div>
-            </div>
-
-            <div class="skill" data-skill="Performance">
-              <span>Performance Optimization</span>
-              <div class="skill-bar"><div data-width="76%"></div></div>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-    <!-- Timeline -->
-    <section class="timeline-section card fade-in">
-      <h3>Experience Timeline</h3>
+      <div class="hero-right">
+        <img src="profile.jpeg" alt="Khaled Prottoy" class="profile-img">
+      </div>
+    </div>
+  </section>
 
-      <ol class="timeline">
-        <li class="timeline-item">
-          <strong>2021 — Present</strong>
-          <div class="timeline-content">
-            <h4>Senior Frontend Engineer — ExampleCo</h4>
-            <p class="muted">Built animation pipelines, interactive dashboards, and optimized UI performance.</p>
-          </div>
-        </li>
+  <!-- My Journey -->
+  <section id="journey" class="reveal">
+    <div class="container">
+      <h2>My Journey</h2>
+      <p>I’m an innovative and results-driven IT professional and environmental research associate with over 3 years of cross-sectoral experience spanning software development, network engineering, geospatial analytics, public health research, and digital platform deployment.</p>
 
-        <li class="timeline-item">
-          <strong>2019 — 2021</strong>
-          <div class="timeline-content">
-            <h4>UI Developer — DesignHub</h4>
-            <p class="muted">Created high-end animated landing pages and design systems.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
+      <p>I specialize in bridging technology with social and environmental impact, delivering full-stack digital solutions, AI-powered platforms, and research-driven applications. My work includes developing mobile apps, cloud-deployed systems, data pipelines, and climate resilience tools, as well as designing user-centric digital platforms for communities and organizations.</p>
 
-  </main>
+      <p>As a published researcher and multi-award-winning technologist, I bring a unique combination of creativity, leadership, and technical expertise.</p>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Your Name</div>
+  <!-- Technical Expertise -->
+  <section id="expertise" class="reveal">
+    <div class="container">
+      <h2>Technical Expertise</h2>
+      <div class="tech-grid">
+        <div class="tech-card">Python</div>
+        <div class="tech-card">JavaScript</div>
+        <div class="tech-card">Node.js</div>
+        <div class="tech-card">SQL</div>
+        <div class="tech-card">R</div>
+        <div class="tech-card">AWS / GCP</div>
+        <div class="tech-card">DevOps</div>
+        <div class="tech-card">AI / ML</div>
+        <div class="tech-card">Data Analytics</div>
+        <div class="tech-card">Geospatial Analysis</div>
+        <div class="tech-card">Mobile App Dev</div>
+        <div class="tech-card">Cybersecurity</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Drives Me -->
+  <section id="drives" class="reveal">
+    <div class="container">
+      <h2>What Drives Me</h2>
+      <div class="drive-grid">
+        <div class="drive-card">
+          <h3>Innovation First</h3>
+          <p>Always seeking creative solutions to complex problems and pushing the boundaries of technology.</p>
+        </div>
+
+        <div class="drive-card">
+          <h3>Quality & Craftsmanship</h3>
+          <p>Writing clean, scalable, and production-ready code with industry best practices.</p>
+        </div>
+
+        <div class="drive-card">
+          <h3>Continuous Learning</h3>
+          <p>Staying ahead through research, experimentation, and hands-on development.</p>
+        </div>
+
+        <div class="drive-card">
+          <h3>Collaboration</h3>
+          <p>Strong communication, teamwork, and values built around collective growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Achievements -->
+  <section id="achievements" class="reveal">
+    <div class="container">
+      <h2>Key Achievements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <h3>Organizational Leadership</h3>
+          <p>2024 — Led General Affairs at Student Council of INPT</p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>Technical Excellence</h3>
+          <p>2023 — Delivered 45+ backend projects using Python ecosystems</p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>Data Science Impact</h3>
+          <p>2023 — Achieved 98% accuracy using CNN for automated extraction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
+    </div>
   </footer>
 
-  <!-- Libraries -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
-
-  <!-- App Scripts -->
-  <script type="module" src="./particles.js" defer></script>
-  <script type="module" src="./theme.js" defer></script>
-  <script type="module" src="./hero.js" defer></script>
-
-  <!-- Page-specific JS -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Animate skill bars
-      const bars = document.querySelectorAll('.skill-bar div');
-
-      bars.forEach(bar => {
-        const width = bar.dataset.width;
-        gsap.fromTo(bar, { width: "0%" }, {
-          width: width,
-          duration: 1.4,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: bar,
-            start: "top 80%"
-          }
-        });
-      });
-
-      // Fade-in sections
-      gsap.utils.toArray('.fade-in').forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
-
-      // Slide-up sections
-      gsap.utils.toArray('.slide-up').forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 40,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
-    });
-  </script>
+  <!-- Scripts -->
+  <script src="script.js"></script>
 
 </body>
 </html>
