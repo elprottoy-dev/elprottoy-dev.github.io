@@ -3,254 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experience | Khaled Prottoy</title>
+  <title>KHALED MD MEHZABIN ALAM PROTTOY | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #00ff9f;
-      --bg-color: #121212;
-      --card-bg: #1e1e1e;
-      --text-color: #f0f0f0;
-      --subtext-color: #aaa;
-      --transition: 0.3s ease-in-out;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--primary-color);
-      transition: var(--transition);
-    }
-
-    a:hover {
-      opacity: 0.8;
-    }
-
-    h1, h2, h3, h4 {
-      margin: 0.5rem 0;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    /* Navbar */
-    #navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem 2rem;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  background-color: rgba(15, 15, 15, 0.7);
-  transition: background 0.3s;
-}
-
-.nav-links li {
-  display: inline-block;
-  margin-left: 2rem;
-}
-
-.nav-links li a {
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav-links li a:hover {
-  color: #1db954;
-}
-
-.btn {
-  padding: 0.6rem 1.4rem;
-  border-radius: 30px;
-  border: 2px solid #1db954;
-  color: #1db954;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #1db954;
-  color: #0f0f0f;
-}
-
-.theme-toggle {
-  margin-left: 2rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: color 0.3s;
-}
-
-    /* Hero Section */
-    #experience-hero {
-      text-align: center;
-      padding: 6rem 2rem;
-    }
-
-    #experience-hero .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(90deg, #00ff9f, #00ffa0);
-      color: #000;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-
-    #experience-hero .btn:hover {
-      transform: translateY(-3px);
-      opacity: 0.9;
-    }
-
-    /* Experience Cards */
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .experience-card {
-      perspective: 1000px;
-    }
-
-    .card-inner {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition);
-      transform-style: preserve-3d;
-    }
-
-    .experience-card:hover .card-inner {
-      transform: rotateY(10deg) scale(1.03);
-      box-shadow: 0 15px 30px rgba(0,255,159,0.3);
-    }
-
-    .experience-card h3 {
-      color: var(--primary-color);
-    }
-
-    .experience-card ul {
-      padding-left: 1.2rem;
-      color: #ccc;
-    }
-
-    /* Education Section */
-    .education-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .education-grid div {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      transition: var(--transition);
-    }
-
-    .education-grid div:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,255,159,0.3);
-    }
-
-    /* Certifications */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .certs-grid div {
-      background: var(--card-bg);
-      padding: 1rem;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .certs-grid div:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,255,159,0.3);
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .skills-grid div {
-      background: var(--card-bg);
-      padding: 0.8rem;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .skills-grid div:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0,255,159,0.3);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 3rem 2rem;
-      background: #111;
-      color: #aaa;
-      margin-top: 4rem;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px){
-      #experience-hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hero-buttons .btn {
-        margin-bottom: 0.5rem;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navbar (Unified across pages) -->
   <nav id="navbar">
     <div class="logo"><a href="index.html" aria-label="Home">Prottoy</a></div>
     <ul class="nav-links" role="menu">
-      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+      <li role="none"><a role="menuitem" href="#home">Home</a></li>
       <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
       <li role="none"><a role="menuitem" href="#gallery">Gallery</a></li>
       <li role="none"><a role="menuitem" href="about.html">About</a></li>
@@ -263,101 +27,301 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="experience-hero">
+  <section id="home">
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
     <div class="hero-container">
-      <h1 class="hero-name">Professional Experience</h1>
-      <p class="hero-subtitle">AI, software engineering, and innovation at a glance.</p>
-      <div class="hero-buttons">
-        <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">Download Resume</a>
-        <a href="#contact" class="btn">Get in Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work Experience -->
-  <section id="work-experience" class="container">
-    <h2>Work Experience</h2>
-    <div class="experience-grid">
-      <div class="experience-card">
-        <div class="card-inner">
-          <h3>Gen AI Engineer</h3>
-          <p>Freelancer.com | Remote</p>
-          <p style="font-size:0.85rem; color: #aaa;">Nov 2022 - Present</p>
-          <h4>Key Achievements:</h4>
-          <ul>
-            <li>Delivered 45+ AI projects aligning with client goals.</li>
-            <li>Developed AI apps with privacy-focused solutions.</li>
-            <li>Earned 5-star rating across 48 client reviews.</li>
-            <li>100% on-time & on-budget project delivery.</li>
-          </ul>
-          <h4>Technologies:</h4>
-          <p>Python, PyTorch, TensorFlow, LangChain, OpenAI GPT APIs, Docker, FastAPI, Git</p>
+      <div class="hero-left">
+        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+        <p class="hero-subtitle">Open to collaborative research and development</p>
+        <h2 class="hero-intro">Hi, I'm Prottoy.<br>Researcher & Developer blending Environmental Science, Data Science, and Digital Innovation to build impactful solutions. </h2>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn">Get in Touch</a>
+          <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">View Resume</a>
         </div>
       </div>
-
-      <div class="experience-card">
-        <div class="card-inner">
-          <h3>Research Engineer</h3>
-          <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
-          <p style="font-size:0.85rem; color: #aaa;">Jan 2025 - Sept 2025</p>
-          <h4>Key Achievements:</h4>
-          <ul>
-            <li>Built scalable data pipelines for 100K+ websites.</li>
-            <li>Integrated ML workflows, OCR & real-time analysis.</li>
-            <li>Developed Chrome extension prototype for ad blocking.</li>
-          </ul>
-          <h4>Technologies:</h4>
-          <p>Python, Apache Spark, ETL, OCR, Web Scraping, Chrome Extensions, ML, Data Cleaning</p>
+      <div class="hero-right">
+        <div class="gif-wrapper">
+          <img src="hero.gif" alt="Hero GIF">
+          <div class="gradient-overlay"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="container">
-    <h2>Education</h2>
-    <div class="education-grid">
-      <div>
-        <h3>BSc in Computer Science</h3>
-        <p>University of Example | 2018 - 2022</p>
+  <!-- Core Technologies -->
+  <section id="technologies" class="reveal">
+    <div class="container">
+      <h2>CORE TECHNOLOGIES</h2>
+      <div class="tech-grid">
+       
+        <div class="tech-card">Python</div>
+        <div class="tech-card">Django</div>
+        <div class="tech-card">FastAPI</div>
+        <div class="tech-card">JavaScript</div>
+        <div class="tech-card">Node.js</div>
+        <div class="tech-card">Express.js</div>
+        <div class="tech-card">Next.js</div>
+        <div class="tech-card">ReactJS</div>
+        <div class="tech-card">React</div>
+        <div class="tech-card">HTML</div>
+        <div class="tech-card">CSS</div>
+        <div class="tech-card">Fastify</div>
+        <div class="tech-card">PostgreSQL</div>
+        <div class="tech-card">MySQL</div>
+        <div class="tech-card">SQL</div>
+        <div class="tech-card">MongoDB</div>
+        <div class="tech-card">AWS</div>
+        <div class="tech-card">Docker</div>
+        <div class="tech-card">Nginx</div>
+        <div class="tech-card">Redis</div>
+        <div class="tech-card">Firebase</div>
+        
+        
       </div>
-      <div>
-        <h3>MSc in Artificial Intelligence</h3>
-        <p>University of Example | 2023 - 2025</p>
+    </div>
+  </section>
+
+  <!-- Why Hire Me? -->
+  <section id="hireme" class="reveal">
+    <div class="container">
+      <h2>Why Hire Me?</h2>
+      <div class="hire-grid">
+        <div class="hire-card">
+          <h3>End-to-End System Design</h3>
+          <p>Skilled in translating business requirements into complete system architectures, including database design, API structure, and deployment pipelines.</p>
+        </div>
+        <div class="hire-card">
+          <h3>A Track of Trust and Excellence</h3>
+          <p>I build software that delivers measurable value. Every solution is engineered with reliability, precision, and data-backed insights.</p>
+        </div>
+        <div class="hire-card">
+          <h3>5-Star Rated Freelancer</h3>
+          <p>Achieved a perfect 5.0-star rating across 17 reviews by delivering high-quality code and clear communication.</p>
+        </div>
+        <div class="hire-card">
+          <h3>25+ Successful Projects</h3>
+          <p>Architected and delivered backend systems and REST APIs for over 20 freelance projects globally.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Cloud & DevOps Expertise</h3>
+          <p>Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability and reduce deployment times.</p>
+        </div>
+         <div class="hire-card">
+          <h3>Full Remote Collaboration Skills</h3>
+          <p>Comfortable working across time zones with clients from the US, Europe, Australia, and Asia, ensuring smooth communication and delivery.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Debugging & Performance Optimization</h3>
+          <p>Specialist in improving system performance, reducing server load, and refining API response times.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Trusted by Global Clients</h3>
+          <p>Proven track record of delivering solutions for clients worldwide via Freelancer.com.</p>
+        </div>
+        <div class="hire-card">
+          <h3>100% Commitment to Client Success</h3>
+          <p> Once I take a project, I stay with the client until the solution is stable, optimised, and ready for scale.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section id="certifications" class="container">
-    <h2>Certifications</h2>
-    <div class="certs-grid">
-      <div>AI & ML Fundamentals</div>
-      <div>Python Advanced</div>
-      <div>Cloud Computing (AWS)</div>
-      <div>Data Analytics Certification</div>
+  <!-- Featured Projects -->
+  <section id="projects" class="reveal">
+    <div class="container">
+      <h2>My Featured Projects</h2>
+      <div class="project-grid">
+        <div class="project-card" data-link="#">
+          <div class="card-inner">
+            <img src="project1.png" alt="AI-Powered Career Toolkit">
+            <div class="card-content">
+              <h3>Cloud-Deployed Microservice Architecture <span class="badge">In Development</span></h3>
+              <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines, improving reliability, scalability, and deployment speed.</p>
+              <div class="tech-stack">React | Django | OpenAI API | JWT | Docker | AWS</div>
+              <div class="project-links">
+                <a href="#" aria-label="Live demo">Live Demo</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-link="#">
+          <div class="card-inner">
+            <img src="project2.png" alt="ENSA Khouribga University Website">
+            <div class="card-content">
+              <h3>Realtime Analytics Dashboard <span class="badge">Live</span></h3>
+              <p>full-stack dashboard with live metrics, background processing, and data visualisations for business decision-making.</p>
+              <div class="tech-stack">Next.js | React | Tailwind CSS | CMS</div>
+              <div class="project-links">
+                <a href="#" aria-label="Live demo">Live Demo</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-link="#">
+          <div class="card-inner">
+            <img src="project3.png" alt="Distributed Real-Time Voting System">
+            <div class="card-content">
+              <h3>E-Commerce Automation System<span class="badge">Conceptual Project</span></h3>
+              <p>Automated product syncing, inventory management, and notifications using APIs and serverless functions.</p>
+              <div class="tech-stack">Java | Kafka | React | Docker</div>
+              <div class="project-links">
+                <a href="#" aria-label="Live demo">Live Demo</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="view-all">
+        <a href="projects.html">View All Projects</a>
+      </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="container">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div>Python</div>
-      <div>JavaScript</div>
-      <div>Node.js</div>
-      <div>SQL</div>
-      <div>ML/AI</div>
-      <div>Cloud (AWS/GCP)</div>
-      <div>DevOps</div>
-      <div>Geospatial Analysis</div>
+  <!-- Research Expertise -->
+  <section id="research" class="reveal">
+    <div class="container">
+      <h2>My Research Expertise</h2>
+      <div class="research-grid">
+        <div class="research-card">
+  <h3>Artificial Intelligence & Machine Learning</h3>
+  <ul>
+    <li>Neural Networks & Deep Learning</li>
+    <li>LLM Fine-Tuning & Evaluation</li>
+    <li>Privacy-Preserving Machine Learning</li>
+    <li>Generative AI Research & Applications</li>
+    <li>Reinforcement Learning & Optimization</li>
+    <li>AI Model Explainability & Evaluation Metrics</li>
+    <li>Domain-Specific AI Solutions</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Natural Language Processing (NLP)</h3>
+  <ul>
+    <li>Text Analytics & Sentiment Analysis</li>
+    <li>Contextual Embeddings & Semantic Search</li>
+    <li>Named Entity Recognition (NER) & Classification</li>
+    <li>Question-Answering Systems</li>
+    <li>Summarization & Text Generation</li>
+    <li>Language Modeling & Corpus Analysis</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Data Engineering & Research Infrastructure</h3>
+  <ul>
+    <li>ETL & Data Pipeline Design</li>
+    <li>Batch & Real-Time Data Workflows</li>
+    <li>Data Cleaning, Validation & Quality Assurance</li>
+    <li>Research-Ready Data Warehouses</li>
+    <li>Data Integration from Heterogeneous Sources</li>
+    <li>Scalable Data Processing & Storage Solutions</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Web Privacy & Security Research</h3>
+  <ul>
+    <li>Ad & Tracker Detection</li>
+    <li>Network-Level & DOM Analysis</li>
+    <li>Privacy-Focused Data Pipelines</li>
+    <li>Web Privacy & Data Protection Compliance</li>
+    <li>Threat Modeling & Risk Assessment</li>
+    <li>Secure System Design Principles</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>DevOps & Cloud Computing</h3>
+  <ul>
+    <li>CI/CD Pipeline Design & Deployment</li>
+    <li>Docker & Containerization</li>
+    <li>Kubernetes & Orchestration</li>
+    <li>Cloud Services (AWS EC2, Lambda, S3, RDS)</li>
+    <li>Monitoring, Logging & Alerting Systems</li>
+    <li>Infrastructure as Code (IaC)</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Computer Networks & Cybersecurity</h3>
+  <ul>
+    <li>Network Architecture & Protocol Analysis</li>
+    <li>Network Security & Intrusion Detection</li>
+    <li>Cryptography & Data Encryption</li>
+    <li>Vulnerability Assessment & Penetration Testing</li>
+    <li>Firewall & Access Control Configurations</li>
+    <li>Secure Communication Systems</li>
+  </ul>
+</div>
+  </section>
+
+  <!-- Client Success Stories -->
+  <section id="clients" class="reveal">
+    <div class="container">
+      <h2>Client Success Stories</h2>
+      <div class="client-grid">
+        <div class="client-card">
+          <p class="client-name">Sarah Thompson, Project Lead, GreenEarth Solutions</p>
+          <p class="client-location">San Francisco, United States</p>
+          <p>"Prottoy delivered exactly what we needed: clean code, clear communication, and fast turnaround. One of the best developers we’ve worked with."</p>
+          <p class="project-name">-Firebase & Vercel Dashboard</p>
+        </div>
+        <div class="client-card">
+          <p class="client-name">Ravi Kumar, IBM devops enginner</p>
+          <p class="client-location">IIT Kanpur, India</p>
+          <p>"High stakes? Tight deadlines? Prottoy thrives. He’s the pro you call when average isn’t enough."</p>
+          <p class="project-name">-CI/CD Pipeline & Deployments</p>
+        </div>
+        <div class="client-card">
+          <p class="client-name">Michael Nguyen, Head of Engineering, SUNMI </p>
+          <p class="client-location">Newcastle upon Tyne, United Kingdom</p>
+          <p>"Reliable, fast, and innovative, Prottoy doesn’t just deliver; he reshapes the way we approach challenges."</p>
+          <p class="project-name">-Scala Data Extraction & Integrations</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><h3>5.0</h3><p>Average Rating</p></div>
+        <div class="stat"><h3>46+</h3><p>Client Reviews</p></div>
+        <div class="stat"><h3>45+</h3><p>Projects Done</p></div>
+        <div class="stat"><h3>100%</h3><p>On-Time Delivery</p></div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Ready to Build -->
+  <section id="build" class="reveal">
+    <div class="container">
+      <h2>Ready to Build Something Amazing?</h2>
+      <p>Let's collaborate to bring your vision to life. From concept to deployment, I deliver high-quality software solutions.</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer / Quick Links -->
   <footer>
     <div class="container footer-container">
-      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
+      <div class="footer-left">
+        <h3>Powered By<br>KHALED MD MEHZABIN ALAM PROTTOY</h3>
+        <p>Crafting reliable, Sustainable solutions that make a positive impact worldwide.</p>
+      </div>
+      <div class="footer-right">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 
