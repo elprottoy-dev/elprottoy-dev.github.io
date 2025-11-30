@@ -1,89 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KHALED MD MEHZABIN ALAM PROTTOY | Portfolio</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.png" type="image/png">
-
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Small local fixes so navbar & hero spacing behave consistently across pages.
-       These are intentionally minimal — main styling remains in style.css */
-    :root {
-      --nav-height: 72px;
-    }
-    body { padding-top: var(--nav-height); } /* ensure content doesn't hide beneath fixed navbar */
-
-    /* Make sure nav-links hidden on small screens until toggled (consistent with other pages) */
-    #navbar .nav-links {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-    @media (max-width: 768px) {
-      #navbar .nav-links {
-        position: fixed;
-        top: 72px;
-        right: -100%;
-        width: 220px;
-        height: calc(100% - 72px);
-        flex-direction: column;
-        padding: 1.5rem;
-        gap: 1rem;
-        background: rgba(10,10,10,0.95);
-        transition: right 0.28s ease;
-        z-index: 1200;
-      }
-      #navbar .nav-links.active {
-        right: 0;
-      }
-      #menu-toggle { display: block; }
-    }
-
-    /* Minor hero text animation helpers */
-    .hero-name .char { display: inline-block; opacity: 0; transform: translateY(8px); }
-  </style>
 </head>
-
 <body>
   <!-- Navbar -->
   <nav id="navbar">
-    <div class="logo"><a href="index.html" aria-label="Home">Prottoy</a></div>
-    <ul class="nav-links" role="menu" id="nav-links">
-      <li role="none"><a role="menuitem" href="#home">Home</a></li>
-      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
-      <li role="none"><a role="menuitem" href="#gallery">Gallery</a></li>
-      <li role="none"><a role="menuitem" href="about.html">About</a></li>
-      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
-      <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
-      <li role="none"><a role="menuitem" href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
     </ul>
-    <div id="theme-toggle" class="theme-toggle" tabindex="0" role="button" aria-pressed="false">🌙</div>
-    <div id="menu-toggle" class="menu-toggle" tabindex="0" role="button" aria-label="Toggle menu" style="display:none">☰</div>
+    <div class="theme-toggle" id="theme-toggle">🌙</div>
   </nav>
 
   <!-- Hero Section -->
   <section id="home">
-    <canvas id="particle-canvas" aria-hidden="true" style="position:absolute; inset:0; z-index:0;"></canvas>
-
-    <div class="hero-container" style="position:relative; z-index:2;">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-container">
       <div class="hero-left">
-        <!-- split the hero name into span.char for animation -->
-        <h1 class="hero-name" id="heroName">
-          <!-- JS will split this into animated characters (keeps original text same) -->
-          KHALED MD MEHZABIN ALAM PROTTOY
-        </h1>
+        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
         <p class="hero-subtitle">Open to collaborative research and development</p>
-        <h2 class="hero-intro">Hi, I'm Prottoy.<br>Researcher & Developer blending Environmental Science, Data Science, and Digital Innovation to build impactful solutions.</h2>
+        <h2 class="hero-intro">Hi, I'm Prottoy.<br>Researcher & Developer blending Environmental Science, Data Science, and Digital Innovation to build impactful solutions. </h2>
         <div class="hero-buttons">
           <a href="#contact" class="btn">Get in Touch</a>
-          <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">View Resume</a>
+          <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
         </div>
       </div>
       <div class="hero-right">
@@ -100,6 +51,7 @@
     <div class="container">
       <h2>CORE TECHNOLOGIES</h2>
       <div class="tech-grid">
+       
         <div class="tech-card">Python</div>
         <div class="tech-card">Django</div>
         <div class="tech-card">FastAPI</div>
@@ -121,76 +73,108 @@
         <div class="tech-card">Nginx</div>
         <div class="tech-card">Redis</div>
         <div class="tech-card">Firebase</div>
+        
+        
       </div>
     </div>
   </section>
 
-  <!-- Why Hire Me -->
+  <!-- Why Hire Me? -->
   <section id="hireme" class="reveal">
     <div class="container">
       <h2>Why Hire Me?</h2>
       <div class="hire-grid">
-        <div class="hire-card"><h3>End-to-End System Design</h3><p>Skilled in translating business requirements into complete system architectures.</p></div>
-        <div class="hire-card"><h3>A Track of Trust and Excellence</h3><p>I build software that delivers measurable value.</p></div>
-        <div class="hire-card"><h3>5-Star Rated Freelancer</h3><p>Perfect 5.0-star rating across 17 reviews.</p></div>
-        <div class="hire-card"><h3>25+ Successful Projects</h3><p>Delivered backend systems and APIs globally.</p></div>
-        <div class="hire-card"><h3>Cloud & DevOps Expertise</h3><p>Deployed scalable apps on AWS using Docker & CI/CD.</p></div>
-        <div class="hire-card"><h3>Full Remote Collaboration Skills</h3><p>Experience working worldwide across time zones.</p></div>
-        <div class="hire-card"><h3>Debugging & Performance Optimization</h3><p>Specialist in improving system efficiency.</p></div>
-        <div class="hire-card"><h3>Trusted by Global Clients</h3><p>Served clients worldwide via Freelancer.com.</p></div>
-        <div class="hire-card"><h3>100% Commitment to Client Success</h3><p>I stay until the solution is stable and optimized.</p></div>
+        <div class="hire-card">
+          <h3>End-to-End System Design</h3>
+          <p>Skilled in translating business requirements into complete system architectures, including database design, API structure, and deployment pipelines.</p>
+        </div>
+        <div class="hire-card">
+          <h3>A Track of Trust and Excellence</h3>
+          <p>I build software that delivers measurable value. Every solution is engineered with reliability, precision, and data-backed insights.</p>
+        </div>
+        <div class="hire-card">
+          <h3>5-Star Rated Freelancer</h3>
+          <p>Achieved a perfect 5.0-star rating across 17 reviews by delivering high-quality code and clear communication.</p>
+        </div>
+        <div class="hire-card">
+          <h3>25+ Successful Projects</h3>
+          <p>Architected and delivered backend systems and REST APIs for over 20 freelance projects globally.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Cloud & DevOps Expertise</h3>
+          <p>Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability and reduce deployment times.</p>
+        </div>
+         <div class="hire-card">
+          <h3>Full Remote Collaboration Skills</h3>
+          <p>Comfortable working across time zones with clients from the US, Europe, Australia, and Asia, ensuring smooth communication and delivery.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Debugging & Performance Optimization</h3>
+          <p>Specialist in improving system performance, reducing server load, and refining API response times.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Trusted by Global Clients</h3>
+          <p>Proven track record of delivering solutions for clients worldwide via Freelancer.com.</p>
+        </div>
+        <div class="hire-card">
+          <h3>100% Commitment to Client Success</h3>
+          <p> Once I take a project, I stay with the client until the solution is stable, optimised, and ready for scale.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- Featured Projects -->
   <section id="projects" class="reveal">
     <div class="container">
       <h2>My Featured Projects</h2>
       <div class="project-grid">
-
-        <!-- Project 1 -->
-        <div class="project-card" data-link="#">
+        <div class="project-card">
           <div class="card-inner">
             <img src="project1.png" alt="AI-Powered Career Toolkit">
             <div class="card-content">
               <h3>Cloud-Deployed Microservice Architecture <span class="badge">In Development</span></h3>
-              <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines.</p>
+              <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines, improving reliability, scalability, and deployment speed.</p>
               <div class="tech-stack">React | Django | OpenAI API | JWT | Docker | AWS</div>
-              <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Project 2 -->
-        <div class="project-card" data-link="#">
+        <div class="project-card">
           <div class="card-inner">
-            <img src="project2.png" alt="Dashboard">
+            <img src="project2.png" alt="ENSA Khouribga University Website">
             <div class="card-content">
               <h3>Realtime Analytics Dashboard <span class="badge">Live</span></h3>
-              <p>Full-stack dashboard with real-time metrics and visualizations.</p>
+              <p>full-stack dashboard with live metrics, background processing, and data visualisations for business decision-making.</p>
               <div class="tech-stack">Next.js | React | Tailwind CSS | CMS</div>
-              <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Project 3 -->
-        <div class="project-card" data-link="#">
+        <div class="project-card">
           <div class="card-inner">
-            <img src="project3.png" alt="Voting System">
+            <img src="project3.png" alt="Distributed Real-Time Voting System">
             <div class="card-content">
-              <h3>E-Commerce Automation System <span class="badge">Conceptual Project</span></h3>
-              <p>Automated product syncing and inventory management.</p>
+              <h3>E-Commerce Automation System<span class="badge">Conceptual Project</span></h3>
+              <p>Automated product syncing, inventory management, and notifications using APIs and serverless functions.</p>
               <div class="tech-stack">Java | Kafka | React | Docker</div>
-              <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-
-      <div class="view-all"><a href="projects.html">View All Projects</a></div>
+      <div class="view-all">
+        <a href="#">View All Projects</a>
+      </div>
     </div>
   </section>
 
@@ -199,64 +183,78 @@
     <div class="container">
       <h2>My Research Expertise</h2>
       <div class="research-grid">
-
         <div class="research-card">
-          <h3>Artificial Intelligence & Machine Learning</h3>
-          <ul>
-            <li>Neural Networks & Deep Learning</li>
-            <li>LLM Fine-Tuning & Evaluation</li>
-            <li>Generative AI & Reinforcement Learning</li>
-            <li>Model Explainability & Optimization</li>
-          </ul>
-        </div>
+  <h3>Artificial Intelligence & Machine Learning</h3>
+  <ul>
+    <li>Neural Networks & Deep Learning</li>
+    <li>LLM Fine-Tuning & Evaluation</li>
+    <li>Privacy-Preserving Machine Learning</li>
+    <li>Generative AI Research & Applications</li>
+    <li>Reinforcement Learning & Optimization</li>
+    <li>AI Model Explainability & Evaluation Metrics</li>
+    <li>Domain-Specific AI Solutions</li>
+  </ul>
+</div>
 
-        <div class="research-card">
-          <h3>NLP — Natural Language Processing</h3>
-          <ul>
-            <li>NER, Summarization, QA Systems</li>
-            <li>Semantic Search & Embeddings</li>
-            <li>Text Analytics</li>
-          </ul>
-        </div>
+<div class="research-card">
+  <h3>Natural Language Processing (NLP)</h3>
+  <ul>
+    <li>Text Analytics & Sentiment Analysis</li>
+    <li>Contextual Embeddings & Semantic Search</li>
+    <li>Named Entity Recognition (NER) & Classification</li>
+    <li>Question-Answering Systems</li>
+    <li>Summarization & Text Generation</li>
+    <li>Language Modeling & Corpus Analysis</li>
+  </ul>
+</div>
 
-        <div class="research-card">
-          <h3>Data Engineering</h3>
-          <ul>
-            <li>ETL Pipeline Design</li>
-            <li>Batch/Real-Time Workflows</li>
-            <li>Data Warehousing & Validation</li>
-          </ul>
-        </div>
+<div class="research-card">
+  <h3>Data Engineering & Research Infrastructure</h3>
+  <ul>
+    <li>ETL & Data Pipeline Design</li>
+    <li>Batch & Real-Time Data Workflows</li>
+    <li>Data Cleaning, Validation & Quality Assurance</li>
+    <li>Research-Ready Data Warehouses</li>
+    <li>Data Integration from Heterogeneous Sources</li>
+    <li>Scalable Data Processing & Storage Solutions</li>
+  </ul>
+</div>
 
-        <div class="research-card">
-          <h3>Web Privacy & Security</h3>
-          <ul>
-            <li>Tracker Detection</li>
-            <li>Risk Assessment</li>
-            <li>Secure System Design</li>
-          </ul>
-        </div>
+<div class="research-card">
+  <h3>Web Privacy & Security Research</h3>
+  <ul>
+    <li>Ad & Tracker Detection</li>
+    <li>Network-Level & DOM Analysis</li>
+    <li>Privacy-Focused Data Pipelines</li>
+    <li>Web Privacy & Data Protection Compliance</li>
+    <li>Threat Modeling & Risk Assessment</li>
+    <li>Secure System Design Principles</li>
+  </ul>
+</div>
 
-        <div class="research-card">
-          <h3>DevOps & Cloud</h3>
-          <ul>
-            <li>CI/CD Pipelines</li>
-            <li>AWS, Docker, Kubernetes</li>
-            <li>Monitoring & Alerting</li>
-          </ul>
-        </div>
+<div class="research-card">
+  <h3>DevOps & Cloud Computing</h3>
+  <ul>
+    <li>CI/CD Pipeline Design & Deployment</li>
+    <li>Docker & Containerization</li>
+    <li>Kubernetes & Orchestration</li>
+    <li>Cloud Services (AWS EC2, Lambda, S3, RDS)</li>
+    <li>Monitoring, Logging & Alerting Systems</li>
+    <li>Infrastructure as Code (IaC)</li>
+  </ul>
+</div>
 
-        <div class="research-card">
-          <h3>Computer Networks & Cybersecurity</h3>
-          <ul>
-            <li>Protocol Analysis</li>
-            <li>Encryption & Firewall Config</li>
-            <li>Vulnerability Assessment</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
+<div class="research-card">
+  <h3>Computer Networks & Cybersecurity</h3>
+  <ul>
+    <li>Network Architecture & Protocol Analysis</li>
+    <li>Network Security & Intrusion Detection</li>
+    <li>Cryptography & Data Encryption</li>
+    <li>Vulnerability Assessment & Penetration Testing</li>
+    <li>Firewall & Access Control Configurations</li>
+    <li>Secure Communication Systems</li>
+  </ul>
+</div>
   </section>
 
   <!-- Client Success Stories -->
@@ -265,22 +263,22 @@
       <h2>Client Success Stories</h2>
       <div class="client-grid">
         <div class="client-card">
-          <p class="client-name">Sarah Thompson</p>
+          <p class="client-name">Sarah Thompson, Project Lead, GreenEarth Solutions</p>
           <p class="client-location">San Francisco, United States</p>
-          <p>"Prottoy delivered exactly what we needed."</p>
-          <p class="project-name">- Firebase Dashboard</p>
+          <p>"Prottoy delivered exactly what we needed: clean code, clear communication, and fast turnaround. One of the best developers we’ve worked with."</p>
+          <p class="project-name">-Firebase & Vercel Dashboard</p>
         </div>
         <div class="client-card">
-          <p class="client-name">Ravi Kumar, IBM</p>
+          <p class="client-name">Ravi Kumar, IBM devops enginner</p>
           <p class="client-location">IIT Kanpur, India</p>
-          <p>"High stakes? Tight deadlines? Prottoy thrives."</p>
-          <p class="project-name">- CI/CD Deployments</p>
+          <p>"High stakes? Tight deadlines? Prottoy thrives. He’s the pro you call when average isn’t enough."</p>
+          <p class="project-name">-CI/CD Pipeline & Deployments</p>
         </div>
         <div class="client-card">
-          <p class="client-name">Michael Nguyen</p>
-          <p class="client-location">United Kingdom</p>
-          <p>"Reliable, fast, and innovative."</p>
-          <p class="project-name">- Scala Integrations</p>
+          <p class="client-name">Michael Nguyen, Head of Engineering, SUNMI </p>
+          <p class="client-location">Newcastle upon Tyne, United Kingdom</p>
+          <p>"Reliable, fast, and innovative, Prottoy doesn’t just deliver; he reshapes the way we approach challenges."</p>
+          <p class="project-name">-Scala Data Extraction & Integrations</p>
         </div>
       </div>
       <div class="stats">
@@ -292,16 +290,16 @@
     </div>
   </section>
 
-  <!-- Build Section -->
+  <!-- Ready to Build -->
   <section id="build" class="reveal">
     <div class="container">
       <h2>Ready to Build Something Amazing?</h2>
-      <p>Let's collaborate to bring your vision to life.</p>
+      <p>Let's collaborate to bring your vision to life. From concept to deployment, I deliver high-quality software solutions.</p>
       <a href="#contact" class="btn">Get in Touch</a>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer / Quick Links -->
   <footer>
     <div class="container footer-container">
       <div class="footer-left">
@@ -325,205 +323,10 @@
     </div>
   </footer>
 
-  <!-- Libraries -->
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
-
-  <!-- Unified Script: menu toggle, theme sync, particle background, hero animation -->
-  <script>
-    // --------- Mobile menu toggle (shared behaviour) ----------
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    // Show hamburger only on small screens (in case style.css hides it)
-    function ensureMenuToggleVisible() {
-      const mq = window.matchMedia('(max-width: 768px)');
-      const mt = document.getElementById('menu-toggle');
-      if (mq.matches) mt.style.display = 'block';
-      else mt.style.display = 'none';
-    }
-    ensureMenuToggleVisible();
-    window.addEventListener('resize', ensureMenuToggleVisible);
-
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-      });
-    }
-
-    // Close mobile menu when a nav link is clicked
-    document.querySelectorAll('#nav-links a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
-      });
-    });
-
-    // Close menu on outside click (mobile)
-    document.addEventListener('click', (e) => {
-      const target = e.target;
-      if (!navLinks.contains(target) && !menuToggle.contains(target) && window.innerWidth <= 768) {
-        navLinks.classList.remove('active');
-      }
-    });
-
-    // Accessibility: keyboard toggle for menu
-    if (menuToggle) {
-      menuToggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          navLinks.classList.toggle('active');
-        }
-      });
-    }
-
-    // --------- Theme toggle (persisted across pages) ----------
-    const themeToggle = document.getElementById('theme-toggle');
-
-    // Initialize theme from localStorage
-    const savedTheme = localStorage.getItem('site-theme');
-    if (savedTheme === 'light') {
-      document.documentElement.classList.add('light-theme');
-      document.body.classList.add('light-theme');
-      if (themeToggle) themeToggle.textContent = '☀️';
-      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
-    } else {
-      if (themeToggle) themeToggle.textContent = '🌙';
-      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'false');
-    }
-
-    themeToggle && themeToggle.addEventListener('click', () => {
-      const isLight = document.body.classList.toggle('light-theme');
-      // mirror on root element for CSS that might target :root
-      if (isLight) {
-        document.documentElement.classList.add('light-theme');
-        themeToggle.textContent = '☀️';
-        themeToggle.setAttribute('aria-pressed', 'true');
-        localStorage.setItem('site-theme', 'light');
-      } else {
-        document.documentElement.classList.remove('light-theme');
-        themeToggle.textContent = '🌙';
-        themeToggle.setAttribute('aria-pressed', 'false');
-        localStorage.setItem('site-theme', 'dark');
-      }
-    });
-
-    // --------- Particle background (lightweight canvas) ----------
-    (function particleCanvas(){
-      const canvas = document.getElementById('particle-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w = canvas.width = innerWidth;
-      let h = canvas.height = innerHeight;
-
-      window.addEventListener('resize', () => {
-        w = canvas.width = innerWidth;
-        h = canvas.height = innerHeight;
-      });
-
-      const particles = [];
-      const count = Math.max(30, Math.floor((w*h) / 90000)); // scale with screen
-
-      function rand(min, max){ return Math.random() * (max - min) + min; }
-
-      for (let i=0;i<count;i++){
-        particles.push({
-          x: rand(0,w),
-          y: rand(0,h),
-          r: rand(0.6, 2.4),
-          vx: rand(-0.25, 0.25),
-          vy: rand(-0.15, 0.15),
-          alpha: rand(0.05, 0.25)
-        });
-      }
-
-      function draw(){
-        ctx.clearRect(0,0,w,h);
-        for (const p of particles){
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < -10) p.x = w + 10;
-          if (p.x > w + 10) p.x = -10;
-          if (p.y < -10) p.y = h + 10;
-          if (p.y > h + 10) p.y = -10;
-
-          ctx.beginPath();
-          ctx.globalAlpha = p.alpha;
-          ctx.fillStyle = '#9be6bc'; // subtle greenish
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
-
-    // --------- Hero name letter animation using GSAP ---------
-    (function heroAnimation(){
-      const heroEl = document.getElementById('heroName');
-      if (!heroEl || typeof gsap === 'undefined') return;
-
-      // split text into spans if not already split
-      const text = heroEl.textContent.trim();
-      heroEl.textContent = '';
-      const frag = document.createDocumentFragment();
-      for (const ch of text) {
-        const span = document.createElement('span');
-        span.className = 'char';
-        span.textContent = ch;
-        frag.appendChild(span);
-      }
-      heroEl.appendChild(frag);
-
-      const chars = heroEl.querySelectorAll('.char');
-
-      gsap.to(chars, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.03,
-        duration: 0.6,
-        ease: "power3.out",
-        delay: 0.2,
-        // fade-in only letters (keep spaces)
-        onStart() {
-          chars.forEach(s => {
-            if (s.textContent === ' ') s.style.opacity = 1;
-          });
-        }
-      });
-
-      // subtle idle floating on hero-right gif
-      if (document.querySelector('.hero-right img')) {
-        gsap.to('.hero-right img', { y: -6, repeat: -1, yoyo: true, duration: 3, ease: "sine.inOut", delay: 0.6 });
-      }
-
-      // scroll reveal using ScrollTrigger (if loaded)
-      try {
-        gsap.utils.toArray('.reveal').forEach(section => {
-          gsap.from(section, {
-            y: 30, opacity: 0, duration: 0.7, ease: 'power2.out',
-            scrollTrigger: { trigger: section, start: 'top 85%' }
-          });
-        });
-      } catch (e) { /* ScrollTrigger probably not loaded — ignore */ }
-    })();
-
-    // --------- Small UX: enable tilt on project cards if vanilla-tilt is loaded --------
-    try {
-      if (typeof VanillaTilt !== 'undefined') {
-        const cards = document.querySelectorAll('.project-card[data-tilt], .project-card');
-        VanillaTilt.init(cards, { max: 8, speed: 300, scale: 1.02, glare: false });
-      }
-    } catch (e) {}
-
-    // --------- Keep other pages in sync:
-    // We use localStorage 'site-theme' so when user toggles theme on any page,
-    // the choice persists across pages (and across reloads).
-    // Mobile menu state is per-page (no persistence).
-  </script>
-
-  <!-- Unified site script (if you keep an external script.js, it will run too) -->
   <script src="script.js"></script>
 </body>
 </html>
