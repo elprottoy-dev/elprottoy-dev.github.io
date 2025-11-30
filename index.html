@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KHALED MD MEHZABIN ALAM PROTTOY | Portfolio</title>
 
   <!-- Favicon -->
@@ -12,13 +12,50 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Small local fixes so navbar & hero spacing behave consistently across pages.
+       These are intentionally minimal — main styling remains in style.css */
+    :root {
+      --nav-height: 72px;
+    }
+    body { padding-top: var(--nav-height); } /* ensure content doesn't hide beneath fixed navbar */
+
+    /* Make sure nav-links hidden on small screens until toggled (consistent with other pages) */
+    #navbar .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      #navbar .nav-links {
+        position: fixed;
+        top: 72px;
+        right: -100%;
+        width: 220px;
+        height: calc(100% - 72px);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        background: rgba(10,10,10,0.95);
+        transition: right 0.28s ease;
+        z-index: 1200;
+      }
+      #navbar .nav-links.active {
+        right: 0;
+      }
+      #menu-toggle { display: block; }
+    }
+
+    /* Minor hero text animation helpers */
+    .hero-name .char { display: inline-block; opacity: 0; transform: translateY(8px); }
+  </style>
 </head>
 
 <body>
   <!-- Navbar -->
   <nav id="navbar">
     <div class="logo"><a href="index.html" aria-label="Home">Prottoy</a></div>
-    <ul class="nav-links" role="menu">
+    <ul class="nav-links" role="menu" id="nav-links">
       <li role="none"><a role="menuitem" href="#home">Home</a></li>
       <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
       <li role="none"><a role="menuitem" href="#gallery">Gallery</a></li>
@@ -28,15 +65,20 @@
       <li role="none"><a role="menuitem" href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
     </ul>
     <div id="theme-toggle" class="theme-toggle" tabindex="0" role="button" aria-pressed="false">🌙</div>
-    <div id="menu-toggle" class="menu-toggle" tabindex="0" role="button" aria-label="Toggle menu">☰</div>
+    <div id="menu-toggle" class="menu-toggle" tabindex="0" role="button" aria-label="Toggle menu" style="display:none">☰</div>
   </nav>
 
   <!-- Hero Section -->
   <section id="home">
-    <canvas id="particle-canvas" aria-hidden="true"></canvas>
-    <div class="hero-container">
+    <canvas id="particle-canvas" aria-hidden="true" style="position:absolute; inset:0; z-index:0;"></canvas>
+
+    <div class="hero-container" style="position:relative; z-index:2;">
       <div class="hero-left">
-        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+        <!-- split the hero name into span.char for animation -->
+        <h1 class="hero-name" id="heroName">
+          <!-- JS will split this into animated characters (keeps original text same) -->
+          KHALED MD MEHZABIN ALAM PROTTOY
+        </h1>
         <p class="hero-subtitle">Open to collaborative research and development</p>
         <h2 class="hero-intro">Hi, I'm Prottoy.<br>Researcher & Developer blending Environmental Science, Data Science, and Digital Innovation to build impactful solutions.</h2>
         <div class="hero-buttons">
@@ -288,8 +330,200 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
 
-  <!-- Unified Script -->
-  <script src="script.js"></script>
+  <!-- Unified Script: menu toggle, theme sync, particle background, hero animation -->
+  <script>
+    // --------- Mobile menu toggle (shared behaviour) ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
+    // Show hamburger only on small screens (in case style.css hides it)
+    function ensureMenuToggleVisible() {
+      const mq = window.matchMedia('(max-width: 768px)');
+      const mt = document.getElementById('menu-toggle');
+      if (mq.matches) mt.style.display = 'block';
+      else mt.style.display = 'none';
+    }
+    ensureMenuToggleVisible();
+    window.addEventListener('resize', ensureMenuToggleVisible);
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    }
+
+    // Close mobile menu when a nav link is clicked
+    document.querySelectorAll('#nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
+      });
+    });
+
+    // Close menu on outside click (mobile)
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!navLinks.contains(target) && !menuToggle.contains(target) && window.innerWidth <= 768) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Accessibility: keyboard toggle for menu
+    if (menuToggle) {
+      menuToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          navLinks.classList.toggle('active');
+        }
+      });
+    }
+
+    // --------- Theme toggle (persisted across pages) ----------
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Initialize theme from localStorage
+    const savedTheme = localStorage.getItem('site-theme');
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-theme');
+      document.body.classList.add('light-theme');
+      if (themeToggle) themeToggle.textContent = '☀️';
+      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
+    } else {
+      if (themeToggle) themeToggle.textContent = '🌙';
+      if (themeToggle) themeToggle.setAttribute('aria-pressed', 'false');
+    }
+
+    themeToggle && themeToggle.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-theme');
+      // mirror on root element for CSS that might target :root
+      if (isLight) {
+        document.documentElement.classList.add('light-theme');
+        themeToggle.textContent = '☀️';
+        themeToggle.setAttribute('aria-pressed', 'true');
+        localStorage.setItem('site-theme', 'light');
+      } else {
+        document.documentElement.classList.remove('light-theme');
+        themeToggle.textContent = '🌙';
+        themeToggle.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('site-theme', 'dark');
+      }
+    });
+
+    // --------- Particle background (lightweight canvas) ----------
+    (function particleCanvas(){
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = innerWidth;
+      let h = canvas.height = innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = innerWidth;
+        h = canvas.height = innerHeight;
+      });
+
+      const particles = [];
+      const count = Math.max(30, Math.floor((w*h) / 90000)); // scale with screen
+
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+
+      for (let i=0;i<count;i++){
+        particles.push({
+          x: rand(0,w),
+          y: rand(0,h),
+          r: rand(0.6, 2.4),
+          vx: rand(-0.25, 0.25),
+          vy: rand(-0.15, 0.15),
+          alpha: rand(0.05, 0.25)
+        });
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        for (const p of particles){
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -10) p.x = w + 10;
+          if (p.x > w + 10) p.x = -10;
+          if (p.y < -10) p.y = h + 10;
+          if (p.y > h + 10) p.y = -10;
+
+          ctx.beginPath();
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = '#9be6bc'; // subtle greenish
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // --------- Hero name letter animation using GSAP ---------
+    (function heroAnimation(){
+      const heroEl = document.getElementById('heroName');
+      if (!heroEl || typeof gsap === 'undefined') return;
+
+      // split text into spans if not already split
+      const text = heroEl.textContent.trim();
+      heroEl.textContent = '';
+      const frag = document.createDocumentFragment();
+      for (const ch of text) {
+        const span = document.createElement('span');
+        span.className = 'char';
+        span.textContent = ch;
+        frag.appendChild(span);
+      }
+      heroEl.appendChild(frag);
+
+      const chars = heroEl.querySelectorAll('.char');
+
+      gsap.to(chars, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.03,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.2,
+        // fade-in only letters (keep spaces)
+        onStart() {
+          chars.forEach(s => {
+            if (s.textContent === ' ') s.style.opacity = 1;
+          });
+        }
+      });
+
+      // subtle idle floating on hero-right gif
+      if (document.querySelector('.hero-right img')) {
+        gsap.to('.hero-right img', { y: -6, repeat: -1, yoyo: true, duration: 3, ease: "sine.inOut", delay: 0.6 });
+      }
+
+      // scroll reveal using ScrollTrigger (if loaded)
+      try {
+        gsap.utils.toArray('.reveal').forEach(section => {
+          gsap.from(section, {
+            y: 30, opacity: 0, duration: 0.7, ease: 'power2.out',
+            scrollTrigger: { trigger: section, start: 'top 85%' }
+          });
+        });
+      } catch (e) { /* ScrollTrigger probably not loaded — ignore */ }
+    })();
+
+    // --------- Small UX: enable tilt on project cards if vanilla-tilt is loaded --------
+    try {
+      if (typeof VanillaTilt !== 'undefined') {
+        const cards = document.querySelectorAll('.project-card[data-tilt], .project-card');
+        VanillaTilt.init(cards, { max: 8, speed: 300, scale: 1.02, glare: false });
+      }
+    } catch (e) {}
+
+    // --------- Keep other pages in sync:
+    // We use localStorage 'site-theme' so when user toggles theme on any page,
+    // the choice persists across pages (and across reloads).
+    // Mobile menu state is per-page (no persistence).
+  </script>
+
+  <!-- Unified site script (if you keep an external script.js, it will run too) -->
+  <script src="script.js"></script>
 </body>
 </html>
