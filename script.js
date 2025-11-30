@@ -132,21 +132,28 @@ VanillaTilt.init(document.querySelectorAll(".card-inner"), {
 });
 
 // --------------------
-// Dark / Light Theme Toggle
+// Dark / Light Theme Toggle (Fixed)
 // --------------------
 const themeToggle = document.querySelector('.theme-toggle');
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-});
+const body = document.body;
 
-// Optional: store preference in localStorage
+// Load theme from localStorage
 if(localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light-theme');
+  body.classList.add('light-theme');
+  themeToggle.textContent = '☀️';
+} else {
+  themeToggle.textContent = '🌙';
 }
+
+// Single click listener
 themeToggle.addEventListener('click', () => {
-  if(document.body.classList.contains('light-theme')){
+  body.classList.toggle('light-theme');
+
+  if(body.classList.contains('light-theme')){
     localStorage.setItem('theme', 'light');
+    themeToggle.textContent = '☀️';
   } else {
     localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = '🌙';
   }
 });
