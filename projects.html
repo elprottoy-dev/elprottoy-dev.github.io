@@ -1,198 +1,314 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Projects</title>
-  <meta name="description" content="Explore my featured projects — UI design, animations, interactive visualizations, and performance-driven work." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Khaled Prottoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-color: #00ff9f;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #f0f0f0;
+  --subtext-color: #aaa;
+  --transition: 0.3s ease-in-out;
+}
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Projects — Your Name" />
-  <meta property="og:description" content="Interactive and animated project gallery with filters and categories." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+/* Body */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+/* Navbar */
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(15,15,15,0.7);
+  transition: background 0.3s;
+}
+
+#navbar .logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  color: var(--text-color);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover { color: var(--primary-color); }
+
+.theme-toggle {
+  margin-left: 2rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  user-select: none;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 120px auto 50px;
+  padding: 0 2rem;
+}
+
+h2.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* Project Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-content h3 {
+  margin: 0 0 0.5rem;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.card-content .badge {
+  font-size: 0.75rem;
+  background: var(--primary-color);
+  color: #121212;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 0.5rem;
+}
+
+.card-content p {
+  flex: 1;
+  color: var(--subtext-color);
+  margin-bottom: 0.8rem;
+}
+
+.tech-stack {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+
+.project-links a {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: var(--transition);
+  text-decoration: none;
+  margin-top: 0.3rem;
+}
+
+.project-links a:hover {
+  background: var(--primary-color);
+  color: #121212;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,255,159,0.4);
+}
+
+/* View All */
+.view-all {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.view-all a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.view-all a:hover {
+  background: var(--primary-color);
+  color: #121212;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    background: var(--bg-color);
+    height: calc(100% - 70px);
+    width: 200px;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.active { right: 0; }
+  .menu-toggle { display: block; color: var(--primary-color); }
+}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<nav id="navbar">
+  <div class="logo">Prottoy</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div id="theme-toggle" class="theme-toggle">🌙</div>
+  <div id="menu-toggle" class="menu-toggle">☰</div>
+</nav>
 
-  <!-- Particles -->
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="./index.html">YourName</a>
-      <nav id="navbar" role="navigation" aria-label="Main Navigation">
-        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <ul class="nav-links" id="primary-menu" role="menubar">
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./about.html">About</a></li>
-          <li><a href="./projects.html">Projects</a></li>
-          <li><a href="./experience.html">Experience</a></li>
-          <li><a href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main -->
-  <main id="main" class="container projects-page">
-
-    <!-- Page Header -->
-    <section class="projects-header card fade-in">
-      <h1>Projects</h1>
-      <p class="muted">Filter by category or search with keywords. All projects include animations and modern UI patterns.</p>
-
-      <div class="project-controls">
-        <!-- Categories -->
-        <div class="filters">
-          <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="ui">UI</button>
-          <button class="chip" data-filter="viz">Visualization</button>
-          <button class="chip" data-filter="animation">Animation</button>
+<div class="container" id="projects">
+  <h2 class="section-title">My Projects</h2>
+  <div class="project-grid">
+    <!-- Project 1 -->
+    <div class="project-card">
+      <img src="project1.png" alt="Cloud Microservice">
+      <div class="card-content">
+        <h3>Cloud-Deployed Microservice Architecture <span class="badge">In Development</span></h3>
+        <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines to improve reliability and scalability.</p>
+        <div class="tech-stack">React | Django | OpenAI API | JWT | Docker | AWS</div>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">GitHub</a>
         </div>
-
-        <!-- Search -->
-        <input
-          id="project-search"
-          class="search-input"
-          type="text"
-          placeholder="Search projects…"
-          aria-label="Search projects by name or tag"
-        />
       </div>
-    </section>
+    </div>
 
-    <!-- Projects Grid -->
-    <section class="projects-grid" aria-live="polite">
-      <div class="grid" id="projects-list">
-
-        <!-- Project 1 -->
-        <article class="project card fade-up" data-tags="ui animation">
-          <img src="./assets/project1.webp" alt="Interactive Dashboard" loading="lazy">
-          <div class="project-body">
-            <h4>Interactive Dashboard</h4>
-            <p class="muted">A high-end dashboard with micro-interactions, chart animations and theme switching.</p>
-            <div class="tag-row">
-              <span class="tag">UI</span>
-              <span class="tag">Animation</span>
-            </div>
-            <a class="btn" href="#">View Project</a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project card fade-up" data-tags="viz">
-          <img src="./assets/project2.webp" alt="Environmental Visualization" loading="lazy">
-          <div class="project-body">
-            <h4>Environmental Visualization</h4>
-            <p class="muted">Data-driven visualization pipeline with animated maps and charts.</p>
-            <div class="tag-row">
-              <span class="tag">Viz</span>
-            </div>
-            <a class="btn" href="#">View Project</a>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project card fade-up" data-tags="ui">
-          <img src="./assets/project3.webp" alt="Modern Portfolio UI" loading="lazy">
-          <div class="project-body">
-            <h4>Modern Portfolio UI</h4>
-            <p class="muted">Premium UI layout with glassmorphism cards, smooth transitions and parallax.</p>
-            <div class="tag-row">
-              <span class="tag">UI</span>
-            </div>
-            <a class="btn" href="#">View Project</a>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project card fade-up" data-tags="animation">
-          <img src="./assets/project4.webp" alt="GSAP Motion Experience" loading="lazy">
-          <div class="project-body">
-            <h4>GSAP Motion Experience</h4>
-            <p class="muted">3D-like micro-interactions, motion staging and scroll-driven scenes.</p>
-            <div class="tag-row">
-              <span class="tag">Animation</span>
-            </div>
-            <a class="btn" href="#">View Project</a>
-          </div>
-        </article>
-
+    <!-- Project 2 -->
+    <div class="project-card">
+      <img src="project2.png" alt="Realtime Dashboard">
+      <div class="card-content">
+        <h3>Realtime Analytics Dashboard <span class="badge">Live</span></h3>
+        <p>Full-stack dashboard with live metrics, background processing, and data visualisations for business decision-making.</p>
+        <div class="tech-stack">Next.js | React | Tailwind CSS | CMS</div>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">GitHub</a>
+        </div>
       </div>
-    </section>
+    </div>
 
-  </main>
+    <!-- Project 3 -->
+    <div class="project-card">
+      <img src="project3.png" alt="E-Commerce Automation">
+      <div class="card-content">
+        <h3>E-Commerce Automation System <span class="badge">Conceptual</span></h3>
+        <p>Automated product syncing, inventory management, and notifications using APIs and serverless functions.</p>
+        <div class="tech-stack">Java | Kafka | React | Docker</div>
+        <div class="project-links">
+          <a href="#">Live Demo</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view-all">
+    <a href="#">View All Projects</a>
+  </div>
+</div>
 
-  <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Your Name</div>
-  </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+<script>
+// Navbar toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-  <!-- Libraries -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+  themeToggle.textContent = document.body.classList.contains('light-theme') ? '🌞' : '🌙';
+});
 
-  <!-- App Scripts -->
-  <script type="module" src="./particles.js" defer></script>
-  <script type="module" src="./theme.js" defer></script>
-  <script type="module" src="./hero.js" defer></script>
+// VanillaTilt for project cards
+VanillaTilt.init(document.querySelectorAll(".project-card"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2,
+});
 
-  <!-- Page logic -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const chips = document.querySelectorAll(".chip");
-      const cards = document.querySelectorAll(".project");
-      const search = document.getElementById("project-search");
-
-      let activeFilter = "all";
-
-      // Filtering by tag
-      chips.forEach(chip =>
-        chip.addEventListener("click", () => {
-          chips.forEach(c => c.classList.remove("active"));
-          chip.classList.add("active");
-
-          activeFilter = chip.dataset.filter;
-          filterProjects();
-        })
-      );
-
-      // Search filter
-      search.addEventListener("input", filterProjects);
-
-      function filterProjects() {
-        const q = search.value.toLowerCase();
-
-        cards.forEach(card => {
-          const tags = card.dataset.tags.split(" ");
-          const title = card.querySelector("h4").textContent.toLowerCase();
-          const matchesSearch = title.includes(q);
-
-          const matchesFilter =
-            activeFilter === "all" || tags.includes(activeFilter);
-
-          card.style.display = matchesFilter && matchesSearch ? "" : "none";
-        });
-      }
-
-      // GSAP animations
-      gsap.utils.toArray(".fade-up").forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
-    });
-  </script>
-
+// GSAP ScrollTrigger animation
+gsap.utils.toArray('.project-card').forEach(card => {
+  gsap.from(card, {
+    scrollTrigger: {
+      trigger: card,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+});
+</script>
 </body>
 </html>
