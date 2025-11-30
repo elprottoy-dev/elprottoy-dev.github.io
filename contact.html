@@ -1,92 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Prottoy</title>
-  <link rel="icon" href="favicon.png" type="image/png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Khaled Prottoy</title>
+  <meta name="description" content="Contact Khaled Prottoy" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="theme-vars.css">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="nav-left">
+      <a class="logo" href="index.html" aria-label="Home">Prottoy</a>
+    </div>
 
-  <!-- Navbar -->
-  <nav id="navbar">
-    <div class="logo"><a href="index.html">Prottoy</a></div>
-    <ul class="nav-links">
-      <li><a href="index.html#home">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="index.html#gallery">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a class="active" href="contact.html">Contact</a></li>
-      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">☰</button>
+
+    <ul id="primary-menu" class="nav-links" role="menubar">
+      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
+      <li role="none"><a role="menuitem" href="about.html">About</a></li>
+      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
+      <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
+      <li role="none"><a role="menuitem btn" href="Khaled_Prottoy_CV.pdf" target="_blank" rel="noopener">Resume</a></li>
     </ul>
-    <div id="theme-toggle" class="theme-toggle">🌙</div>
-    <div id="menu-toggle" class="menu-toggle">☰</div>
+
+    <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">🌙</button>
   </nav>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-page reveal">
-    <div class="container contact-container">
+  <main id="main-content" tabindex="-1">
+    <section class="container reveal">
+      <h2>Contact Me</h2>
+      <p>Prefer email? <a href="mailto:you@domain.com">you@domain.com</a></p>
 
-      <div class="contact-left">
-        <h1>Contact Me</h1>
-        <p>Have a project, idea, or collaboration in mind? Let’s talk.</p>
+      <!-- Formspree example (replace action with your own) -->
+      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
 
-        <div class="contact-details">
-          <p><strong>Email:</strong> prottoycontact@gmail.com</p>
-          <p><strong>Location:</strong> Bangladesh</p>
-          <p><strong>Available For:</strong> Research, Development, Freelance & Consultancy</p>
-        </div>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
 
-        <h2>Social Links</h2>
-        <div class="social-links">
-          <a href="#">GitHub</a>
-          <a href="#">LinkedIn</a>
-        </div>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <!-- honeypot -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <div class="contact-meta">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
       </div>
+    </section>
+  </main>
 
-      <div class="contact-right">
-        <form class="contact-form" action="" method="POST">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <div class="container footer-container">
-      <div class="footer-left">
-        <h3>Powered By<br>KHALED MD MEHZABIN ALAM PROTTOY</h3>
-        <p>Crafting reliable, Sustainable solutions that make a positive impact worldwide.</p>
-      </div>
-
-      <div class="footer-right">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="experience.html">Experience</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
-      </div>
+      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js" defer></script>
 
+  <script src="script.js" defer></script>
+  <script src="enhanced-ui.js" defer></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>
