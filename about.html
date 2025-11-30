@@ -36,23 +36,23 @@
     }
 
     .hero-left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-right: 2rem;
-    }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
+  word-wrap: break-word; /* allow text to wrap properly */
+}
 
-    .hero-left h1,
-    .hero-left p,
-    .hero-left h2 {
-      text-align: left;
-      color: #fff;
-      transition: color 0.3s;
-    }
 .hero-name {
-  white-space: normal;  /* allow spaces to appear */
-  letter-spacing: normal; /* remove tight spacing */
+  white-space: normal;  /* allow spaces */
+  letter-spacing: normal; /* normal spacing */
+  word-break: break-word; /* wrap long names if needed */
+}
+
+.hero-left p,
+.hero-left h2 {
+  white-space: normal; /* ensure paragraphs wrap */
 }
     .hero-buttons a {
       margin-right: 1rem;
