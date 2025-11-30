@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experience | Khaled Prottoy</title>
+<title>Contact | Khaled Prottoy</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -29,7 +29,7 @@ body.light-theme {
   color: var(--text-dark);
 }
 
-/* Navbar (same style as Projects/About) */
+/* Navbar */
 #navbar {
   position: fixed;
   top: 0;
@@ -54,9 +54,7 @@ body.light-theme {
   transition: var(--transition);
   text-decoration: none;
 }
-.nav-links li a:hover {
-  color: var(--accent);
-}
+.nav-links li a:hover { color: var(--accent); }
 .btn {
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -70,17 +68,8 @@ body.light-theme {
   background: var(--accent);
   color: var(--dark-bg);
 }
-.theme-toggle {
-  margin-left: 1rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-.menu-toggle {
-  display: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--accent);
-}
+.theme-toggle { margin-left: 1rem; cursor: pointer; font-size: 1.2rem; }
+.menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--accent); }
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
@@ -93,86 +82,66 @@ body.light-theme {
     transition: right 0.3s ease;
     border-radius: 10px 0 0 10px;
   }
-  .nav-links.active {
-    right: 0;
-  }
+  .nav-links.active { right: 0; }
   .nav-links li { margin: 1rem 0; }
   .menu-toggle { display: block; }
 }
 
 /* Hero Section */
-#experience-hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+#contact-hero {
   max-width: 1100px;
   margin: 120px auto 50px;
   padding: 0 2rem;
-  flex-wrap: wrap;
-}
-.hero-left { flex: 1; min-width: 300px; }
-.hero-left h1 { font-size: 2.8rem; color: var(--accent); margin-bottom: 0.5rem; }
-.hero-left p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
-.hero-buttons a { display: inline-block; margin-right: 1rem; margin-top: 0.5rem; }
-.hero-right { flex: 1; display: flex; justify-content: center; min-width: 300px; }
-.gif-wrapper { position: relative; width: 100%; max-width: 400px; height: 300px; overflow: hidden; border-radius: 20px; }
-.gif-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Experience Cards */
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.experience-card { perspective: 1000px; }
-.card-inner {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-  transform-style: preserve-3d;
-  transition: transform var(--transition), box-shadow var(--transition), background 0.3s;
-  cursor: pointer;
-}
-.card-inner h3 { color: var(--accent); margin-bottom: 0.5rem; }
-.card-inner p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
-.card-inner ul { padding-left: 1.2rem; color: var(--text-muted); }
-.card-inner .badge {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--dark-bg);
-  padding: 2px 6px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  margin-left: 0.5rem;
-}
-.card-inner:hover {
-  transform: rotateY(10deg) scale(1.03);
-  box-shadow: 0 20px 40px rgba(29,185,84,0.4);
-}
-
-/* Education / Certifications / Skills */
-.education-grid, .certs-grid, .skills-grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.education-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-.certs-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-.skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-.education-grid div, .certs-grid div, .skills-grid div {
-  background: var(--card-bg);
-  padding: 1rem;
-  border-radius: 12px;
   text-align: center;
+}
+#contact-hero h1 { font-size: 2.8rem; color: var(--accent); margin-bottom: 0.5rem; }
+#contact-hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+/* Contact Form */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(29,185,84,0.2);
+}
+.contact-container h2 { text-align: center; margin-bottom: 1.5rem; color: var(--accent); }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.contact-form label { font-weight: 500; margin-bottom: 0.3rem; color: var(--text-light); }
+.contact-form input, .contact-form textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  font-size: 1rem;
   transition: var(--transition);
 }
-.education-grid div:hover, .certs-grid div:hover, .skills-grid div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 25px rgba(29,185,84,0.4);
+body.light-theme .contact-form input, body.light-theme .contact-form textarea {
+  background: var(--card-bg-light);
+  color: var(--text-dark);
+  border: 1px solid #ccc;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(29,185,84,0.3);
+}
+.contact-form textarea { resize: vertical; min-height: 150px; }
+.contact-form button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.contact-form button:hover {
+  background: var(--accent);
+  color: var(--dark-bg);
 }
 
 /* Footer */
@@ -181,13 +150,12 @@ footer {
   padding: 3rem 2rem;
   background: var(--dark-bg);
   color: var(--text-muted);
-  margin-top: 4rem;
 }
 
 /* Responsive */
 @media(max-width: 768px){
-  #experience-hero { flex-direction: column; text-align: center; }
-  .hero-left, .hero-right { margin-bottom: 1.5rem; }
+  #contact-hero { margin: 100px 1rem 50px; }
+  .contact-container { padding: 1.5rem; }
 }
 </style>
 </head>
@@ -208,117 +176,29 @@ footer {
 </nav>
 
 <!-- Hero Section -->
-<section id="experience-hero">
-  <div class="hero-left">
-    <h1>Professional Experience</h1>
-    <p>AI, software engineering, and innovation at a glance.</p>
-    <div class="hero-buttons">
-      <a href="Khaled_Prottoy_CV.pdf" class="btn">Download Resume</a>
-      <a href="contact.html" class="btn">Get in Touch</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="gif-wrapper">
-      <img src="experience-hero.gif" alt="Experience GIF">
-    </div>
-  </div>
+<section id="contact-hero">
+  <h1>Get in Touch</h1>
+  <p>I'd love to hear from you! Fill out the form below or reach me via email/socials.</p>
 </section>
 
-<!-- Work Experience -->
-<section class="container">
-  <h2>Work Experience</h2>
-  <div class="experience-grid">
-    <div class="experience-card">
-      <div class="card-inner">
-        <h3>Gen AI Engineer</h3>
-        <p>Freelancer.com | Remote</p>
-        <p style="font-size:0.85rem; color: var(--text-muted)">Nov 2022 - Present</p>
-        <h4>Key Achievements:</h4>
-        <ul>
-          <li>Delivered 45+ AI projects aligning with client goals.</li>
-          <li>Developed AI apps with privacy-focused solutions.</li>
-          <li>Earned 5-star rating across 48 client reviews.</li>
-          <li>100% on-time & on-budget project delivery.</li>
-        </ul>
-        <h4>Technologies:</h4>
-        <p>
-          <span class="badge">Python</span>
-          <span class="badge">PyTorch</span>
-          <span class="badge">TensorFlow</span>
-          <span class="badge">LangChain</span>
-          <span class="badge">OpenAI GPT APIs</span>
-          <span class="badge">Docker</span>
-          <span class="badge">FastAPI</span>
-          <span class="badge">Git</span>
-        </p>
-      </div>
-    </div>
+<!-- Contact Form -->
+<section class="contact-container">
+  <h2>Contact Form</h2>
+  <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <label for="name">Full Name</label>
+    <input type="text" name="name" id="name" placeholder="Your full name" required>
 
-    <div class="experience-card">
-      <div class="card-inner">
-        <h3>Research Engineer</h3>
-        <p>Mohammed VI Polytechnic University | Rabat, Morocco</p>
-        <p style="font-size:0.85rem; color: var(--text-muted)">Jan 2025 - Sept 2025</p>
-        <h4>Key Achievements:</h4>
-        <ul>
-          <li>Built scalable data pipelines for 100K+ websites.</li>
-          <li>Integrated ML workflows, OCR & real-time analysis.</li>
-          <li>Developed Chrome extension prototype for ad blocking.</li>
-        </ul>
-        <h4>Technologies:</h4>
-        <p>
-          <span class="badge">Python</span>
-          <span class="badge">Spark</span>
-          <span class="badge">ETL</span>
-          <span class="badge">OCR</span>
-          <span class="badge">Web Scraping</span>
-          <span class="badge">ML</span>
-          <span class="badge">Chrome Extensions</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    <label for="email">Email Address</label>
+    <input type="email" name="email" id="email" placeholder="Your email" required>
 
-<!-- Education -->
-<section class="container">
-  <h2>Education</h2>
-  <div class="education-grid">
-    <div>
-      <h3>BSc in Computer Science</h3>
-      <p>University of Example | 2018 - 2022</p>
-    </div>
-    <div>
-      <h3>MSc in Artificial Intelligence</h3>
-      <p>University of Example | 2023 - 2025</p>
-    </div>
-  </div>
-</section>
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" id="subject" placeholder="Subject" required>
 
-<!-- Certifications -->
-<section class="container">
-  <h2>Certifications</h2>
-  <div class="certs-grid">
-    <div>AI & ML Fundamentals</div>
-    <div>Python Advanced</div>
-    <div>Cloud Computing (AWS)</div>
-    <div>Data Analytics Certification</div>
-  </div>
-</section>
+    <label for="message">Message</label>
+    <textarea name="message" id="message" placeholder="Your message..." required></textarea>
 
-<!-- Skills -->
-<section class="container">
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <div>Python</div>
-    <div>JavaScript</div>
-    <div>Node.js</div>
-    <div>SQL</div>
-    <div>ML/AI</div>
-    <div>Cloud (AWS/GCP)</div>
-    <div>DevOps</div>
-    <div>Geospatial Analysis</div>
-  </div>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
 <!-- Footer -->
@@ -326,30 +206,26 @@ footer {
   <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
 <script>
-// Theme Toggle
+// Theme toggle
 const toggle = document.getElementById('theme-toggle');
 const body = document.body;
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
+if(savedTheme){
   body.classList.toggle('light-theme', savedTheme === 'light');
   toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
 }
-toggle.addEventListener('click', () => {
+toggle.addEventListener('click', ()=>{
   body.classList.toggle('light-theme');
   const isLight = body.classList.contains('light-theme');
   toggle.textContent = isLight ? '🌙' : '☀️';
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
 });
 
-// Mobile Menu Toggle
+// Mobile menu toggle
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-// VanillaTilt for experience cards
-VanillaTilt.init(document.querySelectorAll(".experience-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+menuToggle.addEventListener('click', ()=> navLinks.classList.toggle('active'));
 </script>
 
 </body>
