@@ -246,18 +246,20 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar (Unified across pages) -->
   <nav id="navbar">
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    <div class="logo"><a href="index.html" aria-label="Home">Prottoy</a></div>
+    <ul class="nav-links" role="menu">
+      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
+      <li role="none"><a role="menuitem" href="#gallery">Gallery</a></li>
+      <li role="none"><a role="menuitem" href="about.html">About</a></li>
+      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
+      <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+      <li role="none"><a role="menuitem" href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
     </ul>
-    <div class="theme-toggle" id="theme-toggle">🌙</div>
+    <div id="theme-toggle" class="theme-toggle" tabindex="0" role="button" aria-pressed="false">🌙</div>
+    <div id="menu-toggle" class="menu-toggle" tabindex="0" role="button" aria-label="Toggle menu">☰</div>
   </nav>
 
   <!-- Hero Section -->
@@ -266,7 +268,7 @@
       <h1 class="hero-name">Professional Experience</h1>
       <p class="hero-subtitle">AI, software engineering, and innovation at a glance.</p>
       <div class="hero-buttons">
-        <a href="Khaled_Prottoy_CV.pdf" class="btn">Download Resume</a>
+        <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">Download Resume</a>
         <a href="#contact" class="btn">Get in Touch</a>
       </div>
     </div>
@@ -358,24 +360,13 @@
       <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
     </div>
   </footer>
-  <script>
-  const toggle = document.getElementById('theme-toggle');
-  const body = document.body;
 
-  // Load saved theme from localStorage
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    body.classList.toggle('light-theme', savedTheme === 'light');
-    toggle.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-  }
+  <!-- Libraries (GSAP + ScrollTrigger + VanillaTilt) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('light-theme');
-    const isLight = body.classList.contains('light-theme');
-    toggle.textContent = isLight ? '🌙' : '☀️';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-</script>
-
+  <!-- Unified site script -->
+  <script src="script.js"></script>
 </body>
 </html>
