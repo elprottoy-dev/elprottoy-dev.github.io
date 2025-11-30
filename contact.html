@@ -1,188 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Contact</title>
-  <meta name="description" content="Get in touch — contact form, social links, map, and message submission." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Contact — Your Name" />
-  <meta property="og:description" content="Reach out via the modern contact form or connect on social media." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Khaled Prottoy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    </ul>
+    <div class="theme-toggle" id="theme-toggle">🌙</div>
+  </nav>
 
-  <!-- Particle background -->
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="./index.html">YourName</a>
-      <nav id="navbar" aria-label="Main Navigation">
-        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <ul class="nav-links" id="primary-menu" role="menubar">
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./about.html">About</a></li>
-          <li><a href="./projects.html">Projects</a></li>
-          <li><a href="./experience.html">Experience</a></li>
-          <li><a href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <!-- Hero Section -->
+  <section id="contact-hero" class="reveal">
+    <div class="container" style="text-align:center; padding:6rem 2rem 3rem 2rem;">
+      <h1>Get in Touch</h1>
+      <p>Whether you have a project, question, or just want to say hi, feel free to reach out!</p>
     </div>
-  </header>
+  </section>
 
-  <!-- Main -->
-  <main id="main" class="container contact-page">
+  <!-- Contact Form -->
+  <section id="contact-form" class="reveal">
+    <div class="container" style="max-width:700px; margin:auto;">
+      <form action="https://formspree.io/f/your_form_id" method="POST" style="display:flex; flex-direction:column; gap:1.2rem;">
+        <input type="text" name="name" placeholder="Your Name" required style="padding:0.8rem 1rem; border-radius:10px; border:none; background:#1a1a1a; color:#fff;">
+        <input type="email" name="email" placeholder="Your Email" required style="padding:0.8rem 1rem; border-radius:10px; border:none; background:#1a1a1a; color:#fff;">
+        <input type="text" name="subject" placeholder="Subject" style="padding:0.8rem 1rem; border-radius:10px; border:none; background:#1a1a1a; color:#fff;">
+        <textarea name="message" rows="6" placeholder="Your Message" required style="padding:0.8rem 1rem; border-radius:10px; border:none; background:#1a1a1a; color:#fff;"></textarea>
+        <button type="submit" class="btn" style="align-self:flex-start;">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- Contact Header -->
-    <section class="contact-header card fade-in">
-      <h1>Contact Me</h1>
-      <p class="muted">Have a question, proposal, or want to discuss a project? Let’s talk.</p>
-    </section>
-
-    <section class="contact-grid">
-
-      <!-- Contact Form -->
-      <div class="contact-form card fade-up">
-        <h3>Send a Message</h3>
-
-        <form id="contactForm" novalidate>
-
-          <div class="form-group">
-            <input type="text" id="name" required />
-            <label for="name">Your Name</label>
-          </div>
-
-          <div class="form-group">
-            <input type="email" id="email" required />
-            <label for="email">Email Address</label>
-          </div>
-
-          <div class="form-group">
-            <textarea id="message" required></textarea>
-            <label for="message">Your Message</label>
-          </div>
-
-          <button class="btn btn-primary" type="submit">Send Message</button>
-
-        </form>
+  <!-- Contact Info -->
+  <section id="contact-info" class="reveal">
+    <div class="container" style="margin-top:3rem; display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;">
+      <div class="hire-card" style="max-width:300px;">
+        <h3>Email</h3>
+        <p>prottoy@example.com</p>
       </div>
-
-      <!-- Contact Sidebar -->
-      <div class="contact-info card slide-left">
-
-        <h3>Connect</h3>
-
-        <p class="muted">Reach me through email, socials, or the form.</p>
-
-        <div class="social-links">
-          <a href="#" class="social-icon" aria-label="Email">📧</a>
-          <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
-          <a href="#" class="social-icon" aria-label="LinkedIn">💼</a>
-          <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
-        </div>
-
-        <!-- Map / placeholder -->
-        <div class="map-wrapper">
-          <iframe
-            title="Location map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=90.356%2C23.780%2C90.402%2C23.747&layer=mapnik"
-            loading="lazy"
-            style="border:0; width:100%; height:230px; border-radius:var(--radius);"
-          ></iframe>
-        </div>
-
+      <div class="hire-card" style="max-width:300px;">
+        <h3>Phone</h3>
+        <p>+880 1234 567890</p>
       </div>
+      <div class="hire-card" style="max-width:300px;">
+        <h3>Location</h3>
+        <p>Dhaka, Bangladesh</p>
+      </div>
+      <div class="hire-card" style="max-width:300px;">
+        <h3>LinkedIn</h3>
+        <p><a href="#">linkedin.com/in/khaledprottoy</a></p>
+      </div>
+      <div class="hire-card" style="max-width:300px;">
+        <h3>GitHub</h3>
+        <p><a href="#">github.com/elprottoy-dev</a></p>
+      </div>
+    </div>
+  </section>
 
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Your Name</div>
+  <!-- Footer / Quick Links -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-left">
+        <h3>Powered By<br>KHALED MD MEHZABIN ALAM PROTTOY</h3>
+        <p>Crafting reliable, sustainable solutions that make a positive impact worldwide.</p>
+      </div>
+      <div class="footer-right">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
 
-  <!-- Libraries -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
-
-  <!-- Core scripts -->
-  <script type="module" src="./particles.js" defer></script>
-  <script type="module" src="./theme.js" defer></script>
-  <script type="module" src="./hero.js" defer></script>
-
-  <!-- Page-specific JS -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-      // Floating label effect
-      document.querySelectorAll(".form-group input, .form-group textarea")
-        .forEach(el => {
-          el.addEventListener("focus", () => el.parentElement.classList.add("focused"));
-          el.addEventListener("blur", () => {
-            if (!el.value.trim()) el.parentElement.classList.remove("focused");
-          });
-        });
-
-      // GSAP Animations
-      gsap.utils.toArray(".fade-in").forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 20,
-          duration: 0.7,
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
-
-      gsap.utils.toArray(".fade-up").forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 40,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
-
-      gsap.utils.toArray(".slide-left").forEach(el => {
-        gsap.from(el, {
-          opacity: 0,
-          x: 30,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 80%" }
-        });
-      });
-
-      // Basic client-side validation (optional)
-      document.getElementById("contactForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const message = document.getElementById("message");
-
-        if (!name.value || !email.value || !message.value) {
-          alert("Please fill out all fields.");
-          return;
-        }
-
-        alert("Message sent! (Demo — connect to backend to activate)");
-        e.target.reset();
-        document.querySelectorAll(".form-group").forEach(g => g.classList.remove("focused"));
-      });
-
-    });
-  </script>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script type="module" src="theme.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
