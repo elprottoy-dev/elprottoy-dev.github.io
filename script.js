@@ -47,21 +47,37 @@
   applySavedTheme();
 
   // ---------- Mobile Menu Toggle ----------
-  const menuToggle = qs('#menu-toggle');
-  const navLinks = qs('.nav-links');
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    // keyboard
-    menuToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
-      }
-    });
-  }
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Close menu when clicking a link (mobile)
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    if (navLinks.classList.contains("active")) {
+      navLinks.classList.remove("active");
+    }
+  });
+});
+// ===== Theme Toggle =====
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-theme");
+  const pressed = themeToggle.getAttribute("aria-pressed") === "true";
+  themeToggle.setAttribute("aria-pressed", !pressed);
+});
+
+// ===== Optional: Close mobile menu on outside click =====
+document.addEventListener("click", (e) => {
+  if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+    navLinks.classList.remove("active");
+  }
+});
   // ---------- Particle Background (optional) ----------
   const canvas = qs('#particle-canvas');
   if (canvas && canvas.getContext) {
