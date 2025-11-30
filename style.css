@@ -41,3 +41,49 @@ main,header,footer{position:relative;z-index:5}
 .blob-1{width:320px;height:320px;right:4%;top:10%;background:linear-gradient(90deg,var(--accent),transparent)}
 .blob-2{width:220px;height:220px;left:6%;bottom:6%;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 40%, black),transparent)}
 @media (max-width:720px){.hero-inner{padding:100px 16px}.nav-links{display:none}}
+/* PREMIUM UPGRADES */
+:root { --accent: #1db954; }
+
+.hero-name {
+  background: linear-gradient(90deg, #1db954, #3affc4);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-name .ch { display: inline-block; }
+
+/* Magnetic cursor */
+#custom-cursor {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: 0.15s ease;
+}
+
+#custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  opacity: 0.2;
+}
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  color: #1db954;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  transition: 0.5s ease;
+}
