@@ -169,6 +169,7 @@ ul {
   position: relative;
   overflow: hidden;
   padding: 0 2rem;
+  text-align: left;
 }
 
 .hero-container {
@@ -207,11 +208,12 @@ ul {
   font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .hero-buttons a {
   margin-right: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-right {
@@ -223,13 +225,14 @@ ul {
 
 .hero-right img.profile-img {
   width: 100%;
-  max-width: 400px; /* adjust size */
+  max-width: 400px;
   height: auto;
   border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 15px 40px rgba(0,0,0,0.5);
   display: block;
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
@@ -468,22 +471,39 @@ footer {
 }
 
 /* ---------------- Responsive ---------------- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero-container {
-    flex-direction: column-reverse;
-    align-items: center;
+    flex-direction: column;
+    text-align: center;
   }
-  .hero-right {
+  .hero-left {
+    padding-right: 0;
     margin-bottom: 2rem;
   }
+  .hero-right img.profile-img {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
   .hero-name {
     font-size: 2.2rem;
   }
   .hero-intro {
     font-size: 1.2rem;
   }
-  .nav-links li {
-    margin-left: 1rem;
+  .hero-buttons a {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+  .hero-right img.profile-img {
+    max-width: 250px;
+  }
+  .tech-grid, .drive-grid, .achievements-grid {
+    gap: 1rem;
+  }
+  .tech-card, .drive-card, .achievement-card {
+    min-width: 100%;
   }
 }
 
