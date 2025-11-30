@@ -1,152 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About | Khaled Prottoy</title>
-  <meta name="description" content="About Khaled Prottoy — Researcher and Developer." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="theme-vars.css">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — About</title>
+  <meta name="description" content="Learn more about me — background, skills, journey, and experience." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About — Your Name" />
+  <meta property="og:description" content="Professional background, interactive skills, experience timeline." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <!-- NAV (same markup across pages) -->
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="nav-left">
-      <a class="logo" href="index.html" aria-label="Home">Prottoy</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Particles -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">YourName</a>
+      <nav id="navbar" role="navigation" aria-label="Main Navigation">
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <ul class="nav-links" id="primary-menu" role="menubar">
+          <li><a role="menuitem" href="./index.html">Home</a></li>
+          <li><a role="menuitem" href="./about.html">About</a></li>
+          <li><a role="menuitem" href="./projects.html">Projects</a></li>
+          <li><a role="menuitem" href="./experience.html">Experience</a></li>
+          <li><a role="menuitem" href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Toggle menu">☰</button>
+  <!-- Main -->
+  <main id="main" class="container about-page">
 
-    <ul id="primary-menu" class="nav-links" role="menubar">
-      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-      <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
-      <li role="none"><a role="menuitem" href="about.html">About</a></li>
-      <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
-      <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-      <li role="none"><a role="menuitem btn" href="Khaled_Prottoy_CV.pdf" target="_blank" rel="noopener">Resume</a></li>
-    </ul>
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="about-grid">
 
-    <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">🌙</button>
-  </nav>
+        <!-- Avatar Card -->
+        <div class="avatar-card card fade-in">
+          <img src="./assets/avatar.webp" alt="Your Name" class="avatar" loading="lazy">
+          <h2>Your Name</h2>
+          <p class="muted">Frontend Engineer • UI Animator • Research Developer</p>
 
-  <!-- UI controls (same as index) -->
-  <button id="ui-toggle" aria-label="Open appearance settings">⚙️</button>
-  <aside id="ui-panel" role="dialog" aria-label="Appearance settings" aria-hidden="true" style="display:none">
-    <h4>Appearance</h4>
-    <div class="panel-row">
-      <label for="theme-select">Theme</label>
-      <select id="theme-select" aria-label="Choose theme">
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-        <option value="green">Green</option>
-        <option value="midnight">Midnight</option>
-      </select>
-    </div>
+          <a class="btn btn-primary" href="./contact.html">Get in touch</a>
+        </div>
 
-    <div class="panel-row">
-      <label for="accent-picker">Accent</label>
-      <input id="accent-picker" type="color" value="#1db954" aria-label="Accent color picker">
-      <span id="accent-hex" class="small">#1db954</span>
-    </div>
+        <!-- Bio -->
+        <div class="bio card slide-up">
+          <h3>About Me</h3>
+          <p>
+            I’m a developer who builds premium, interactive, animation-rich web experiences 
+            with strong focus on performance, accessibility and modern UI patterns.
+          </p>
+          <p>
+            My work blends <strong>visual storytelling</strong>, <strong>modern frontend engineering</strong>,
+            and <strong>immersive motion design</strong>.
+          </p>
 
-    <div class="panel-row">
-      <label for="animations-toggle">Animations</label>
-      <input id="animations-toggle" type="checkbox" aria-label="Toggle animations" checked>
-    </div>
+          <!-- Skills -->
+          <div class="skills">
+            <h4>Skills & Strengths</h4>
 
-    <div class="panel-row">
-      <label for="particles-toggle">Particles</label>
-      <input id="particles-toggle" type="checkbox" aria-label="Toggle particles" checked>
-    </div>
+            <div class="skill" data-skill="Frontend">
+              <span>Frontend Development</span>
+              <div class="skill-bar"><div data-width="92%"></div></div>
+            </div>
 
-    <div class="panel-row">
-      <label for="particle-density">Density</label>
-      <input id="particle-density" type="range" min="20" max="220" step="10" value="120" aria-label="Particle density">
-      <span id="density-value" class="small">120</span>
-    </div>
+            <div class="skill" data-skill="Animation">
+              <span>Animation / GSAP</span>
+              <div class="skill-bar"><div data-width="88%"></div></div>
+            </div>
 
-    <div class="panel-row" style="justify-content:center;">
-      <button id="reset-prefs" class="btn">Reset</button>
-    </div>
-  </aside>
+            <div class="skill" data-skill="UI Design">
+              <span>UI/UX Design</span>
+              <div class="skill-bar"><div data-width="80%"></div></div>
+            </div>
 
-  <main id="main-content" tabindex="-1">
-    <section id="about-hero" data-particles="true" class="reveal hero-section">
-      <canvas id="particle-canvas" aria-hidden="true"></canvas>
-      <div class="hero-container container">
-        <div class="hero-left">
-          <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
-          <p class="hero-subtitle">Open to collaborative research and development</p>
-          <h2 class="hero-intro">Creating impactful solutions at the intersection of Programming, Engineering and Research.</h2>
-          <div class="hero-buttons">
-            <a href="contact.html" class="btn">Get in Touch</a>
-            <a href="Khaled_Prottoy_CV.pdf" class="btn" target="_blank">View Resume</a>
+            <div class="skill" data-skill="Performance">
+              <span>Performance Optimization</span>
+              <div class="skill-bar"><div data-width="76%"></div></div>
+            </div>
           </div>
         </div>
-        <div class="hero-right">
-          <img src="profile.jpeg" alt="Khaled Prottoy" class="profile-img" loading="lazy">
-        </div>
+
       </div>
     </section>
 
-    <section id="journey" class="container reveal">
-      <h2>My Journey</h2>
-      <p>I’m an innovative and results-driven IT professional and environmental research associate with cross-sector experience spanning software development, network engineering, geospatial analytics, and research deployment.</p>
-      <p>I deliver full-stack digital solutions, AI platforms, and research-driven applications with a focus on social and environmental impact.</p>
+    <!-- Timeline -->
+    <section class="timeline-section card fade-in">
+      <h3>Experience Timeline</h3>
+
+      <ol class="timeline">
+        <li class="timeline-item">
+          <strong>2021 — Present</strong>
+          <div class="timeline-content">
+            <h4>Senior Frontend Engineer — ExampleCo</h4>
+            <p class="muted">Built animation pipelines, interactive dashboards, and optimized UI performance.</p>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <strong>2019 — 2021</strong>
+          <div class="timeline-content">
+            <h4>UI Developer — DesignHub</h4>
+            <p class="muted">Created high-end animated landing pages and design systems.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
-    <section id="expertise" class="container reveal">
-      <h2>Technical Expertise</h2>
-      <div class="tech-grid">
-        <div class="tech-card">Python</div>
-        <div class="tech-card">JavaScript</div>
-        <div class="tech-card">Node.js</div>
-        <div class="tech-card">SQL</div>
-        <div class="tech-card">R</div>
-        <div class="tech-card">AWS / GCP</div>
-      </div>
-    </section>
-
-    <section id="achievements" class="container reveal">
-      <h2>Key Achievements</h2>
-      <div class="achievements-grid">
-        <div class="achievement-card">
-          <h3>Organizational Leadership</h3>
-          <p>2024 - Led General Affairs of Student Council of INPT</p>
-        </div>
-        <div class="achievement-card">
-          <h3>Technical Excellence</h3>
-          <p>2023 - Delivered 45+ backend projects with Python</p>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <div class="container footer-container">
-      <p>&copy; 2025 Khaled Prottoy | All Rights Reserved</p>
-    </div>
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Your Name</div>
   </footer>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js" defer></script>
+  <!-- Libraries -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 
-  <script src="script.js" defer></script>
-  <script src="enhanced-ui.js" defer></script>
+  <!-- App Scripts -->
+  <script type="module" src="./particles.js" defer></script>
+  <script type="module" src="./theme.js" defer></script>
+  <script type="module" src="./hero.js" defer></script>
 
+  <!-- Page-specific JS -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animate skill bars
+      const bars = document.querySelectorAll('.skill-bar div');
+
+      bars.forEach(bar => {
+        const width = bar.dataset.width;
+        gsap.fromTo(bar, { width: "0%" }, {
+          width: width,
+          duration: 1.4,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: bar,
+            start: "top 80%"
+          }
+        });
       });
-    }
+
+      // Fade-in sections
+      gsap.utils.toArray('.fade-in').forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
+      });
+
+      // Slide-up sections
+      gsap.utils.toArray('.slide-up').forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
+      });
+    });
   </script>
+
 </body>
 </html>
