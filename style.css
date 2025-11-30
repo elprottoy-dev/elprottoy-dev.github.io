@@ -889,3 +889,21 @@ body.light-theme footer {
   }
 }
 
+/* HERO NAME FIX */
+.hero-name {
+  font-size: 3rem;           /* adjust size as needed */
+  letter-spacing: 2px;       /* adds horizontal spacing between letters */
+  line-height: 1.2;          /* improves readability if multiline */
+  font-weight: 700;           /* bold for emphasis */
+  color: #111111;             /* dark color for light mode */
+  word-break: normal;        /* prevents unwanted breaking */
+  margin-bottom: 0.5rem;     /* spacing below name */
+}
+
+/* Optional: make responsive for smaller screens */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}
