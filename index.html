@@ -1,103 +1,332 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Home</title>
-  <meta name="description" content="Portfolio — interactive hero, particles, theme engine, GSAP animations." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Your Name — Portfolio" />
-  <meta property="og:description" content="Interactive portfolio with premium design and animations." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHALED MD MEHZABIN ALAM PROTTOY | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="Khaled_Prottoy_CV.pdf" target="_blank" class="btn">Resume</a></li>
+    </ul>
+    <div class="theme-toggle" id="theme-toggle">🌙</div>
+  </nav>
 
-  <!-- Preloader -->
-  <div id="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <div class="loader" aria-hidden></div>
-      <div class="preloader-text">Loading…</div>
-    </div>
-  </div>
-
-  <!-- Particles canvas -->
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="./index.html">YourName</a>
-      <nav id="navbar" role="navigation" aria-label="Main Navigation">
-        <button id="theme-toggle" aria-pressed="false" aria-label="Toggle theme">🌙</button>
-        <ul class="nav-links" id="primary-menu" role="menubar">
-          <li role="none"><a role="menuitem" href="./index.html">Home</a></li>
-          <li role="none"><a role="menuitem" href="./about.html">About</a></li>
-          <li role="none"><a role="menuitem" href="./projects.html">Projects</a></li>
-          <li role="none"><a role="menuitem" href="./experience.html">Experience</a></li>
-          <li role="none"><a role="menuitem" href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main -->
-  <main id="main" class="container" role="main">
-    <section class="hero">
-      <div class="hero-inner">
-        <h1 class="hero-title">Hello, I’m</h1>
-        <h2 class="hero-name">Your Name</h2>
-        <p class="hero-lead">I design and build premium interactive web experiences — bridging animation, performance, and accessibility.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="./projects.html">See projects</a>
-          <a class="btn" href="./about.html">About me</a>
+  <!-- Hero Section -->
+  <section id="home">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-container">
+      <div class="hero-left">
+        <h1 class="hero-name">KHALED MD MEHZABIN ALAM PROTTOY</h1>
+        <p class="hero-subtitle">Open to collaborative research and development</p>
+        <h2 class="hero-intro">Hi, I'm Prottoy.<br>Researcher & Developer blending Environmental Science, Data Science, and Digital Innovation to build impactful solutions. </h2>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn">Get in Touch</a>
+          <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
         </div>
       </div>
-
-      <!-- decorative blobs for depth -->
-      <div class="blob blob-1" aria-hidden="true"></div>
-      <div class="blob blob-2" aria-hidden="true"></div>
-    </section>
-
-    <section class="features" aria-labelledby="features-title">
-      <h3 id="features-title">What I build</h3>
-      <div class="grid">
-        <article class="card" data-tilt><h4>Premium Hero</h4><p>Animated gradient text, glow aura and staggered letters.</p></article>
-        <article class="card" data-tilt><h4>Advanced Particles</h4><p>3-layer depth, mouse-reactive sparks, theme-synced color.</p></article>
-        <article class="card" data-tilt><h4>Theme Engine</h4><p>Dark/Light, accent selector and persistent preferences.</p></article>
+      <div class="hero-right">
+        <div class="gif-wrapper">
+          <img src="hero.gif" alt="Hero GIF">
+          <div class="gradient-overlay"></div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- Core Technologies -->
+  <section id="technologies" class="reveal">
+    <div class="container">
+      <h2>CORE TECHNOLOGIES</h2>
+      <div class="tech-grid">
+       
+        <div class="tech-card">Python</div>
+        <div class="tech-card">Django</div>
+        <div class="tech-card">FastAPI</div>
+        <div class="tech-card">JavaScript</div>
+        <div class="tech-card">Node.js</div>
+        <div class="tech-card">Express.js</div>
+        <div class="tech-card">Next.js</div>
+        <div class="tech-card">ReactJS</div>
+        <div class="tech-card">React</div>
+        <div class="tech-card">HTML</div>
+        <div class="tech-card">CSS</div>
+        <div class="tech-card">Fastify</div>
+        <div class="tech-card">PostgreSQL</div>
+        <div class="tech-card">MySQL</div>
+        <div class="tech-card">SQL</div>
+        <div class="tech-card">MongoDB</div>
+        <div class="tech-card">AWS</div>
+        <div class="tech-card">Docker</div>
+        <div class="tech-card">Nginx</div>
+        <div class="tech-card">Redis</div>
+        <div class="tech-card">Firebase</div>
+        
+        
+      </div>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Your Name — Crafted with care.</div>
+  <!-- Why Hire Me? -->
+  <section id="hireme" class="reveal">
+    <div class="container">
+      <h2>Why Hire Me?</h2>
+      <div class="hire-grid">
+        <div class="hire-card">
+          <h3>End-to-End System Design</h3>
+          <p>Skilled in translating business requirements into complete system architectures, including database design, API structure, and deployment pipelines.</p>
+        </div>
+        <div class="hire-card">
+          <h3>A Track of Trust and Excellence</h3>
+          <p>I build software that delivers measurable value. Every solution is engineered with reliability, precision, and data-backed insights.</p>
+        </div>
+        <div class="hire-card">
+          <h3>5-Star Rated Freelancer</h3>
+          <p>Achieved a perfect 5.0-star rating across 17 reviews by delivering high-quality code and clear communication.</p>
+        </div>
+        <div class="hire-card">
+          <h3>25+ Successful Projects</h3>
+          <p>Architected and delivered backend systems and REST APIs for over 20 freelance projects globally.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Cloud & DevOps Expertise</h3>
+          <p>Deployed scalable applications on AWS using Docker and CI/CD pipelines to enhance reliability and reduce deployment times.</p>
+        </div>
+         <div class="hire-card">
+          <h3>Full Remote Collaboration Skills</h3>
+          <p>Comfortable working across time zones with clients from the US, Europe, Australia, and Asia, ensuring smooth communication and delivery.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Debugging & Performance Optimization</h3>
+          <p>Specialist in improving system performance, reducing server load, and refining API response times.</p>
+        </div>
+        <div class="hire-card">
+          <h3>Trusted by Global Clients</h3>
+          <p>Proven track record of delivering solutions for clients worldwide via Freelancer.com.</p>
+        </div>
+        <div class="hire-card">
+          <h3>100% Commitment to Client Success</h3>
+          <p> Once I take a project, I stay with the client until the solution is stable, optimised, and ready for scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="projects" class="reveal">
+    <div class="container">
+      <h2>My Featured Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="card-inner">
+            <img src="project1.png" alt="AI-Powered Career Toolkit">
+            <div class="card-content">
+              <h3>Cloud-Deployed Microservice Architecture <span class="badge">In Development</span></h3>
+              <p>Designed and deployed microservices on AWS using Docker, EC2, and CI/CD pipelines, improving reliability, scalability, and deployment speed.</p>
+              <div class="tech-stack">React | Django | OpenAI API | JWT | Docker | AWS</div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-inner">
+            <img src="project2.png" alt="ENSA Khouribga University Website">
+            <div class="card-content">
+              <h3>Realtime Analytics Dashboard <span class="badge">Live</span></h3>
+              <p>full-stack dashboard with live metrics, background processing, and data visualisations for business decision-making.</p>
+              <div class="tech-stack">Next.js | React | Tailwind CSS | CMS</div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-inner">
+            <img src="project3.png" alt="Distributed Real-Time Voting System">
+            <div class="card-content">
+              <h3>E-Commerce Automation System<span class="badge">Conceptual Project</span></h3>
+              <p>Automated product syncing, inventory management, and notifications using APIs and serverless functions.</p>
+              <div class="tech-stack">Java | Kafka | React | Docker</div>
+              <div class="project-links">
+                <a href="#">Live Demo</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="view-all">
+        <a href="#">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Expertise -->
+  <section id="research" class="reveal">
+    <div class="container">
+      <h2>My Research Expertise</h2>
+      <div class="research-grid">
+        <div class="research-card">
+  <h3>Artificial Intelligence & Machine Learning</h3>
+  <ul>
+    <li>Neural Networks & Deep Learning</li>
+    <li>LLM Fine-Tuning & Evaluation</li>
+    <li>Privacy-Preserving Machine Learning</li>
+    <li>Generative AI Research & Applications</li>
+    <li>Reinforcement Learning & Optimization</li>
+    <li>AI Model Explainability & Evaluation Metrics</li>
+    <li>Domain-Specific AI Solutions</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Natural Language Processing (NLP)</h3>
+  <ul>
+    <li>Text Analytics & Sentiment Analysis</li>
+    <li>Contextual Embeddings & Semantic Search</li>
+    <li>Named Entity Recognition (NER) & Classification</li>
+    <li>Question-Answering Systems</li>
+    <li>Summarization & Text Generation</li>
+    <li>Language Modeling & Corpus Analysis</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Data Engineering & Research Infrastructure</h3>
+  <ul>
+    <li>ETL & Data Pipeline Design</li>
+    <li>Batch & Real-Time Data Workflows</li>
+    <li>Data Cleaning, Validation & Quality Assurance</li>
+    <li>Research-Ready Data Warehouses</li>
+    <li>Data Integration from Heterogeneous Sources</li>
+    <li>Scalable Data Processing & Storage Solutions</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Web Privacy & Security Research</h3>
+  <ul>
+    <li>Ad & Tracker Detection</li>
+    <li>Network-Level & DOM Analysis</li>
+    <li>Privacy-Focused Data Pipelines</li>
+    <li>Web Privacy & Data Protection Compliance</li>
+    <li>Threat Modeling & Risk Assessment</li>
+    <li>Secure System Design Principles</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>DevOps & Cloud Computing</h3>
+  <ul>
+    <li>CI/CD Pipeline Design & Deployment</li>
+    <li>Docker & Containerization</li>
+    <li>Kubernetes & Orchestration</li>
+    <li>Cloud Services (AWS EC2, Lambda, S3, RDS)</li>
+    <li>Monitoring, Logging & Alerting Systems</li>
+    <li>Infrastructure as Code (IaC)</li>
+  </ul>
+</div>
+
+<div class="research-card">
+  <h3>Computer Networks & Cybersecurity</h3>
+  <ul>
+    <li>Network Architecture & Protocol Analysis</li>
+    <li>Network Security & Intrusion Detection</li>
+    <li>Cryptography & Data Encryption</li>
+    <li>Vulnerability Assessment & Penetration Testing</li>
+    <li>Firewall & Access Control Configurations</li>
+    <li>Secure Communication Systems</li>
+  </ul>
+</div>
+  </section>
+
+  <!-- Client Success Stories -->
+  <section id="clients" class="reveal">
+    <div class="container">
+      <h2>Client Success Stories</h2>
+      <div class="client-grid">
+        <div class="client-card">
+          <p class="client-name">Sarah Thompson, Project Lead, GreenEarth Solutions</p>
+          <p class="client-location">San Francisco, United States</p>
+          <p>"Prottoy delivered exactly what we needed: clean code, clear communication, and fast turnaround. One of the best developers we’ve worked with."</p>
+          <p class="project-name">-Firebase & Vercel Dashboard</p>
+        </div>
+        <div class="client-card">
+          <p class="client-name">Ravi Kumar, IBM devops enginner</p>
+          <p class="client-location">IIT Kanpur, India</p>
+          <p>"High stakes? Tight deadlines? Prottoy thrives. He’s the pro you call when average isn’t enough."</p>
+          <p class="project-name">-CI/CD Pipeline & Deployments</p>
+        </div>
+        <div class="client-card">
+          <p class="client-name">Michael Nguyen, Head of Engineering, SUNMI </p>
+          <p class="client-location">Newcastle upon Tyne, United Kingdom</p>
+          <p>"Reliable, fast, and innovative, Prottoy doesn’t just deliver; he reshapes the way we approach challenges."</p>
+          <p class="project-name">-Scala Data Extraction & Integrations</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><h3>5.0</h3><p>Average Rating</p></div>
+        <div class="stat"><h3>46+</h3><p>Client Reviews</p></div>
+        <div class="stat"><h3>45+</h3><p>Projects Done</p></div>
+        <div class="stat"><h3>100%</h3><p>On-Time Delivery</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready to Build -->
+  <section id="build" class="reveal">
+    <div class="container">
+      <h2>Ready to Build Something Amazing?</h2>
+      <p>Let's collaborate to bring your vision to life. From concept to deployment, I deliver high-quality software solutions.</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer / Quick Links -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-left">
+        <h3>Powered By<br>KHALED MD MEHZABIN ALAM PROTTOY</h3>
+        <p>Crafting reliable, Sustainable solutions that make a positive impact worldwide.</p>
+      </div>
+      <div class="footer-right">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
 
-  <!-- Libraries -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
-
-  <!-- App scripts -->
-  <script type="module" src="./particles.js" defer></script>
-  <script type="module" src="./theme.js" defer></script>
-  <script type="module" src="./hero.js" defer></script>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    window.addEventListener('load', ()=>{
-      const pre = document.getElementById('preloader');
-      if (!pre) return;
-      pre.style.transition = 'opacity .45s ease';
-      pre.style.opacity = '0';
-      setTimeout(()=> pre.remove(), 550);
-    });
-  </script>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
