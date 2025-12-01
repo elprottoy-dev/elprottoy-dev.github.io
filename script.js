@@ -1,99 +1,78 @@
-// script.js — upgraded (preserves original behaviors, uses modules for extras)
-
-// --------------------
-// Helper selectors
-const $ = sel => document.querySelector(sel);
-const $$ = sel => Array.from(document.querySelectorAll(sel));
-
-// --------------------
-// GSAP Scroll Reveal (original logic preserved)
-if (window.gsap && window.ScrollTrigger) {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray('.reveal').forEach((elem) => {
-    gsap.fromTo(elem,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: elem, start: 'top 80%', toggleActions: 'play none none reverse' }
-      }
-    );
-  });
-} else {
-  // fallback: immediately show
-  $$('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
-}
-
-// --------------------
-// Vanilla Tilt (preserve original settings)
-if (window.VanillaTilt) {
-  try {
-    VanillaTilt.init(document.querySelectorAll(".card-inner"), {
-      max: 15,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2,
-      scale: 1.05
-    });
-  } catch (err) {
-    console.warn('VanillaTilt init error', err);
-  }
-}
-
-// --------------------
-// HERO: ensure letters wrapped if hero.js hasn't run yet
-document.addEventListener('DOMContentLoaded', ()=> {
-  const heroName = document.querySelector('.hero-name');
-  if (heroName && !heroName.querySelector('span')) {
-    heroName.innerHTML = heroName.textContent.split('').map(ch => ch === ' ' ? '<span class="ch space"> </span>' : `<span class="ch">${ch}</span>`).join('');
-  }
+// ---------------- Theme Toggle ----------------
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
 });
 
-// --------------------
-// Theme toggle fallback (if theme.js not present)
-(function(){
-  const btn = document.querySelector('.theme-toggle');
-  const body = document.body;
-  if (!btn) return;
+// ---------------- Mobile Menu Toggle ----------------
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
 
-  // If theme.js active, it sets window.__theme_module_present = true
-  if (!window.__theme_module_present) {
-    // load saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-theme');
-      btn.textContent = '☀️';
-      btn.setAttribute('aria-pressed','true');
+// ---------------- Scroll Reveal ----------------
+const revealElements = document.querySelectorAll('.reveal');
+const revealOnScroll = () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  revealElements.forEach(el => {
+    const elTop = el.getBoundingClientRect().top;
+    if (elTop < triggerBottom) {
+      el.classList.add('active');
     } else {
-      btn.textContent = '🌙';
-      btn.setAttribute('aria-pressed','false');
+      el.classList.remove('active');
     }
+  });
+};
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
 
-    btn.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      if (body.classList.contains('light-theme')) {
-        localStorage.setItem('theme', 'light');
-        btn.textContent = '☀️';
-        btn.setAttribute('aria-pressed','true');
-      } else {
-        localStorage.setItem('theme', 'dark');
-        btn.textContent = '🌙';
-        btn.setAttribute('aria-pressed','false');
-      }
+// ---------------- Vanilla Tilt ----------------
+VanillaTilt.init(document.querySelectorAll(".card-inner"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.3,
+});
+
+// ---------------- Hero Particle Canvas ----------------
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 80;
+
+function createParticles() {
+  for(let i=0; i<particleCount; i++) {
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      size: Math.random()*3 + 1,
+      speedX: (Math.random()-0.5)*1.5,
+      speedY: (Math.random()-0.5)*1.5
     });
   }
-})();
-
-// --------------------
-// Smooth anchor scrolling (keeps your original behavior)
-document.addEventListener('click', (e)=> {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a) return;
-  const id = a.getAttribute('href');
-  if (!id || id === '#') return;
-  const target = document.querySelector(id);
-  if (!target) return;
-  e.preventDefault();
-  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function animateParticles() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p => {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fillStyle = '#6a5cff';
+    ctx.fill();
+  });
+  requestAnimationFrame(animateParticles);
+}
+createParticles();
+animateParticles();
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
