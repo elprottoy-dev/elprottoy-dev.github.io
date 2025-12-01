@@ -464,4 +464,12 @@ body.light-theme .client-card {
 body.light-theme section h2 {
   -webkit-text-fill-color: transparent; /* gradient still works */
 }
+body.light-theme .education-grid div,
+body.light-theme .certs-grid div,
+body.light-theme .skills-grid div,
+body.light-theme .card-inner p,
+body.light-theme .card-inner ul li {
+  color: var(--text-dark);  /* dark text for light background */
+  background: var(--card-bg-light); /* optional: card bg lighter in light mode */
+}
 
