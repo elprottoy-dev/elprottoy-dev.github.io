@@ -330,5 +330,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
   <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+<script>
+// Apply VanillaTilt only to cards except Core Tech & Featured Projects
+VanillaTilt.init(
+  document.querySelectorAll('.card, .project-card, .experience-card'), 
+  {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2
+  }
+);
+</script>
+
 </body>
 </html>
