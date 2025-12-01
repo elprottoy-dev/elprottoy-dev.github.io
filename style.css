@@ -433,3 +433,35 @@ body.light-theme footer {
   opacity: 1;
   transform: translateY(0);
 }
+/* ---------------- Light Mode ---------------- */
+body.light-theme {
+  background-color: #fdfdfd;
+  color: #111; /* default text color for light mode */
+}
+
+/* Section specific adjustments */
+body.light-theme .hero-subtitle,
+body.light-theme .hero-intro,
+body.light-theme .card-content p,
+body.light-theme .research-card,
+body.light-theme .hire-card,
+body.light-theme .client-card {
+  color: #111; /* readable dark text */
+}
+
+body.light-theme .tech-card {
+  background: rgba(0,0,0,0.05);
+  color: #111;
+}
+
+body.light-theme .project-card .card-inner,
+body.light-theme .research-card,
+body.light-theme .hire-card,
+body.light-theme .client-card {
+  background: rgba(0,0,0,0.03);
+}
+
+body.light-theme section h2 {
+  -webkit-text-fill-color: transparent; /* gradient still works */
+}
+
