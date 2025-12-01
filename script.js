@@ -44,7 +44,7 @@ if (window.VanillaTilt) {
 
 // --------------------
 // HERO: ensure letters wrapped if hero.js hasn't run yet
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', ()=> {
   const heroName = document.querySelector('.hero-name');
   if (heroName && !heroName.querySelector('span')) {
     heroName.innerHTML = heroName.textContent.split('').map(ch => ch === ' ' ? '<span class="ch space"> </span>' : `<span class="ch">${ch}</span>`).join('');
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // --------------------
 // Smooth anchor scrolling (keeps your original behavior)
-document.addEventListener('click', (e)=>{
+document.addEventListener('click', (e)=> {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
   const id = a.getAttribute('href');
@@ -97,89 +97,3 @@ document.addEventListener('click', (e)=>{
   e.preventDefault();
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
-/* ==========================
-   LIGHT MODE FIX - HERO & TEXT
-   ========================== */
-
-/* Body & general text */
-body {
-  background-color: #ffffff; /* light background */
-  color: #111111;            /* dark, readable text */
-}
-
-/* Navbar links */
-#navbar {
-  background-color: #ffffff; /* light navbar */
-}
-.nav-links a {
-  color: #111111; /* dark text for readability */
-}
-.nav-links a.btn {
-  color: #ffffff;  /* buttons text if bg is colored */
-  background-color: #1db954; /* accent button color */
-}
-
-/* Theme toggle */
-.theme-toggle {
-  color: #111111; /* ensure toggle icon is visible */
-}
-
-/* Hero Section */
-.hero-container {
-  color: #111111; /* all hero text dark */
-}
-.hero-name {
-  color: #111111;
-}
-.hero-subtitle {
-  color: #111111;
-}
-.hero-intro {
-  color: #111111;
-}
-
-/* Hero buttons */
-.hero-buttons a.btn {
-  background-color: #1db954; /* green button bg */
-  color: #ffffff;             /* readable text */
-  border: none;
-}
-.hero-buttons a.btn:hover {
-  background-color: #14833b; /* darker hover effect */
-}
-
-/* Hero right overlay / GIF */
-.gradient-overlay {
-  background: rgba(255,255,255,0.1); /* subtle overlay for light theme */
-}
-
-/* Card elements (technologies, hire, projects, research) */
-.tech-card,
-.hire-card,
-.project-card,
-.research-card,
-.client-card {
-  background-color: #fafafa;
-  color: #111111;
-  border: 1px solid #e0e0e0;
-}
-
-/* Footer */
-footer {
-  background-color: #f8f8f8;
-  color: #111111;
-}
-footer a {
-  color: #111111;
-}
-
-/* Links hover effect */
-a:hover {
-  color: #1db954;
-}
-
-/* Optional: canvas / particle visibility for light mode */
-#particle-canvas {
-  mix-blend-mode: multiply; /* ensures particles are visible on light background */
-}
-
