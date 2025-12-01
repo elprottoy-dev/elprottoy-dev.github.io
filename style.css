@@ -578,3 +578,31 @@ body.light-theme .card-inner .badge {
   #experience-hero { flex-direction: column; text-align: center; }
   .hero-left, .hero-right { margin-bottom: 1.5rem; }
 }
+/* General Card Hover Effect (Green Glow + Tilt) */
+.card, .project-card, .experience-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Green Glow on Hover */
+.card:hover, .project-card:hover, .experience-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 25px rgba(29,185,84,0.5);
+}
+
+/* Light/Dark theme adjustments */
+body.light-theme .card, 
+body.light-theme .project-card, 
+body.light-theme .experience-card {
+  background: var(--card-bg-light);
+  color: var(--text-dark);
+}
+body.light-theme .card:hover, 
+body.light-theme .project-card:hover, 
+body.light-theme .experience-card:hover {
+  box-shadow: 0 15px 25px rgba(29,185,84,0.4);
+}
+
