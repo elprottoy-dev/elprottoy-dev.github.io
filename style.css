@@ -73,12 +73,6 @@ ul {
   margin-left: 1rem;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
 /* ---------------- Hero Section ---------------- */
 #home {
   position: relative;
@@ -370,26 +364,6 @@ footer {
 
   .hero-left, .hero-right {
     max-width: 100%;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0; left: -100%;
-    width: 70%;
-    height: 100vh;
-    background: #111;
-    flex-direction: column;
-    padding-top: 5rem;
-    transition: 0.3s;
-    gap: 2rem;
-  }
-
-  .nav-links.active {
-    left: 0;
   }
 }
 
