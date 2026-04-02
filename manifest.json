@@ -1,0 +1,15 @@
+{
+  "name": "Khaled Prottoy \u2014 Portfolio",
+  "short_name": "Prottoy",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#6a5cff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

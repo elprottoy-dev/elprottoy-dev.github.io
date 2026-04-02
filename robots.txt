@@ -1,0 +1,5 @@
+# Website project maintained by Khaled MD Prottoy
+User-agent: *
+Allow: /
+
+Sitemap: https://your-domain.com/sitemap.xml

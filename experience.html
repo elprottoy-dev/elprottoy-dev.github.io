@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
+  <meta property="og:title" content="Experience | Khaled Prottoy">
+  <meta property="og:description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elprottoy-dev.github.io/experience.html">
+  <meta property="og:image" content="https://elprottoy-dev.github.io/profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Experience | Khaled Prottoy">
+  <meta name="twitter:description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
+  <link rel="canonical" href="https://elprottoy-dev.github.io/experience.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+<title>Experience | Khaled Prottoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+:root {
+  --accent: #1db954;
+  --dark-bg: #0f0f0f;
+  --light-bg: #f7f7f7;
+  --card-bg: #1a1a1a;
+  --card-bg-light: #fff;
+  --text-light: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #aaaaaa;
+  --transition: 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light-theme {
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
+
+/* Hero Section */
+#experience-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 120px auto 50px;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+.hero-left { flex: 1; min-width: 300px; }
+.hero-left h1 { font-size: 2.8rem; color: var(--accent); margin-bottom: 0.5rem; }
+.hero-left p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
+.hero-buttons a { display: inline-block; margin-right: 1rem; margin-top: 0.5rem; }
+.hero-right { flex: 1; display: flex; justify-content: center; min-width: 300px; }
+.gif-wrapper { position: relative; width: 100%; max-width: 400px; height: 300px; overflow: hidden; border-radius: 20px; }
+.gif-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Experience Cards */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.experience-card { perspective: 1000px; }
+.card-inner {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transform-style: preserve-3d;
+  transition: transform var(--transition), box-shadow var(--transition), background 0.3s;
+  cursor: pointer;
+}
+.card-inner h3, .card-inner h4 { color: var(--accent); margin-bottom: 0.5rem; }
+.card-inner p, .card-inner ul li { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.card-inner ul { padding-left: 1.2rem; }
+.card-inner .badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark-bg);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+.card-inner:hover {
+  transform: rotateY(10deg) scale(1.03);
+  box-shadow: 0 20px 40px rgba(29,185,84,0.4);
+}
+
+/* Education / Certifications / Skills */
+.education-grid, .certs-grid, .skills-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.education-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.certs-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.education-grid div, .certs-grid div, .skills-grid div {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: var(--transition);
+}
+.education-grid div:hover, .certs-grid div:hover, .skills-grid div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(29,185,84,0.4);
+}
+
+/* Light theme overrides */
+body.light-theme .card-inner,
+body.light-theme .education-grid div,
+body.light-theme .certs-grid div,
+body.light-theme .skills-grid div {
+  background: var(--card-bg-light);
+  color: var(--text-dark);
+}
+body.light-theme .card-inner p,
+body.light-theme .card-inner ul li {
+  color: var(--text-dark);
+}
+body.light-theme .card-inner .badge {
+  background: var(--accent);
+  color: var(--text-light);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--dark-bg);
+  color: var(--text-muted);
+  margin-top: 4rem;
+}
+body.light-theme footer {
+  background: var(--light-bg);
+  color: var(--text-dark);
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  #experience-hero { flex-direction: column; text-align: center; }
+  .hero-left, .hero-right { margin-bottom: 1.5rem; }
+}
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+<div id="site-navbar"></div>
+
+  <main id="main-content">
+
+<!-- Hero Section -->
+<section id="experience-hero">
+  <div class="hero-left">
+    <h1>Professional Experience</h1>
+    <p>Data Science, software engineering,Network Engineering and innovation at a glance.</p>
+    <div class="hero-buttons">
+      <a href="Khaled_Prottoy_CV.pdf" download class="btn">Download Resume</a>
+        <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
+      <a href="contact.html" class="btn">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="gif-wrapper">
+      <img src="experience-hero.gif" alt="Experience GIF" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- Work Experience -->
+<section class="container">
+  <h2>Work Experience</h2>
+  <div class="experience-grid">
+
+      <div class="experience-card cynexsys-experience-card">
+        <div class="card-inner">
+          <div class="cynexsys-experience-brand">
+            <img src="cynexsys-logo.jpg" alt="Cynexsys logo" loading="lazy" decoding="async">
+            <div>
+              <h3>CEO &amp; Founder <span class="badge">Leadership</span></h3>
+              <p>Cynexsys | Founder-Led Venture</p>
+              <p>2016 - Present</p>
+            </div>
+          </div>
+          <h4>Role Focus:</h4>
+          <ul>
+            <li>Leading product direction, technical strategy, and delivery planning for Cynexsys.</li>
+            <li>Building research-driven digital systems across AI, data, software, and innovation workflows.</li>
+            <li>Designing scalable platforms and next-generation technical services for future clients and partners.</li>
+            <li>Aligning business vision, engineering execution, and long-term company growth.</li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="experience-card">
+      <div class="card-inner">
+        <h3>Research Officer</h3>
+        <p>Center for People and Environ (CPE) | On-site</p>
+        <p>Feb 2022 - Present</p>
+        <h4>Key Achievements:</h4>
+        <ul>
+          <li>Delivered 45+ AI projects aligning with client goals.</li>
+          <li>Developed integrated apps with privacy-focused solutions.</li>
+          <li>Earned 5-star rating across 48 client reviews.</li>
+          <li>100% on-time & on-budget project delivery.</li>
+        </ul>
+        <h4>Tools & Technologies:</h4>
+        <p>
+          <span class="badge">Python</span>
+          <span class="badge">R</span>
+          <span class="badge">Javascript</span>
+          <span class="badge">CSS5</span>
+          <span class="badge">PyTorch</span>
+          <span class="badge">SPSS</span>
+          <span class="badge">MS Suite</span>
+          <span class="badge">Power BI</span>
+          <span class="badge">Kobotoolbox</span>
+          <span class="badge">ArcGIS</span>
+          <span class="badge">Adobe Suite</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="card-inner">
+        <h3>Network Engineer</h3>
+        <p>Grameenphone | On-site</p>
+        <p>Jan 2019 - Jan 2020</p>
+        <h4>Key Achievements:</h4>
+        <ul>
+          <li>Provided secure access management and implemented group policies aligned with IT governance standards </li>
+          <li>Contributed to cloud-network integration projects; ensured high availability of business-critical applications</li>
+          <li>Monitored network performance and executed root cause analysis to preventfuture outages</li>
+        </ul>
+        <h4>Technologies:</h4>
+        <p>
+          <span class="badge">Cisco</span>
+          <span class="badge">Wipro</span>
+          <span class="badge">Tektronix</span>
+          <span class="badge">OSS</span>
+          <span class="badge">CU/DU</span>
+          <span class="badge">Anite</span>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section class="container">
+  <h2>Education</h2>
+  <div class="education-grid">
+    <div>
+      <h3>B.Sc. in Computer Science and Engineering</h3>
+      <p>American International University Bangladesh (AIUB) | 2016 - 2020</p>
+    </div>
+    <div>
+      <h3>Masters of Business Administration (MBA)</h3>
+      <p>University of the People | 2016 - Present</p>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section class="container">
+  <h2>Certifications</h2>
+  <div class="certs-grid">
+    <div>AI & ML Fundamentals</div>
+     <div>Deep Learning with Python</div>
+    <div>Machine Learning with Python</div>
+    <div>Python Advanced</div>
+     <div>Applied Data Science with Python</div>
+    <div>SQL and Relational Databases</div>
+    <div>Big Data Foundations - Level 1 & 2</div>
+    <div>Introduction to Cloud Computing</div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="container">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div>Python</div>
+<div>Java</div>
+<div>Swift</div>
+<div>C</div>
+<div>C++</div>
+<div>C#</div>
+<div>SQL</div>
+<div>R</div>
+<div>Bash</div>
+<div>PowerShell</div>
+<div>IBM Watson</div>
+<div>PyTorch</div>
+<div>Cursor</div>
+<div>Node.js</div>
+<div>PHP</div>
+<div>Laravel</div>
+<div>HTML5</div>
+<div>CSS3</div>
+<div>Bootstrap</div>
+<div>WordPress</div>
+<div>Git</div>
+<div>GitHub</div>
+<div>GitLab</div>
+<div>MySQL</div>
+<div>MongoDB</div>
+<div>Oracle DB</div>
+<div>SQL Server</div>
+<div>IBM Watson Studio</div>
+<div>IBM SPSS</div>
+<div>RStudio</div>
+<div>Power BI</div>
+<div>Google Cloud Storage</div>
+<div>Wireshark</div>
+<div>Metasploit</div>
+<div>Nmap</div>
+<div>Aircrack-ng</div>
+<div>Hydra</div>
+<div>Adobe Premiere Pro</div>
+<div>Adobe Animate</div>
+<div>Canva</div>
+<div>MS Word</div>
+<div>Excel</div>
+<div>PowerPoint</div>
+<div>Planner</div>
+<div>Teams</div>
+<div>Zoom</div>
+<div>Google Workspace</div>
+<div>ClickUp</div>
+
+  </div>
+</section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+
+
+<script>
+// VanillaTilt for experience cards
+VanillaTilt.init(document.querySelectorAll(".experience-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+</script>
+  <script src="navbar.js"></script>
+  <script src="footer.js"></script>
+</body>
+</html>
