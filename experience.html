@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
-  <meta property="og:title" content="Experience | Khaled Prottoy">
-  <meta property="og:description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://elprottoy-dev.github.io/experience.html">
-  <meta property="og:image" content="https://elprottoy-dev.github.io/profile.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Experience | Khaled Prottoy">
-  <meta name="twitter:description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
-  <link rel="canonical" href="https://elprottoy-dev.github.io/experience.html">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="manifest.json">
+<meta name="description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
+<meta property="og:title" content="Experience | Khaled Prottoy">
+<meta property="og:description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elprottoy-dev.github.io/experience.html">
+<meta property="og:image" content="https://elprottoy-dev.github.io/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Experience | Khaled Prottoy">
+<meta name="twitter:description" content="Professional experience across research operations, environmental studies, digital systems, and technical development.">
+<link rel="canonical" href="https://elprottoy-dev.github.io/experience.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
 <title>Experience | Khaled Prottoy</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -44,7 +44,6 @@ body.light-theme {
   color: var(--text-dark);
 }
 
-/* Hero Section */
 #experience-hero {
   display: flex;
   align-items: center;
@@ -62,7 +61,6 @@ body.light-theme {
 .gif-wrapper { position: relative; width: 100%; max-width: 400px; height: 300px; overflow: hidden; border-radius: 20px; }
 .gif-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Experience Cards */
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -98,45 +96,135 @@ body.light-theme {
   box-shadow: 0 20px 40px rgba(29,185,84,0.4);
 }
 
-/* Education / Certifications / Skills */
 .education-grid, .certs-grid, .skills-grid {
   display: grid;
   gap: 1.5rem;
   margin-top: 2rem;
 }
-.education-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.education-grid { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
 .certs-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-.education-grid div, .certs-grid div, .skills-grid div {
+.education-grid > div, .certs-grid div, .skills-grid div {
   background: var(--card-bg);
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
   transition: var(--transition);
 }
-.education-grid div:hover, .certs-grid div:hover, .skills-grid div:hover {
+.education-grid > div:hover, .certs-grid div:hover, .skills-grid div:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 25px rgba(29,185,84,0.4);
 }
 
-/* Light theme overrides */
+.education-card {
+  text-align: left;
+  padding: 1.25rem !important;
+}
+.education-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.education-logo-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.education-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.education-card h3 {
+  margin: 0 0 0.35rem;
+  color: var(--text-light);
+  font-size: 1.05rem;
+}
+.education-school {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0.15rem 0;
+}
+.education-duration,
+.education-major,
+.education-focus,
+.education-verify p {
+  color: var(--text-muted);
+  margin: 0.3rem 0;
+  font-size: 0.92rem;
+}
+.education-verify {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.education-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+.education-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.95rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.education-links a.primary-link {
+  background: var(--accent);
+  color: var(--dark-bg);
+}
+.education-links a.secondary-link {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-light);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.education-links a:hover {
+  transform: translateY(-2px);
+}
+
 body.light-theme .card-inner,
-body.light-theme .education-grid div,
+body.light-theme .education-grid > div,
 body.light-theme .certs-grid div,
 body.light-theme .skills-grid div {
   background: var(--card-bg-light);
   color: var(--text-dark);
 }
 body.light-theme .card-inner p,
-body.light-theme .card-inner ul li {
-  color: var(--text-dark);
+body.light-theme .card-inner ul li,
+body.light-theme .education-duration,
+body.light-theme .education-major,
+body.light-theme .education-focus,
+body.light-theme .education-verify p {
+  color: #444;
 }
 body.light-theme .card-inner .badge {
   background: var(--accent);
   color: var(--text-light);
 }
+body.light-theme .education-card h3,
+body.light-theme .education-links a.secondary-link {
+  color: var(--text-dark);
+}
+body.light-theme .education-logo-wrap {
+  background: rgba(0,0,0,0.04);
+}
+body.light-theme .education-verify {
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
 
-/* Footer */
 footer {
   text-align: center;
   padding: 3rem 2rem;
@@ -149,10 +237,12 @@ body.light-theme footer {
   color: var(--text-dark);
 }
 
-/* Responsive */
 @media(max-width: 768px){
   #experience-hero { flex-direction: column; text-align: center; }
   .hero-left, .hero-right { margin-bottom: 1.5rem; }
+  .education-top {
+    align-items: flex-start;
+  }
 }
 </style>
 </head>
@@ -163,14 +253,13 @@ body.light-theme footer {
 
   <main id="main-content">
 
-<!-- Hero Section -->
 <section id="experience-hero">
   <div class="hero-left">
     <h1>Professional Experience</h1>
     <p>Data Science, software engineering,Network Engineering and innovation at a glance.</p>
     <div class="hero-buttons">
       <a href="Khaled_Prottoy_CV.pdf" download class="btn">Download Resume</a>
-        <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
+      <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
       <a href="contact.html" class="btn">Get in Touch</a>
     </div>
   </div>
@@ -181,30 +270,29 @@ body.light-theme footer {
   </div>
 </section>
 
-<!-- Work Experience -->
 <section class="container">
   <h2>Work Experience</h2>
   <div class="experience-grid">
 
-      <div class="experience-card cynexsys-experience-card">
-        <div class="card-inner">
-          <div class="cynexsys-experience-brand">
-            <img src="cynexsys-logo.jpg" alt="Cynexsys logo" loading="lazy" decoding="async">
-            <div>
-              <h3>CEO &amp; Founder <span class="badge">Leadership</span></h3>
-              <p>Cynexsys | Founder-Led Venture</p>
-              <p>2016 - Present</p>
-            </div>
+    <div class="experience-card cynexsys-experience-card">
+      <div class="card-inner">
+        <div class="cynexsys-experience-brand">
+          <img src="cynexsys-logo.jpg" alt="Cynexsys logo" loading="lazy" decoding="async">
+          <div>
+            <h3>CEO &amp; Founder <span class="badge">Leadership</span></h3>
+            <p>Cynexsys | Founder-Led Venture</p>
+            <p>2016 - Present</p>
           </div>
-          <h4>Role Focus:</h4>
-          <ul>
-            <li>Leading product direction, technical strategy, and delivery planning for Cynexsys.</li>
-            <li>Building research-driven digital systems across AI, data, software, and innovation workflows.</li>
-            <li>Designing scalable platforms and next-generation technical services for future clients and partners.</li>
-            <li>Aligning business vision, engineering execution, and long-term company growth.</li>
-          </ul>
         </div>
+        <h4>Role Focus:</h4>
+        <ul>
+          <li>Leading product direction, technical strategy, and delivery planning for Cynexsys.</li>
+          <li>Building research-driven digital systems across AI, data, software, and innovation workflows.</li>
+          <li>Designing scalable platforms and next-generation technical services for future clients and partners.</li>
+          <li>Aligning business vision, engineering execution, and long-term company growth.</li>
+        </ul>
       </div>
+    </div>
 
     <div class="experience-card">
       <div class="card-inner">
@@ -216,9 +304,9 @@ body.light-theme footer {
           <li>Delivered 45+ AI projects aligning with client goals.</li>
           <li>Developed integrated apps with privacy-focused solutions.</li>
           <li>Earned 5-star rating across 48 client reviews.</li>
-          <li>100% on-time & on-budget project delivery.</li>
+          <li>100% on-time &amp; on-budget project delivery.</li>
         </ul>
-        <h4>Tools & Technologies:</h4>
+        <h4>Tools &amp; Technologies:</h4>
         <p>
           <span class="badge">Python</span>
           <span class="badge">R</span>
@@ -237,14 +325,14 @@ body.light-theme footer {
 
     <div class="experience-card">
       <div class="card-inner">
-        <h3> Internship </h3>
+        <h3>Internship</h3>
         <p>Grameenphone | On-site</p>
         <p>Oct 2020 - June 2021</p>
         <h4>Key Achievements:</h4>
         <ul>
-          <li>Provided secure access management and implemented group policies aligned with IT governance standards </li>
-          <li>Contributed to cloud-network integration projects; ensured high availability of business-critical applications</li>
-          <li>Monitored network performance and executed root cause analysis to preventfuture outages</li>
+          <li>Provided secure access management and implemented group policies aligned with IT governance standards.</li>
+          <li>Contributed to cloud-network integration projects; ensured high availability of business-critical applications.</li>
+          <li>Monitored network performance and executed root cause analysis to prevent future outages.</li>
         </ul>
         <h4>Technologies:</h4>
         <p>
@@ -254,96 +342,126 @@ body.light-theme footer {
           <span class="badge">OSS</span>
           <span class="badge">CU/DU</span>
           <span class="badge">Anite</span>
-          
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Education -->
 <section class="container">
   <h2>Education</h2>
   <div class="education-grid">
-    <div>
-      <h3>B.Sc. in Computer Science and Engineering</h3>
-      <p>American International University Bangladesh (AIUB) | 2016 - 2020</p>
+    <div class="education-card">
+      <div class="education-top">
+        <div class="education-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/AIUB_logo.svg/512px-AIUB_logo.svg.png" alt="American International University-Bangladesh logo" loading="lazy">
+        </div>
+        <div>
+          <h3>B.Sc. in Engineering</h3>
+          <p class="education-school">American International University-Bangladesh (AIUB)</p>
+          <p class="education-duration">2016 - 2020</p>
+        </div>
+      </div>
+      <p class="education-major"><strong>Major:</strong> Data Science</p>
+      <p class="education-focus">Built academic foundations across computing, analytics, and engineering-oriented technical problem solving.</p>
+      <div class="education-verify">
+        <p><strong>Verification:</strong> University website and institutional profile.</p>
+        <div class="education-links">
+          <a class="primary-link" href="https://www.aiub.edu/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+          <a class="secondary-link" href="https://www.aiub.edu/about/aiub-at-a-glance" target="_blank" rel="noopener noreferrer">University Info</a>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3>Masters of Business Administration (MBA)</h3>
-      <p>University of the People | 2025 - Present</p>
+
+    <div class="education-card">
+      <div class="education-top">
+        <div class="education-logo-wrap">
+          <img src="https://www.uopeople.edu/wp-content/themes/uopeople/images/uop-logo-vertical.svg" alt="University of the People logo" loading="lazy">
+        </div>
+        <div>
+          <h3>Master of Business Administration (MBA)</h3>
+          <p class="education-school">University of the People</p>
+          <p class="education-duration">2025 - Present</p>
+        </div>
+      </div>
+      <p class="education-major"><strong>Concentration:</strong> Operations</p>
+      <p class="education-focus">Expanding expertise in operational strategy, organizational systems, and management decision-making.</p>
+      <div class="education-verify">
+        <p><strong>Verification:</strong> Official university website and MBA program page.</p>
+        <div class="education-links">
+          <a class="primary-link" href="https://www.uopeople.edu/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+          <a class="secondary-link" href="https://www.uopeople.edu/programs/online-masters/business-administration/" target="_blank" rel="noopener noreferrer">MBA Program</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Certifications -->
 <section class="container">
   <h2>Certifications</h2>
   <div class="certs-grid">
-    <div>AI & ML Fundamentals</div>
-     <div>Deep Learning with Python</div>
+    <div>AI &amp; ML Fundamentals</div>
+    <div>Deep Learning with Python</div>
     <div>Machine Learning with Python</div>
     <div>Python Advanced</div>
-     <div>Applied Data Science with Python</div>
+    <div>Applied Data Science with Python</div>
     <div>SQL and Relational Databases</div>
-    <div>Big Data Foundations - Level 1 & 2</div>
+    <div>Big Data Foundations - Level 1 &amp; 2</div>
     <div>Introduction to Cloud Computing</div>
   </div>
 </section>
 
-<!-- Skills -->
 <section class="container">
   <h2>Skills</h2>
   <div class="skills-grid">
     <div>Python</div>
-<div>Java</div>
-<div>Swift</div>
-<div>C</div>
-<div>C++</div>
-<div>C#</div>
-<div>SQL</div>
-<div>R</div>
-<div>Bash</div>
-<div>PowerShell</div>
-<div>IBM Watson</div>
-<div>PyTorch</div>
-<div>Cursor</div>
-<div>Node.js</div>
-<div>PHP</div>
-<div>Laravel</div>
-<div>HTML5</div>
-<div>CSS3</div>
-<div>Bootstrap</div>
-<div>WordPress</div>
-<div>Git</div>
-<div>GitHub</div>
-<div>GitLab</div>
-<div>MySQL</div>
-<div>MongoDB</div>
-<div>Oracle DB</div>
-<div>SQL Server</div>
-<div>IBM Watson Studio</div>
-<div>IBM SPSS</div>
-<div>RStudio</div>
-<div>Power BI</div>
-<div>Google Cloud Storage</div>
-<div>Wireshark</div>
-<div>Metasploit</div>
-<div>Nmap</div>
-<div>Aircrack-ng</div>
-<div>Hydra</div>
-<div>Adobe Premiere Pro</div>
-<div>Adobe Animate</div>
-<div>Canva</div>
-<div>MS Word</div>
-<div>Excel</div>
-<div>PowerPoint</div>
-<div>Planner</div>
-<div>Teams</div>
-<div>Zoom</div>
-<div>Google Workspace</div>
-<div>ClickUp</div>
-
+    <div>Java</div>
+    <div>Swift</div>
+    <div>C</div>
+    <div>C++</div>
+    <div>C#</div>
+    <div>SQL</div>
+    <div>R</div>
+    <div>Bash</div>
+    <div>PowerShell</div>
+    <div>IBM Watson</div>
+    <div>PyTorch</div>
+    <div>Cursor</div>
+    <div>Node.js</div>
+    <div>PHP</div>
+    <div>Laravel</div>
+    <div>HTML5</div>
+    <div>CSS3</div>
+    <div>Bootstrap</div>
+    <div>WordPress</div>
+    <div>Git</div>
+    <div>GitHub</div>
+    <div>GitLab</div>
+    <div>MySQL</div>
+    <div>MongoDB</div>
+    <div>Oracle DB</div>
+    <div>SQL Server</div>
+    <div>IBM Watson Studio</div>
+    <div>IBM SPSS</div>
+    <div>RStudio</div>
+    <div>Power BI</div>
+    <div>Google Cloud Storage</div>
+    <div>Wireshark</div>
+    <div>Metasploit</div>
+    <div>Nmap</div>
+    <div>Aircrack-ng</div>
+    <div>Hydra</div>
+    <div>Adobe Premiere Pro</div>
+    <div>Adobe Animate</div>
+    <div>Canva</div>
+    <div>MS Word</div>
+    <div>Excel</div>
+    <div>PowerPoint</div>
+    <div>Planner</div>
+    <div>Teams</div>
+    <div>Zoom</div>
+    <div>Google Workspace</div>
+    <div>ClickUp</div>
   </div>
 </section>
 
@@ -352,13 +470,10 @@ body.light-theme footer {
   <div id="site-footer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
-
-
 <script>
-// VanillaTilt for experience cards
-VanillaTilt.init(document.querySelectorAll(".experience-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
+VanillaTilt.init(document.querySelectorAll('.experience-card'), { max: 15, speed: 400, glare: true, 'max-glare': 0.2 });
 </script>
-  <script src="navbar.js"></script>
-  <script src="footer.js"></script>
+<script src="navbar.js"></script>
+<script src="footer.js"></script>
 </body>
 </html>
