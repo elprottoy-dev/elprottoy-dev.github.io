@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Certification portfolio page for Khaled Prottoy featuring credentials, technical learning tracks, and verification-ready achievements.">
+  <meta name="description" content="Certification portfolio page for Khaled Prottoy featuring verified credentials, technical learning tracks, and achievement highlights.">
   <meta property="og:title" content="Certification | Khaled Prottoy">
-  <meta property="og:description" content="Certification portfolio page for Khaled Prottoy featuring credentials, technical learning tracks, and verification-ready achievements.">
+  <meta property="og:description" content="Certification portfolio page for Khaled Prottoy featuring verified credentials, technical learning tracks, and achievement highlights.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://elprottoy-dev.github.io/certification.html">
   <meta property="og:image" content="https://elprottoy-dev.github.io/profile.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Certification | Khaled Prottoy">
-  <meta name="twitter:description" content="Certification portfolio page for Khaled Prottoy featuring credentials, technical learning tracks, and verification-ready achievements.">
+  <meta name="twitter:description" content="Certification portfolio page for Khaled Prottoy featuring verified credentials, technical learning tracks, and achievement highlights.">
   <link rel="canonical" href="https://elprottoy-dev.github.io/certification.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.json">
@@ -20,6 +20,183 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .cert-grid.compact {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: stretch;
+    }
+
+    .cert-card.media-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .cert-certificate-preview {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cert-certificate-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .cert-card.media-card:hover .cert-certificate-preview img {
+      transform: scale(1.03);
+    }
+
+    .cert-image-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(12, 18, 36, 0.78);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      backdrop-filter: blur(8px);
+    }
+
+    .cert-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+
+    .cert-card-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.78rem 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .cert-card-actions a:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .cert-card-actions .btn-primary {
+      background: linear-gradient(135deg, #6d8dff, #7a5cff);
+      color: #fff;
+    }
+
+    .cert-card-actions .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: inherit;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .cert-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.5rem;
+    }
+
+    .cert-gallery-item {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 20px;
+      min-height: 220px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+      transform: translateZ(0);
+    }
+
+    .cert-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.45s ease;
+    }
+
+    .cert-gallery-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.9);
+    }
+
+    .cert-gallery-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(9, 12, 24, 0.88), rgba(9, 12, 24, 0.04));
+      color: #fff;
+    }
+
+    .cert-gallery-overlay h3 {
+      margin: 0 0 0.2rem;
+      font-size: 1rem;
+    }
+
+    .cert-gallery-overlay p {
+      margin: 0;
+      font-size: 0.88rem;
+      opacity: 0.86;
+    }
+
+    .cert-verification-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .cert-verification-list a {
+      display: block;
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .cert-verification-list a:hover {
+      transform: translateY(-3px);
+      border-color: rgba(109, 141, 255, 0.45);
+    }
+
+    .cert-verification-list strong,
+    .cert-verification-list span {
+      display: block;
+    }
+
+    .cert-verification-list span {
+      margin-top: 0.35rem;
+      opacity: 0.72;
+      font-size: 0.92rem;
+      word-break: break-word;
+    }
+
+    @media (max-width: 720px) {
+      .cert-card-actions a {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -27,177 +204,250 @@
   <div id="site-navbar"></div>
 
   <main id="main-content">
-
-  <section id="certification-hero" class="reveal cert-page-section">
-    <div class="cert-shell">
-      <div class="cert-hero-card">
-        <p class="section-kicker">Credentials & Continuous Learning</p>
-        <h1>Certification Portfolio</h1>
-        <p class="cert-hero-text">
-          This page is now ready for your live certificates. The structure below keeps your current design language while making it easy to add verified credentials, badges, and learning milestones later.
-        </p>
-        <div class="cert-hero-tags">
-          <span>Industry Certificates</span>
-          <span>Skill Badges</span>
-          <span>Learning Roadmap</span>
-          <span>Verification Ready</span>
-        </div>
-      </div>
-
-      <div class="cert-stat-grid">
-        <div class="cert-stat-card">
-          <h3>Designed For</h3>
-          <p>Verified certifications, training tracks, and platform badges.</p>
-        </div>
-        <div class="cert-stat-card">
-          <h3>Easy To Update</h3>
-          <p>Add issuer, date, credential ID, and verification link without changing layout.</p>
-        </div>
-        <div class="cert-stat-card">
-          <h3>Recruiter Friendly</h3>
-          <p>Built to make credentials readable, trustworthy, and easy to scan.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal cert-page-section">
-    <div class="cert-shell">
-      <div class="cert-section-head">
-        <h2>Featured Certifications</h2>
-        <p>Use these cards for your strongest certifications first-especially the ones most aligned with AI, data, cloud, security, or research engineering.</p>
-      </div>
-
-      <div class="cert-grid">
-        <article class="cert-card featured">
-          <div class="cert-card-top">
-            <span class="cert-status">Ready for your credential</span>
-            <span class="cert-type">Featured</span>
-          </div>
-          <h3>Professional Certification Title</h3>
-          <p class="cert-issuer">Issuer / Organization Name</p>
-          <p class="cert-description">Add a high-value certification here such as AI, cloud, data engineering, or cybersecurity credentials.</p>
-          <div class="cert-meta">
-            <span>Date Earned</span>
-            <span>Credential ID</span>
-            <span>Verification Link</span>
-          </div>
-        </article>
-
-        <article class="cert-card">
-          <div class="cert-card-top">
-            <span class="cert-status">Placeholder</span>
-            <span class="cert-type">Technical</span>
-          </div>
-          <h3>Certification or Badge</h3>
-          <p class="cert-issuer">Platform / Academy / Vendor</p>
-          <p class="cert-description">Use this area for cloud, DevOps, analytics, or software engineering certificates.</p>
-          <div class="cert-meta">
-            <span>Skill Area</span>
-            <span>Completion Date</span>
-          </div>
-        </article>
-
-        <article class="cert-card">
-          <div class="cert-card-top">
-            <span class="cert-status">Placeholder</span>
-            <span class="cert-type">Research</span>
-          </div>
-          <h3>Research or Specialized Training</h3>
-          <p class="cert-issuer">Institution / Program</p>
-          <p class="cert-description">Ideal for research methods, AI safety, NLP, privacy, or domain-specific learning credentials.</p>
-          <div class="cert-meta">
-            <span>Track</span>
-            <span>Credential Link</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal cert-page-section">
-    <div class="cert-shell">
-      <div class="cert-section-head">
-        <h2>Certification Tracks</h2>
-        <p>Group credentials by direction so visitors can quickly understand your strengths and learning priorities.</p>
-      </div>
-
-      <div class="cert-track-grid">
-        <div class="cert-track-card">
-          <h3>AI & Data</h3>
-          <ul>
-            <li>Machine Learning</li>
-            <li>LLM / NLP</li>
-            <li>Data Analytics</li>
-            <li>Model Evaluation</li>
-          </ul>
-        </div>
-        <div class="cert-track-card">
-          <h3>Cloud & DevOps</h3>
-          <ul>
-            <li>AWS / Azure / GCP</li>
-            <li>CI/CD</li>
-            <li>Containers & Kubernetes</li>
-            <li>Infrastructure Automation</li>
-          </ul>
-        </div>
-        <div class="cert-track-card">
-          <h3>Security & Privacy</h3>
-          <ul>
-            <li>Network Security</li>
-            <li>Threat Analysis</li>
-            <li>Privacy Engineering</li>
-            <li>Compliance & Protection</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal cert-page-section">
-    <div class="cert-shell">
-      <div class="cert-section-head">
-        <h2>Learning Roadmap</h2>
-        <p>A stacked roadmap section for showing what you have completed, what is in progress, and what is planned next.</p>
-      </div>
-
-      <div class="cert-roadmap">
-        <div class="cert-roadmap-item">
-          <span class="roadmap-dot"></span>
-          <div class="cert-roadmap-card">
-            <p class="roadmap-phase">Completed</p>
-            <h3>Core Technical Foundations</h3>
-            <p>Use this block for certifications already earned and currently verifiable.</p>
+    <section id="certification-hero" class="reveal cert-page-section">
+      <div class="cert-shell">
+        <div class="cert-hero-card">
+          <p class="section-kicker">Credentials & Continuous Learning</p>
+          <h1>Certification Portfolio</h1>
+          <p class="cert-hero-text">
+            My certifications reflect hands-on growth across Google Ads, Python for data science, and big data foundations—highlighting a blend of marketing technology, analytical thinking, and technical problem-solving.
+          </p>
+          <div class="cert-hero-tags">
+            <span>Google Ads</span>
+            <span>IBM Skills Network</span>
+            <span>Data Science</span>
+            <span>Verification Ready</span>
           </div>
         </div>
 
-        <div class="cert-roadmap-item">
-          <span class="roadmap-dot"></span>
-          <div class="cert-roadmap-card">
-            <p class="roadmap-phase">In Progress</p>
-            <h3>Advanced Specialization</h3>
-            <p>Show credentials you are actively working on in AI, cloud, security, or research engineering.</p>
+        <div class="cert-stat-grid">
+          <div class="cert-stat-card">
+            <h3>3 Certificates</h3>
+            <p>Verified credentials currently featured with image previews and direct links.</p>
           </div>
-        </div>
-
-        <div class="cert-roadmap-item">
-          <span class="roadmap-dot"></span>
-          <div class="cert-roadmap-card">
-            <p class="roadmap-phase">Planned</p>
-            <h3>Future Certification Targets</h3>
-            <p>Keep this section for upcoming goals so the page feels active and continually evolving.</p>
+          <div class="cert-stat-card">
+            <h3>2 Learning Tracks</h3>
+            <p>Foundations in data science and distributed systems through IBM coursework.</p>
+          </div>
+          <div class="cert-stat-card">
+            <h3>Root Upload Ready</h3>
+            <p>Certificate images are referenced directly from the project root for simple maintenance.</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="cert-verification-note">
-        <h3>Verification Ready Layout</h3>
-        <p>When you add real certifications later, include the issuer, completion date, credential ID, and a verification URL to make the page more credible and recruiter-friendly.</p>
+    <section class="reveal cert-page-section">
+      <div class="cert-shell">
+        <div class="cert-section-head">
+          <h2>Featured Certifications</h2>
+          <p>These certifications demonstrate practical capability in digital advertising, Python-based analytical work, and foundational big data systems knowledge.</p>
+        </div>
+
+        <div class="cert-grid compact">
+          <article class="cert-card featured media-card">
+            <div class="cert-certificate-preview">
+              <img src="Google Ads Apps Certification.JPG" alt="Google Ads Apps Certification for Khaled Md. Prottoy">
+              <span class="cert-image-badge">Google</span>
+            </div>
+            <div class="cert-card-top">
+              <span class="cert-status">Certified</span>
+              <span class="cert-type">Marketing Tech</span>
+            </div>
+            <h3>Google Ads Apps Certification</h3>
+            <p class="cert-issuer">Google Ads</p>
+            <p class="cert-description">Focused on app campaign strategy, ad delivery optimization, and credential-backed platform knowledge for Google Ads apps campaigns.</p>
+            <div class="cert-meta">
+              <span>Issued: Nov 27, 2025</span>
+              <span>Expires: Nov 27, 2026</span>
+              <span>ID: 167748623</span>
+            </div>
+            <div class="cert-card-actions">
+              <a class="btn-primary" href="Google Ads Apps Certification.JPG" target="_blank" rel="noopener noreferrer">View Certificate</a>
+            </div>
+          </article>
+
+          <article class="cert-card media-card">
+            <div class="cert-certificate-preview">
+              <img src="Python Certificate.png" alt="Python 101 for Data Science certificate for Khaled MD Mehzabin Alam Prottoy">
+              <span class="cert-image-badge">IBM</span>
+            </div>
+            <div class="cert-card-top">
+              <span class="cert-status">Completed</span>
+              <span class="cert-type">Data Science</span>
+            </div>
+            <h3>Python 101 for Data Science</h3>
+            <p class="cert-issuer">IBM Developer Skills Network / Cognitive Class</p>
+            <p class="cert-description">Covers Python fundamentals for data science workflows, including core syntax, notebook-based analysis, and practical programming foundations.</p>
+            <div class="cert-meta">
+              <span>Course Code: PY0101EN</span>
+              <span>Issued: Nov 27, 2025</span>
+              <span>Provider: IBM</span>
+            </div>
+            <div class="cert-card-actions">
+              <a class="btn-primary" href="Python Certificate.png" target="_blank" rel="noopener noreferrer">View Certificate</a>
+              <a class="btn-secondary" href="https://courses.cognitiveclass.ai/certificates/073b441f60ce482482cc34d5e0643edb" target="_blank" rel="noopener noreferrer">Verify</a>
+            </div>
+          </article>
+
+          <article class="cert-card media-card">
+            <div class="cert-certificate-preview">
+              <img src="Hadoop Certificate IBM.png" alt="Hadoop 101 certificate for Khaled MD Mehzabin Alam Prottoy">
+              <span class="cert-image-badge">IBM</span>
+            </div>
+            <div class="cert-card-top">
+              <span class="cert-status">Completed</span>
+              <span class="cert-type">Big Data</span>
+            </div>
+            <h3>Hadoop 101</h3>
+            <p class="cert-issuer">IBM Developer Skills Network / Cognitive Class</p>
+            <p class="cert-description">Introduces Hadoop ecosystem fundamentals and big data concepts, creating a strong baseline for distributed storage and analytics learning.</p>
+            <div class="cert-meta">
+              <span>Course Code: BD0111EN</span>
+              <span>Issued: Nov 27, 2025</span>
+              <span>Provider: IBM</span>
+            </div>
+            <div class="cert-card-actions">
+              <a class="btn-primary" href="Hadoop Certificate IBM.png" target="_blank" rel="noopener noreferrer">View Certificate</a>
+              <a class="btn-secondary" href="https://courses.cognitiveclass.ai/certificates/cb7aae2f9b374e45815498c3cdd169bb" target="_blank" rel="noopener noreferrer">Verify</a>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-    </main>
+    <section class="reveal cert-page-section">
+      <div class="cert-shell">
+        <div class="cert-section-head">
+          <h2>Certificate Gallery</h2>
+          <p>Together, these credentials show a learning path shaped by performance marketing, programming, and data-driven technical exploration.</p>
+        </div>
+
+        <div class="cert-gallery-grid">
+          <a class="cert-gallery-item" href="Google Ads Apps Certification.JPG" target="_blank" rel="noopener noreferrer">
+            <img src="Google Ads Apps Certification.JPG" alt="Google Ads Apps Certification preview">
+            <div class="cert-gallery-overlay">
+              <h3>Google Ads Apps</h3>
+              <p>Google Ads certification</p>
+            </div>
+          </a>
+
+          <a class="cert-gallery-item" href="Python Certificate.png" target="_blank" rel="noopener noreferrer">
+            <img src="Python Certificate.png" alt="Python 101 for Data Science certificate preview">
+            <div class="cert-gallery-overlay">
+              <h3>Python 101</h3>
+              <p>IBM Data Science foundation</p>
+            </div>
+          </a>
+
+          <a class="cert-gallery-item" href="Hadoop Certificate IBM.png" target="_blank" rel="noopener noreferrer">
+            <img src="Hadoop Certificate IBM.png" alt="Hadoop 101 certificate preview">
+            <div class="cert-gallery-overlay">
+              <h3>Hadoop 101</h3>
+              <p>IBM Big Data foundation</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal cert-page-section">
+      <div class="cert-shell">
+        <div class="cert-section-head">
+          <h2>Certification Tracks</h2>
+          <p>My expertise is developing across growth marketing, data science fundamentals, and scalable data infrastructure concepts.</p>
+        </div>
+
+        <div class="cert-track-grid">
+          <div class="cert-track-card">
+            <h3>Marketing & Growth</h3>
+            <ul>
+              <li>Google Ads Apps</li>
+              <li>Campaign Optimization</li>
+              <li>App Promotion Strategy</li>
+              <li>Measurement Readiness</li>
+            </ul>
+          </div>
+          <div class="cert-track-card">
+            <h3>AI & Data</h3>
+            <ul>
+              <li>Python Fundamentals</li>
+              <li>Data Science Basics</li>
+              <li>Notebook Workflows</li>
+              <li>Analytical Programming</li>
+            </ul>
+          </div>
+          <div class="cert-track-card">
+            <h3>Distributed Systems</h3>
+            <ul>
+              <li>Hadoop Foundations</li>
+              <li>Big Data Concepts</li>
+              <li>Data Processing Ecosystems</li>
+              <li>Scalable Learning Path</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal cert-page-section">
+      <div class="cert-shell">
+        <div class="cert-section-head">
+          <h2>Learning Roadmap</h2>
+          <p>This progression shows how my expertise is expanding from applied platform knowledge into programming and data systems.</p>
+        </div>
+
+        <div class="cert-roadmap">
+          <div class="cert-roadmap-item">
+            <span class="roadmap-dot"></span>
+            <div class="cert-roadmap-card">
+              <p class="roadmap-phase">Completed</p>
+              <h3>Digital Advertising Credential</h3>
+              <p>Completed Google Ads Apps Certification with a defined validity period and credential ID.</p>
+            </div>
+          </div>
+
+          <div class="cert-roadmap-item">
+            <span class="roadmap-dot"></span>
+            <div class="cert-roadmap-card">
+              <p class="roadmap-phase">Completed</p>
+              <h3>Programming for Data Science</h3>
+              <p>Built core Python fluency through IBM’s Python 101 for Data Science certificate.</p>
+            </div>
+          </div>
+
+          <div class="cert-roadmap-item">
+            <span class="roadmap-dot"></span>
+            <div class="cert-roadmap-card">
+              <p class="roadmap-phase">Completed</p>
+              <h3>Big Data Fundamentals</h3>
+              <p>Established foundational understanding of Hadoop and distributed data systems through IBM coursework.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-verification-note">
+          <h3>Verification Links</h3>
+          <p>Each credential supports a broader profile built around measurable platform skills, technical adaptability, and continuous upskilling.</p>
+
+          <div class="cert-verification-list">
+            <a href="https://courses.cognitiveclass.ai/certificates/073b441f60ce482482cc34d5e0643edb" target="_blank" rel="noopener noreferrer">
+              <strong>Python 101 for Data Science</strong>
+              <span>Verify on Cognitive Class</span>
+            </a>
+            <a href="https://courses.cognitiveclass.ai/certificates/cb7aae2f9b374e45815498c3cdd169bb" target="_blank" rel="noopener noreferrer">
+              <strong>Hadoop 101</strong>
+              <span>Verify on Cognitive Class</span>
+            </a>
+            <a href="Google Ads Apps Certification.JPG" target="_blank" rel="noopener noreferrer">
+              <strong>Google Ads Apps Certification</strong>
+              <span>Open root image asset</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <div id="site-footer"></div>
 
