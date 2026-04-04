@@ -96,6 +96,36 @@ body.light-theme {
   box-shadow: 0 20px 40px rgba(29,185,84,0.4);
 }
 
+/* Added only for work experience logos */
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.company-logo-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.company-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.company-header-text {
+  min-width: 0;
+}
+
 .education-grid, .certs-grid, .skills-grid {
   display: grid;
   gap: 1.5rem;
@@ -218,7 +248,8 @@ body.light-theme .education-card h3,
 body.light-theme .education-links a.secondary-link {
   color: var(--text-dark);
 }
-body.light-theme .education-logo-wrap {
+body.light-theme .education-logo-wrap,
+body.light-theme .company-logo-wrap {
   background: rgba(0,0,0,0.04);
 }
 body.light-theme .education-verify {
@@ -243,6 +274,9 @@ body.light-theme footer {
   .education-top {
     align-items: flex-start;
   }
+  .company-header {
+    align-items: flex-start;
+  }
 }
 </style>
 </head>
@@ -256,7 +290,7 @@ body.light-theme footer {
 <section id="experience-hero">
   <div class="hero-left">
     <h1>Professional Experience</h1>
-    <p>Data Science, software engineering, Network Engineering and innovation at a glance.</p>
+    <p>Data Science, software engineering,Network Engineering and innovation at a glance.</p>
     <div class="hero-buttons">
       <a href="Khaled_Prottoy_CV.pdf" download class="btn">Download Resume</a>
       <a href="Khaled_Prottoy_CV.pdf" class="btn">View Resume</a>
@@ -296,8 +330,15 @@ body.light-theme footer {
 
     <div class="experience-card">
       <div class="card-inner">
-        <h3>Research Officer</h3>
-        <p>Center for People and Environ (CPE) | On-site</p>
+        <div class="company-header">
+          <div class="company-logo-wrap">
+            <img src="cpe logo.png" alt="Center for People and Environ logo" loading="lazy" decoding="async">
+          </div>
+          <div class="company-header-text">
+            <h3>Research Officer</h3>
+            <p>Center for People and Environ (CPE) | On-site</p>
+          </div>
+        </div>
         <p>Feb 2022 - Present</p>
         <h4>Key Achievements:</h4>
         <ul>
@@ -325,8 +366,15 @@ body.light-theme footer {
 
     <div class="experience-card">
       <div class="card-inner">
-        <h3>Internship</h3>
-        <p>Grameenphone | On-site</p>
+        <div class="company-header">
+          <div class="company-logo-wrap">
+            <img src="grameenphone logo.png" alt="Grameenphone logo" loading="lazy" decoding="async">
+          </div>
+          <div class="company-header-text">
+            <h3> Internship </h3>
+            <p>Grameenphone | On-site</p>
+          </div>
+        </div>
         <p>Oct 2020 - June 2021</p>
         <h4>Key Achievements:</h4>
         <ul>
